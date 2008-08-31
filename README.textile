@@ -1,8 +1,8 @@
 h1. Russian
 
-Russian language support for Ruby and Rails, using I18n library (also shipped in Rails 2.2+).
+Russian language support for Ruby and Rails, using I18n library.
 
-Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n (также входит в состав Rails 2.2+)
+Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n.
 
 h3. If you don't speak Russian
 

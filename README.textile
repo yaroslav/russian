@@ -1,0 +1,44 @@
+h1. Russian
+
+Russian language support for Ruby and Rails, using I18n library (also shipped in Rails 2.2+).
+
+Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n (также входит в состав Rails 2.2+)
+
+h3. If you don't speak Russian
+
+This code may still be useful for you. You can learn how to create custom backends for I18n and how to 
+provide support of "standalone" (as defined in "Unicode CLDR":http://unicode.org/cldr/) month names with I18n and Rails, and also how to add dead simple pluralization rules into your translation tables.
+
+h1. Что это
+
+Russian -- это библиотека для полноценной поддержки русского языка (форматирование даты и времени, плюрализация, локализация в целом) для Ruby и Ruby on Rails.
+
+Для этого используется библиотека I18n, несколько хаков поверх нее и файлы переводов.
+
+I18n входит в состав Ruby on Rails начиная с версии 2.2, но на момент публикации нормальная поддержка русского языка отсутствовала.
+
+h1. Установка
+
+TODO: пути на GitHub, публикация на RubyForge
+
+* gem rubyforge
+* gem github
+
+h2. Ruby on Rails
+
+* gem
+* plugin github
+
+h1. Использование
+
+* Прозрачное: локаль по умолчанию, свой бекенд (недеструктивный)
+* Хелперы Russian.*
+
+h2. Ruby on Rails
+
+* Стандартный язык для I18n
+* Перегрузка хелперов
+
+h1. Автор
+
+Ярослав Маркин ("yaroslav@markin.net":mailto:yaroslav@markin.net)

@@ -1,0 +1,113 @@
+ru-RU:
+  number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: "."
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: " "
+      # Number of decimals, behind the separator (the number 1 with a precision of 2 gives: 1.00)
+      precision: 3
+      
+    # Used in number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%n %u"
+        unit: "руб."
+        # These three are to override number.format and are optional
+        separator: "."
+        delimiter: " "
+        precision: 2
+        
+    # Used in number_to_percentage()
+    percentage:
+      format:
+        # These three are to override number.format and are optional
+        # separator: 
+        delimiter: ""
+        precision: 2
+        
+    # Used in number_to_precision()
+    precision:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+        
+    # Used in number_to_human_size()
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator: 
+        delimiter: ""
+        precision: 1
+
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "меньше минуты"
+      less_than_x_seconds:
+        one:   "меньше секунды"
+        few:   "меньше {{count}} секунд"
+        many:  "меньше {{count}} секунд"
+        other: "меньше {{count}} секунд"
+      x_seconds:
+        one:   "1 секунда"
+        few:   "{{count}} секунды"
+        many:  "{{count}} секунд"
+        other: "{{count}} секунды"
+      less_than_x_minutes:
+        one:   "меньше минуты"
+        few:   "меньше {{count}} минут"
+        many:  "меньше {{count}} минут"
+        other: "меньше {{count}} минут"
+      x_minutes:
+        one:   "1 минуту"
+        few:   "{{count}} минуты"
+        many:  "{{count}} минут"
+        other: "{{count}} минуты"
+      about_x_hours:
+        one:   "около часа"
+        few:   "около {{count}} часов"
+        many:  "около {{count}} часов"
+        other: "около {{count}} часов"
+      x_days:
+        one:   "1 день"
+        few:   "{{count}} дня"
+        many:  "{{count}} дней"
+        other: "{{count}} дня"
+      about_x_months:
+        one:   "около 1 месяца"
+        few:   "около {{count}} месяцев"
+        many:  "около {{count}} месяцев"
+        other: "около {{count}} месяцев"
+      x_months:
+        one:   "1 месяц"
+        few:   "{{count}} месяца"
+        many:  "{{count}} месяцев"
+        other: "{{count}} месяца"
+      about_x_years:
+        one:   "около 1 года"
+        few:   "около {{count}} лет"
+        many:  "около {{count}} лет"
+        other: "около {{count}} лет"
+      over_x_years:
+        one:   "больше 1 года"
+        few:   "больше {{count}} лет"
+        many:  "больше {{count}} лет"
+        other: "больше {{count}} лет"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:   "{{model}} не удалось сохранить из-за 1 ошибки"
+          few:   "{{model}} не удалось сохранить из-за {{count}} ошибок"
+          many:  "{{model}} не удалось сохранить из-за {{count}} ошибок"
+          other: "{{model}} не удалось сохранить из-за {{count}} ошибок"
+        # The variable :count is also available
+        body: "Проблемы возникли со следующими полями:"
+

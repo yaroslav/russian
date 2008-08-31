@@ -1,0 +1,5 @@
+ru-RU:
+# Used in array.to_sentence.
+  support:
+    array:
+      sentence_connector: "и"

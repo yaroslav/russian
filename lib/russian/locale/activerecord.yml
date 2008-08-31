@@ -1,0 +1,48 @@
+ru-RU:
+  activerecord:
+    errors:
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      #
+      # You can use ^-prefixed messages as well to get rid of human attribute name appearing 
+      # before your message in validation messages.
+      messages:
+        inclusion: "имеет непредусмотренное значение"
+        exclusion: "имеет зарезервированное значение"
+        invalid: "имеет неверное значение"
+        confirmation: "не совпадает с подтверждением"
+        accepted: "нужно подтвердить"
+        empty: "не может быть пустым"
+        blank: "не может быть пустым"
+        too_long:
+          one:   "слишком большой длины (допустимая длина - менее 1 символа)"
+          few:   "слишком большой длины (допустимая длина - менее {{count}} символов)"
+          many:  "слишком большой длины (допустимая длина - менее {{count}} символов)"
+          other: "слишком большой длины (допустимая длина - менее {{count}} символов)"
+        too_short:
+          one:   "недостаточной длины (допустимая длина - более 1 символа)"
+          few:   "недостаточной длины (допустимая длина - более {{count}} символов)"
+          many:  "недостаточной длины (допустимая длина - более {{count}} символов)"
+          other: "недостаточной длины (допустимая длина - более {{count}} символов)"
+        wrong_length:
+          one:   "неверной длины (допустимая длина - ровно 1 символ)"
+          few:   "неверной длины (допустимая длина - ровно {{count}} символа)"
+          many:  "неверной длины (допустимая длина - ровно {{count}} символов)"
+          other: "неверной длины (допустимая длина - ровно {{count}} символа)"
+        taken: "уже существует"
+        not_a_number: "не является числом"
+        greater_than: "может иметь значение большее {{count}}"
+        greater_than_or_equal_to: "может иметь значение большее или равное {{count}}"
+        equal_to: "может иметь лишь значение, равное {{count}}"
+        less_than: "может иметь значение меньше чем {{count}}"
+        less_than_or_equal_to: "может иметь значение меньшее или равное {{count}}"
+        odd: "может иметь лишь четное значение"
+        even: "может иметь лишь нечетное значение"
+        # Append your own errors here or at the model/attributes scope.
+
+      models:
+        # Overrides default messages
+      
+      attributes:
+        # Overrides model and default messages.
+        

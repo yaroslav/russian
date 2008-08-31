@@ -2,8 +2,9 @@
 # "standalone month names" feature. 
 #
 # It is now possible to use both abbreviated and full month names in two variants (if current locale provides them).
-# All date helpers support :use_standalone_month_names parameter now, select_month sets it to true by default.
-# Standalone month names are also used when :discard_day key is provided.
+# All date helpers support <tt>:use_standalone_month_names</tt> key now, <tt>select_month</tt> helper sets 
+# it to true by default.
+# Standalone month names are also used when <tt>:discard_day</tt> key is provided.
 if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateTimeSelector.private_instance_methods.include?("translated_month_names")
   module ActionView
     module Helpers

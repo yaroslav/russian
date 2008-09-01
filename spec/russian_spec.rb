@@ -117,25 +117,27 @@ describe Russian do
     end
   end
   
-  describe "pluralize" do
-    it "should pluralize with variants given" do
-      variants = %w(вещь вещи вещей)
+  describe "with pluralization" do
+    %w(p pluralize).each do |method|
+      it "'#{method}' should pluralize with variants given" do
+        variants = %w(вещь вещи вещей)
+        
+        Russian.send(method, 1, *variants).should == "вещь"
+        Russian.send(method, 2, *variants).should == 'вещи'
+        Russian.send(method, 3, *variants).should == 'вещи'
+        Russian.send(method, 5, *variants).should == 'вещей'
+        Russian.send(method, 10, *variants).should == 'вещей'
+        Russian.send(method, 21, *variants).should == 'вещь'
+        Russian.send(method, 29, *variants).should == 'вещей'
+        Russian.send(method, 129, *variants).should == 'вещей'
+        Russian.send(method, 131, *variants).should == 'вещь'
+      end
       
-      Russian.pluralize(1, *variants).should == "вещь"
-      Russian.pluralize(2, *variants).should == 'вещи'
-      Russian.pluralize(3, *variants).should == 'вещи'
-      Russian.pluralize(5, *variants).should == 'вещей'
-      Russian.pluralize(10, *variants).should == 'вещей'
-      Russian.pluralize(21, *variants).should == 'вещь'
-      Russian.pluralize(29, *variants).should == 'вещей'
-      Russian.pluralize(129, *variants).should == 'вещей'
-      Russian.pluralize(131, *variants).should == 'вещь'
-    end
-    
-    it "should raise an exception when there are not enough variants" do
-      lambda { Russian.pluralize(1) }.should raise_error(ArgumentError)
-      lambda { Russian.pluralize(1, "вещь") }.should raise_error(ArgumentError)
-      lambda { Russian.pluralize(1, "вещь", "вещи") }.should raise_error(ArgumentError)
+      it "should raise an exception when there are not enough variants" do
+        lambda { Russian.send(method, 1) }.should raise_error(ArgumentError)
+        lambda { Russian.send(method, 1, "вещь") }.should raise_error(ArgumentError)
+        lambda { Russian.send(method, 1, "вещь", "вещи") }.should raise_error(ArgumentError)
+      end
     end
   end
 end

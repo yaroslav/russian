@@ -164,12 +164,13 @@ Russian::strftime(Time.now, "%B")
 
 <pre></code>
 Russian::pluralize
+Russian::p
 
-Russian.pluralize(1, "вещь", "вещи", "вещей")
+Russian.p(1, "вещь", "вещи", "вещей")
 => "вещь"
-Russian.pluralize(2, "вещь", "вещи", "вещей")
+Russian.p(2, "вещь", "вещи", "вещей")
 => "вещи"
-Russian.pluralize(10, "вещь", "вещи", "вещей")
+Russian.p(10, "вещь", "вещи", "вещей")
 => "вещей"
 </code></pre>
 

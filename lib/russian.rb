@@ -67,6 +67,7 @@ module Russian
       variants_hash = pluralization_variants_to_hash(*variants)
       I18n.backend.send(:pluralize, LOCALE, variants_hash, n)
     end
+    alias :p :pluralize
     
     protected
       # Returns all locale files shipped with library

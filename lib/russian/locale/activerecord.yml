@@ -52,15 +52,15 @@ ru-RU:
         #
         # Append your own errors here or at the model/attributes scope.
 
-      models:
-        # Перегрузка сообщений по умолчанию
-        #
-        #
-        # Overrides default messages
+    models:
+      # Перегрузка названий моделей
+      #
+      #
+      # Overrides default messages
       
-      attributes:
-        # Перегрузка сообщений атрибутов
-        #
-        #
-        # Overrides model and default messages.
+    attributes:
+      # Перегрузка сообщений атрибутов
+      #
+      #
+      # Overrides model and default messages.
         

@@ -1,8 +1,8 @@
 TODO
 ====
-* docs and README (english - brief, full russian doc)
 * check Unicode CLDR to ensure all datetime formats are correct
 * refactor Advanced backend localize method (looks ugly)
+* Countries list
 
 Questionable
 ============

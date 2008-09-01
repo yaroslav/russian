@@ -46,7 +46,8 @@ Russian можно установить как gem с github. Для этого:
 
 @gem install yaroslav-russian@
 
-Gem @russian@ также зеркалируется на RubyForge, поэтому его можно установить командой 
+
+_NB:_ Gem @russian@ также зеркалируется на RubyForge, поэтому его можно установить командой 
 
 @gem install russian@.
 

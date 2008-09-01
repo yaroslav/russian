@@ -154,9 +154,9 @@ Russian::l
 <pre></code>
 Russian::strftime
 
-> Russian::strftime(Time.now)
+Russian::strftime(Time.now)
 => "Пн, 01 сент. 2008, 11:12:43 +0300"
-> Russian::strftime(Time.now, "%B")
+Russian::strftime(Time.now, "%B")
 => "Сентябрь"
 </code></pre>
 
@@ -164,11 +164,12 @@ Russian::strftime
 
 <pre></code>
 Russian::pluralize
-> Russian.pluralize(1, "вещь", "вещи", "вещей")
+
+Russian.pluralize(1, "вещь", "вещи", "вещей")
 => "вещь"
-> Russian.pluralize(2, "вещь", "вещи", "вещей")
+Russian.pluralize(2, "вещь", "вещи", "вещей")
 => "вещи"
-> Russian.pluralize(10, "вещь", "вещи", "вещей")
+Russian.pluralize(10, "вещь", "вещи", "вещей")
 => "вещей"
 </code></pre>
 

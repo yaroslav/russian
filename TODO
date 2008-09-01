@@ -1,6 +1,7 @@
 TODO
 ====
 * check Unicode CLDR to ensure all datetime formats are correct
+* examples of custom translations, AR models/attributes/messages translations
 * refactor Advanced backend localize method (looks ugly)
 * Countries list
 

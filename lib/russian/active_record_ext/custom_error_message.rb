@@ -9,6 +9,26 @@ if defined?(ActiveRecord::Errors)
       #  Non-base messages are prefixed with the attribute name as usual UNLESS they begin with '^'
       #  in which case the attribute name is omitted.
       #  E.g. validates_acceptance_of :accepted_terms, :message => '^Please accept the terms of service'
+      #
+      #
+      # Переопределяет метод ActiveRecord::Errors::full_messages. Сообщения об ошибках для атрибутов
+      # теперь не имеют префикса с названием атрибута если в сообщении об ошибке первым символом указан "^".
+      #
+      # Так, например,
+      # 
+      #   validates_acceptance_of :accepted_terms, :message => 'нужно принять соглашение'
+      # 
+      # даст сообщение
+      # 
+      #   Accepted terms нужно принять соглашение
+      # 
+      # однако,
+      # 
+      #   validates_acceptance_of :accepted_terms, :message => '^Нужно принять соглашение'
+      # 
+      # даст сообщение
+      # 
+      #   Нужно принять соглашение
       def full_messages
         full_messages = []
   

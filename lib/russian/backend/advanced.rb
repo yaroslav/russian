@@ -1,9 +1,17 @@
 module I18n
   module Backend
+    # "Продвинутый" бекэнд для I18n.
+    # 
+    # Наследует Simple бекэнд и полностью с ним совместим. Добаляет поддержку 
+    # для отдельностоящих/контекстных названий дней недели и месяцев.
+    # Также позволяет каждому языку использовать собственные правила плюрализации,
+    # объявленные как Proc (<tt>lambda</tt>).
+    # 
+    #
     # Advanced I18n backend.
     #
-    # Extends <tt>Simple</tt> backend. Allows usage of <tt>standalone_*</tt> keys
-    # for DateTime localization and usage of user-defined <tt>Proc</tt> (lambda) pluralization
+    # Extends Simple backend. Allows usage of "standalone" keys
+    # for DateTime localization and usage of user-defined Proc (lambda) pluralization
     # methods in translation tables.
     class Advanced < Simple
       LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%d|%e)?(\s*)(%b)/
@@ -15,8 +23,13 @@ module I18n
       # formatted date string. Takes a key from the date/time formats 
       # translations as a format argument (<em>e.g.</em>, <tt>:short</tt> in <tt>:'date.formats'</tt>).
       #
-      # Note that it differs from <tt>localize</tt> in <tt>Simple</tt> backend by checking for 
-      # <tt>standalone_*</tt> month name/day name keys in translation and using them if available.
+      #
+      # Метод отличается от <tt>localize</tt> в Simple бекэнде поддержкой 
+      # отдельностоящих/контекстных названий дней недели и месяцев.
+      #
+      #
+      # Note that it differs from <tt>localize</tt> in Simple< backend by checking for 
+      # "standalone" month name/day name keys in translation and using them if available.
       def localize(locale, object, format = :default)
         raise ArgumentError, "Object must be a Date, DateTime or Time object. #{object.inspect} given." unless object.respond_to?(:strftime)
         
@@ -65,6 +78,19 @@ module I18n
       end
       
       protected
+        # Использует правила плюрализации из таблицы переводов для языка (если присутствуют),
+        # иначе использует правило плюрализации по умолчанию (английский язык).
+        # 
+        # Пример задания правила в таблице переводов:
+        #
+        #   store_translations :'en-US', {
+        #     :pluralize => lambda { |n| n == 1 ? :one : :other }
+        #   }
+        # 
+        # Правило должно возвращать один из символов для таблицы переводов:
+        #   :zero, :one, :two, :few, :many, :other
+        #
+        #
         # Picks a pluralization rule specified in translation tables for a language or
         # uses default pluralization rules.
         #

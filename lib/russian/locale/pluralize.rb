@@ -1,6 +1,9 @@
 {
   :'ru-RU' => {
     :pluralize => lambda { |n| 
+      # Правило плюрализации для русского языка, взято из CLDR, http://unicode.org/cldr/
+      #
+      #
       # Russian language pluralization rules, taken from CLDR project, http://unicode.org/cldr/
       #
       # one -> n mod 10 is 1 and n mod 100 is not 11;

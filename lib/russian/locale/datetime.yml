@@ -1,29 +1,46 @@
 ru-RU:
   date:
     formats:
+      # Форматы указываются в виде, поддерживаемом strftime.
+      # По умолчанию используется default.
+      # Можно добавлять собственные форматы
+      #
+      #
       # Use the strftime parameters for formats.
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
       default: "%d.%m.%Y"
       short: "%d %b"
       long: "%d %B %Y"
-      
+    
+    # Названия дней недели -- контекстные и отдельностоящие
     day_names: [воскресенье, понедельник, вторник, среда, четверг, пятница, суббота]
     standalone_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
-      
+
+    # Названия месяцев -- сокращенные и полные, плюс отдельностоящие.
+    # Не забудьте nil в начале массиве (~)
+    # 
+    #
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
     month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
     standalone_month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
     abbr_month_names: [~, янв., февр., марта, апр., мая, июня, июля, авг., сент., окт., нояб., дек.]
     standalone_abbr_month_names: [~, янв., февр., март, апр., май, июнь, июль, авг., сент., окт., нояб., дек.]
+    
+    # Порядок компонентов даты для хелперов
+    #
+    #
     # Used in date_select and datime_select.
     order: [ :day, :month, :year ]
 
   time:
+    # Форматы времени
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
       short: "%d %b, %H:%M"
       long: "%d %B %Y, %H:%M"
+    
+    # am/pm решено перевести как "утра/вечера" :)
     am: "утра"
     pm: "вечера"

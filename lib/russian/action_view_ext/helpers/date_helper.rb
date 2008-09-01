@@ -1,4 +1,14 @@
-# Replaces Rails select_month helper and translated_month_names private method to provide
+# Заменяет хелпер Rails <tt>select_month</tt> и метод <tt>translated_month_names</tt> 
+# для поддержки функционала "отдельностоящих имен месяцев".
+#
+# Теперь можно использовать и полные, и сокращенные название месяцев в двух вариантах -- контекстном
+# (по умолчанию) и отдельностоящем (если в текущем языке есть соответствующие переводы).
+# Теперь хелперы поддерживают ключ <tt>:use_standalone_month_names</tt>, хелпер <tt>select_month</tt> 
+# устанавливает его по умолчанию.
+# Отдельностоящие имена месяцев также используютс когда указан ключ <tt>:discard_day</tt>.
+#
+#
+# Replaces Rails <tt>select_month</tt> helper and <tt>translated_month_names</tt> private method to provide
 # "standalone month names" feature. 
 #
 # It is now possible to use both abbreviated and full month names in two variants (if current locale provides them).
@@ -19,6 +29,11 @@ if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateT
         # You can also choose if you want to use i18n standalone month names or default month names -- you can
         # force standalone month names usage by using <tt>:use_standalone_month_names</tt> key.
         # Override the field name using the <tt>:field_name</tt> option, 'month' by default.
+        #
+        #
+        # Также поддерживается ключ <tt>:use_standalone_month_names</tt> для явного указания о необходимости
+        # использования отдельностоящих имен месяцев, если текущий язык их поддерживает.
+        #
         #
         # ==== Examples
         #   # Generates a select field for months that defaults to the current month that
@@ -64,6 +79,11 @@ if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateT
           #
           # Also looks up if <tt>:discard_day</tt> or <tt>:use_standalone_month_names</tt> option is set
           # and uses i18n standalone month names if so.
+          #
+          #
+          # Также в зависимости от использования ключей <tt>:discard_day</tt> или <tt>:use_standalone_month_names</tt>
+          # убеждается, есть ли соотвествующие переводы в текущем языке и использует "отдельностоящие" названия
+          # месяцев по необходимости
           def translated_month_names
             begin
               if @options[:use_short_month]

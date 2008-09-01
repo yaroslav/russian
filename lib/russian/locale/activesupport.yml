@@ -1,4 +1,7 @@
 ru-RU:
+# Используется в array.to_sentence
+#  
+#  
 # Used in array.to_sentence.
   support:
     array:

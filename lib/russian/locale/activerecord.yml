@@ -1,6 +1,15 @@
 ru-RU:
   activerecord:
+    # Сообщения об ошибке (валидации) ActiveRecord
     errors:
+      # Для всех сообщений доступны макросы {{model}}, {{attribute}}, {{value}}.
+      # Для некоторых доступен макрос {{count}} -- в этом случае можно задать несколько вариантов
+      # сообщения (плюрализация)
+      #
+      # Также можно использовать сообщения, начинающиеся с "^" -- в этом случае
+      # в списке ошибок валидации перед конкретным сообщением не будет выводиться имя атрибута.
+      #
+      #
       # The values :model, :attribute and :value are always available for interpolation
       # The value :count is available when applicable. Can be used for pluralization.
       #
@@ -38,11 +47,20 @@ ru-RU:
         less_than_or_equal_to: "может иметь значение меньшее или равное {{count}}"
         odd: "может иметь лишь четное значение"
         even: "может иметь лишь нечетное значение"
+        # Можно добавить собственные сообщения об ошибке тут или в конкексте модели/атрибутов (ниже)
+        #
+        #
         # Append your own errors here or at the model/attributes scope.
 
       models:
+        # Перегрузка сообщений по умолчанию
+        #
+        #
         # Overrides default messages
       
       attributes:
+        # Перегрузка сообщений атрибутов
+        #
+        #
         # Overrides model and default messages.
         

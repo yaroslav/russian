@@ -35,41 +35,6 @@ describe Russian do
       Russian.init_i18n
       I18n.default_locale.should == Russian.locale
     end
-    
-    describe "loading locales" do
-      before(:all) do
-        Russian.init_i18n
-      end
-      
-      it "should load datetime translations" do
-        lookup(:"date.formats.default").should_not be_nil
-        lookup(:"time.formats.default").should_not be_nil
-      end
-      
-      it "should load pluralization rules" do
-        lookup(:"pluralize").should_not be_nil
-        lookup(:"pluralize").is_a?(Proc).should be_true
-      end
-      
-      it "should load actionview translations" do
-        lookup(:"number.currency.format.format").should_not be_nil
-        lookup(:"datetime.distance_in_words.half_a_minute").should_not be_nil
-        lookup(:"activerecord.errors.template.header").should_not be_nil
-      end
-      
-      it "should load activerecord translations" do
-        lookup(:"activerecord.errors.messages.invalid").should_not be_nil
-        lookup(:"activerecord.errors.messages.greater_than_or_equal_to").should_not be_nil
-      end
-      
-      it "should load activesupport translations" do
-        lookup(:"support.array.sentence_connector").should_not be_nil
-      end
-      
-      def lookup(*args)
-        I18n.backend.send(:lookup, Russian.locale, *args)
-      end
-    end
   end
   
   describe "with localize proxy" do

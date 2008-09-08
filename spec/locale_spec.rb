@@ -103,11 +103,6 @@ describe Russian, "loading locales" do
     end
   end
   
-  
-  it "should load activesupport translations" do
-    lookup(:"support.array.sentence_connector").should_not be_nil
-  end
-  
   def lookup(*args)
     I18n.backend.send(:lookup, Russian.locale, *args)
   end

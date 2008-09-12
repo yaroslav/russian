@@ -66,25 +66,25 @@ ru-RU:
         #         # Ниже определим собственное сообщение об ошибке для атрибута name модели User.
         #         name:
         #           blank: "Атрибут {{attribute}} особенный -- у него свое сообщение об ошибке при пустом атрибуте"
-
       models:
-        # Перевод названий моделей. Используется в Model.human_name().
-        #
-        # Например,
-        #   user: "Пользователь"
-        # переведет модель User как "Пользователь".
-        #
-        #
-        # Overrides default messages
-        
-      attributes:
-        # Перевод названий атрибутов моделей. Используется в Model.human_attribute_name(attribute).
-        #
-        # Например,
-        #   user:
-        #     name: "Имя"
-        # переведет атрибут name модели User как "Имя".
-        #
-        #
-        # Overrides model and default messages.
+
+    # Перевод названий моделей. Используется в Model.human_name().
+    #
+    #models:
+      # Например,
+      #   user: "Пользователь"
+      # переведет модель User как "Пользователь".
+      #
+      #
+      # Overrides default messages
+      
+    # Перевод названий атрибутов моделей. Используется в Model.human_attribute_name(attribute).
+    #attributes:
+      # Например,
+      #   user:
+      #     name: "Имя"
+      # переведет атрибут name модели User как "Имя".
+      #
+      #
+      # Overrides model and default messages.
         

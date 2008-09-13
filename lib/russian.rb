@@ -3,11 +3,15 @@ $KCODE='u'
 $:.push File.join(File.dirname(__FILE__), 'russian')
 $:.push File.join(File.dirname(__FILE__), 'vendor', 'i18n', 'lib')
 
+# I18n require
 require 'i18n' unless defined?(I18n)
 
+# Advanced backend
 require 'backend/advanced'
-require 'action_view_ext/helpers/date_helper'
-require 'active_record_ext/custom_error_message'
+
+# Rails hacks
+require 'action_view_ext/helpers/date_helper' if defined?(ActionView::Helpers)
+require 'active_record_ext/custom_error_message' if defined?(ActiveRecord)
 
 module Russian
   module VERSION

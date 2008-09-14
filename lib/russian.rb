@@ -1,23 +1,28 @@
 $KCODE='u'
 
 $:.push File.join(File.dirname(__FILE__), 'russian')
-$:.push File.join(File.dirname(__FILE__), 'vendor', 'i18n', 'lib')
 
 # I18n require
-require 'i18n' unless defined?(I18n)
+unless defined?(I18n)
+  $:.push File.join(File.dirname(__FILE__), 'vendor', 'i18n', 'lib')
+  require 'i18n'
+end
 
 # Advanced backend
 require 'backend/advanced'
 
 # Rails hacks
-require 'action_view_ext/helpers/date_helper' if defined?(ActionView::Helpers)
 require 'active_record_ext/custom_error_message' if defined?(ActiveRecord)
+if defined?(ActionView::Helpers)
+  require 'action_view_ext/helpers/date_helper' 
+  require 'vendor/i18n_label/init'
+end
 
 module Russian
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 3
+    TINY  = 4
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end

@@ -121,20 +121,20 @@ h2. Примеры и справка по переводам (I18n)
 
 h2. Вспомогательные методы модуля Russian
 
-<pre></code>
+<pre><code>
 Russian.locale
 Russian::LOCALE
 </code></pre>
 
 -- возвращает локаль русского языка (@ru-RU@).
 
-<pre></code>
+<pre><code>
 Russian::i18n_backend_class
 </code></pre>
 
 -- возвращает класс собственного бекенда I18n
 
-<pre></code>
+<pre><code>
 Russian::init_i18n
 </code></pre>
 
@@ -142,21 +142,21 @@ Russian::init_i18n
 
 _NB:_ Выполняется автоматически при загрузке.
 
-<pre></code>
+<pre><code>
 Russian::translate
 Russian::t
 </code></pre>
 
 -- прокси для метода @translate@ I18n, форсирует использование русской локали.
 
-<pre></code>
+<pre><code>
 Russian::localize
 Russian::l
 </code></pre>
 
 -- прокси для метода @localize@ I18n, форсирует использование русской локали.
 
-<pre></code>
+<pre><code>
 Russian::strftime
 
 Russian::strftime(Time.now)
@@ -167,7 +167,7 @@ Russian::strftime(Time.now, "%B")
 
 -- @strftime@ с форсированием русской локали (упрощенный вариант @localize@)
 
-<pre></code>
+<pre><code>
 Russian::pluralize
 Russian::p
 

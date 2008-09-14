@@ -72,7 +72,11 @@ module Russian
     #
     # Usage: 
     #   Russian.pluralize(1, "вещь", "вещи", "вещей")
+    #   Russian.pluralize(3.14, "вещь", "вещи", "вещей", "вещи")
     def pluralize(n, *variants)
+      raise ArgumentError, "Must have a Numeric as a first parameter" unless n.is_a?(Numeric)
+      raise ArgumentError, "Must have at least 3 variants for pluralization" if variants.size < 3
+      raise ArgumentError, "Must have at least 4 variants for pluralization" if (variants.size < 4 && n != n.round)
       variants_hash = pluralization_variants_to_hash(*variants)
       I18n.backend.send(:pluralize, LOCALE, variants_hash, n)
     end
@@ -84,15 +88,14 @@ module Russian
         Dir[File.join(File.dirname(__FILE__), "russian", "locale", "**/*")]
       end
       
-      # Converts an array of pluralization variants (3 entries) to a Hash that can be used
+      # Converts an array of pluralization variants to a Hash that can be used
       # with I18n pluralization.
       def pluralization_variants_to_hash(*variants)
-        raise ArgumentError, "Must have at least 3 variants for pluralization" if variants.size < 3
         {
           :one => variants[0],
           :few => variants[1],
           :many => variants[2],
-          :other => variants[1]
+          :other => variants[3]
         }
       end
   end

@@ -16,5 +16,8 @@ describe I18n, "Russian pluralization" do
     @backend.send(:pluralize, :'ru-RU', @hash, 29).should == 'вещей'
     @backend.send(:pluralize, :'ru-RU', @hash, 129).should == 'вещей'
     @backend.send(:pluralize, :'ru-RU', @hash, 131).should == 'вещь'
+    @backend.send(:pluralize, :'ru-RU', @hash, 1.31).should == 'вещи'
+    @backend.send(:pluralize, :'ru-RU', @hash, 2.31).should == 'вещи'
+    @backend.send(:pluralize, :'ru-RU', @hash, 3.31).should == 'вещи'
   end
 end

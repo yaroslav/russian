@@ -59,52 +59,52 @@ ru-RU:
     distance_in_words:
       half_a_minute: "меньше минуты"
       less_than_x_seconds:
-        one:   "меньше секунды"
+        one:   "меньше {{count}} секунды"
         few:   "меньше {{count}} секунд"
         many:  "меньше {{count}} секунд"
-        other: "меньше {{count}} секунд"
+        other: "меньше {{count}} секунды"
       x_seconds:
-        one:   "1 секунда"
+        one:   "{{count}} секунда"
         few:   "{{count}} секунды"
         many:  "{{count}} секунд"
         other: "{{count}} секунды"
       less_than_x_minutes:
-        one:   "меньше минуты"
+        one:   "меньше {{count}} минуты"
         few:   "меньше {{count}} минут"
         many:  "меньше {{count}} минут"
-        other: "меньше {{count}} минут"
+        other: "меньше {{count}} минуты"
       x_minutes:
-        one:   "1 минуту"
+        one:   "{{count}} минуту"
         few:   "{{count}} минуты"
         many:  "{{count}} минут"
         other: "{{count}} минуты"
       about_x_hours:
-        one:   "около часа"
+        one:   "около {{count}} часа"
         few:   "около {{count}} часов"
         many:  "около {{count}} часов"
-        other: "около {{count}} часов"
+        other: "около {{count}} часа"
       x_days:
-        one:   "1 день"
+        one:   "{{count}} день"
         few:   "{{count}} дня"
         many:  "{{count}} дней"
         other: "{{count}} дня"
       about_x_months:
-        one:   "около 1 месяца"
+        one:   "около {{count}} месяца"
         few:   "около {{count}} месяцев"
         many:  "около {{count}} месяцев"
-        other: "около {{count}} месяцев"
+        other: "около {{count}} месяца"
       x_months:
-        one:   "1 месяц"
+        one:   "{{count}} месяц"
         few:   "{{count}} месяца"
         many:  "{{count}} месяцев"
         other: "{{count}} месяца"
       about_x_years:
-        one:   "около 1 года"
+        one:   "около {{count}} года"
         few:   "около {{count}} лет"
         many:  "около {{count}} лет"
         other: "около {{count}} лет"
       over_x_years:
-        one:   "больше 1 года"
+        one:   "больше {{count}} года"
         few:   "больше {{count}} лет"
         many:  "больше {{count}} лет"
         other: "больше {{count}} лет"
@@ -115,10 +115,10 @@ ru-RU:
       template:
         # Заголовок сообщения об ошибке
         header:
-          one:   "{{model}}: сохранение не удалось из-за 1 ошибки"
+          one:   "{{model}}: сохранение не удалось из-за {{count}} ошибки"
           few:   "{{model}}: сохранение не удалось из-за {{count}} ошибок"
           many:  "{{model}}: сохранение не удалось из-за {{count}} ошибок"
-          other: "{{model}}: сохранение не удалось из-за {{count}} ошибок"
+          other: "{{model}}: сохранение не удалось из-за {{count}} ошибки"
 
         # Первый параграф сообщения об ошибке. Можно использовать макрос {{count}}
         #

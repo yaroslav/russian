@@ -31,6 +31,12 @@ describe Russian do
       I18n.backend.class.should == Russian.i18n_backend_class
     end
     
+    it "should keep existing translations while switching backends" do
+      I18n.backend.store_translations(:'en-US', { :foo => "bar" })
+      Russian.init_i18n
+      I18n.t(:foo, :locale => :'en-US').should == "bar"
+    end
+    
     it "should set default locale to Russian locale" do
       Russian.init_i18n
       I18n.default_locale.should == Russian.locale

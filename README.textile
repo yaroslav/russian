@@ -75,8 +75,7 @@ end
 
 @script/plugin install git://github.com/yaroslav/russian.git@
 
-_NB:_ вполне вероятно, что на Windows нет нормальной реализации git, поэтому вам придется загружать исходники
-в виде архива с github или же просто использовать gem.
+Для Windows можно использовать версию git, расположенную по адресу: "http://code.google.com/p/msysgit/":http://code.google.com/p/msysgit/
 
 h1. Использование
 

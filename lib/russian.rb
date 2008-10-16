@@ -22,7 +22,7 @@ module Russian
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 5
+    TINY  = 6
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
@@ -46,11 +46,9 @@ module Russian
     # Init Russian i18n: set custom backend, set default locale to Russian locale, load all translations
     # shipped with library.
     def init_i18n
-      loaded_translations = I18n.backend.__send__(:translations)
       I18n.backend = Russian.i18n_backend_class.new
-      loaded_translations.each_pair { |locale, data| I18n.backend.store_translations(locale, data) }
       I18n.default_locale = LOCALE
-      locale_files.each { |file| I18n.backend.load_translations(file) }
+      locale_files.each { |file| I18n.load_path << file }
     end
   
     # See I18n::translate

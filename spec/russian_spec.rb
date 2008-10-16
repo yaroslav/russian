@@ -32,7 +32,7 @@ describe Russian do
     end
     
     it "should keep existing translations while switching backends" do
-      I18n.backend.store_translations(:'en-US', { :foo => "bar" })
+      I18n.load_path << File.join(File.dirname(__FILE__), 'fixtures', 'en-US.yml')
       Russian.init_i18n
       I18n.t(:foo, :locale => :'en-US').should == "bar"
     end

@@ -1,6 +1,6 @@
 TODO
 ====
-* apply http://i18n.lighthouseapp.com/projects/14947/tickets/9-i18n-should-save-existing-translations-when-switching-backends , use it
+* RDoc
 * check Unicode CLDR to ensure all datetime formats are correct
 * refactor Advanced backend localize method (looks ugly)
 * refactor DateTimeSelector#translated_month_names

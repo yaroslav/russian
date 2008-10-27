@@ -6,3 +6,4 @@ ru-RU:
   support:
     array:
       sentence_connector: "и"
+      skip_last_comma: true

@@ -125,7 +125,7 @@ Russian.locale
 Russian::LOCALE
 </code></pre>
 
--- возвращает локаль русского языка (@ru-RU@).
+-- возвращает локаль русского языка (@:'ru-RU'@).
 
 <pre><code>
 Russian::i18n_backend_class

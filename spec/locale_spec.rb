@@ -44,7 +44,6 @@ describe Russian, "loading locales" do
     number.currency.format.delimiter
     number.currency.format.precision
     number.percentage.format.delimiter
-    number.percentage.format.precision
     number.precision.format.delimiter
     number.human.format.delimiter
     number.human.format.precision

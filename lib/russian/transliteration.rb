@@ -1,5 +1,7 @@
 module Russian
   # Russian transliteration 
+  #
+  # Транслитерация для букв русского алфавита
   module Transliteration
     extend self
   
@@ -30,6 +32,8 @@ module Russian
     }.freeze
 
     # Transliterate a string with russian characters
+    #
+    # Возвращает строку, в которой все буквы русского алфавита заменены на похожую по звучанию латиницу
     def transliterate(str)
       chars = str.split(//)    
     

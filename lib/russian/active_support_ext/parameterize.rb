@@ -1,6 +1,11 @@
 module ActiveSupport
   module Inflector
     # Replaces special characters in a string so that it may be used as part of a 'pretty' URL.
+    # Transliterates all russian characters in string first, then passes it to ActiveSupport Inflector.
+    #
+    # Заменяет все спецсимволы в строке так, что результат может использоваться как часть "красивого" URL.
+    # От стандартного ActiveSupport Inflector отличается тем, что сначала производится транслитерация
+    # букв русского алфавита.
     #
     # ==== Examples
     #

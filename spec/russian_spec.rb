@@ -14,7 +14,7 @@ describe Russian do
       Russian::LOCALE.should == :'ru-RU'
     end
 
-    it "should provide ::locale proxy" do
+    it "should provide 'locale' proxy" do
       Russian.locale.should == Russian::LOCALE
     end
   end
@@ -50,7 +50,7 @@ describe Russian do
     end
     
     %w(l localize).each do |method|
-      it "#{method} should call I18n backend localize" do
+      it "'#{method}' should call I18n backend localize" do
         I18n.should_receive(:localize).with(@time, @options.merge({ :locale => Russian.locale }))
         Russian.send(method, @time, @options)
       end
@@ -64,7 +64,7 @@ describe Russian do
     end
 
     %w(t translate).each do |method|
-      it "#{method} should call I18n backend translate" do
+      it "'#{method}' should call I18n backend translate" do
         I18n.should_receive(:translate).with(@object, @options.merge({ :locale => Russian.locale }))
         Russian.send(method, @object, @options)
       end

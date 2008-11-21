@@ -96,6 +96,7 @@ describe Russian, "loading locales" do
   
   %w(
     support.array.sentence_connector
+    support.array.skip_last_comma
   ).each do |key| 
     it "should define '#{key}' in activesupport translations" do
       lookup(key).should_not be_nil

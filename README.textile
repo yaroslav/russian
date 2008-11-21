@@ -182,6 +182,19 @@ Russian.p(3.14, "вещь", "вещи", "вещей", "вещи") # послед
 
 -- упрощенная (без использования хешей I18n) плюрализация для русского языка
 
+<pre><code>
+Russian::transliterate
+Russian::translit
+
+Russian.translit("рубин")
+=> "rubin"
+Russian.translit("Hallo Юлику Тарханову")
+=> "Hallo Yuliku Tarhanovu"
+</code></pre>
+
+-- транслитерация русских букв в строке.
+
+
 h2. Ruby on Rails
 
 h3. Переводы
@@ -218,7 +231,6 @@ ru-RU:
 <label for="user_name">Имя</label>
 </code></pre>
 
-
 h3. Валидация
 
 Обработка ошибок в ActiveRecord перегружается -- в Russian включен популярный плагин custom_error_message, с помощью которого можно переопределять стандартное отображение сообщений об ошибках. Так, например,
@@ -245,8 +257,32 @@ h3. Валидация
 
 _NB:_ в сообщениях валидации можно использовать такие макросы как @{{attribute}}@, @{{value}}@ -- подробнее см. документацию по I18n.
 
+h3. Параметризация строк
+
+Перегружается метод @parameterize@ инфлектора ActiveSupport (он же -- @String#parameterize@), теперь в нем идет транслитерация букв русского алфавита.
+
+Пример:
+
+<pre><code>
+class Person
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+end
+
+@person = Person.find(1)
+# => #<Person id: 1, name: "Дональд Кнут">
+
+<%= link_to(@person.name, person_path %>
+# => <a href="/person/1-donald-knut">Дональд Кнут</a>
+</code></pre>
+
 h1. Автор
 
 Для сообщений об ошибках, обнаруженных неточностях и предложений:
 
 Ярослав Маркин ("yaroslav@markin.net":mailto:yaroslav@markin.net)
+
+Огромное спасибо:
+
+Юлику Тарханову (me@julik.nl) за "rutils":http://rutils.rubyforge.org/

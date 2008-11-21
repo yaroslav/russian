@@ -1,13 +1,13 @@
 $KCODE='u'
 
 $:.push File.join(File.dirname(__FILE__), 'russian')
+require 'transliteration'
 
 # I18n require
 unless defined?(I18n)
   $:.push File.join(File.dirname(__FILE__), 'vendor', 'i18n', 'lib')
   require 'i18n'
 end
-
 # Advanced backend
 require 'backend/advanced'
 
@@ -17,12 +17,13 @@ if defined?(ActionView::Helpers)
   require 'action_view_ext/helpers/date_helper' 
   require 'vendor/i18n_label/init'
 end
+require 'active_support_ext/parameterize' if defined?(ActiveSupport::Inflector)
 
 module Russian
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 7
+    TINY  = 8
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
@@ -81,6 +82,16 @@ module Russian
       I18n.backend.send(:pluralize, LOCALE, variants_hash, n)
     end
     alias :p :pluralize
+
+    # Transliteration for russian language
+    #
+    # Usage:
+    #  Russian.translit("рубин")
+    #  Russian.transliterate("рубин")
+    def transliterate(str)
+      Russian::Transliteration.transliterate(str)
+    end
+    alias :translit :transliterate
     
     protected
       # Returns all locale files shipped with library

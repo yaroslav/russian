@@ -1,4 +1,4 @@
 # Fixture dummy translation
 # Need this to test if we preserve translation data that is already loaded when switching backends
-en-US:
+en:
   foo: "bar"

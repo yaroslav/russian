@@ -1,0 +1,24 @@
+=== 0.0.9 - 21.11.2008
+
+* Updated I18n gem due to locale changes (0.1.1)
+* NB! I18n changed default locale from :'en-US' to :'en', same recommended for other locales by default
+* NB!! Russian locale is now :'ru' NOT :'ru-RU', update your locale files.
+
+* I18n gem обновился до 0.1.1 в связи с изменениями в названиях локалей
+* ВНИМАНИЕ: локаль по умолчанию I18n теперь называется не :'en-US' а :'en', такой же способ именования рекомендуется и для других локалей
+* ВНИМАНИЕ! Локаль русского языка теперь называется :'ru' а не :'ru-RU'. Не забудьте обновить ваши файлы переводов.
+
+=== 0.0.8 - 20.11.2008
+
+* Introduce transliteration (Russian.translit, Russian.transliterate)
+* Add an ActiveSupport hack for #parameterize
+
+* Добавилась поддержка транслитерации (Russian.translit, Russian.transliterate)
+* Добавился хак для #parameterize ActiveSupport (генерация "красивых" URL)
+
+=== 0.0.7 - 09.11.2008
+
+* Updated I18n gem
+
+* Новая версия gem I18n
+

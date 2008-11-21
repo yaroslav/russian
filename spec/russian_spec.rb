@@ -10,8 +10,8 @@ end
 
 describe Russian do
   describe "with locale" do
-    it "should define :'ru-RU' LOCALE" do
-      Russian::LOCALE.should == :'ru-RU'
+    it "should define :'ru' LOCALE" do
+      Russian::LOCALE.should == :'ru'
     end
 
     it "should provide 'locale' proxy" do
@@ -32,9 +32,9 @@ describe Russian do
     end
     
     it "should keep existing translations while switching backends" do
-      I18n.load_path << File.join(File.dirname(__FILE__), 'fixtures', 'en-US.yml')
+      I18n.load_path << File.join(File.dirname(__FILE__), 'fixtures', 'en.yml')
       Russian.init_i18n
-      I18n.t(:foo, :locale => :'en-US').should == "bar"
+      I18n.t(:foo, :locale => :'en').should == "bar"
     end
     
     it "should set default locale to Russian locale" do

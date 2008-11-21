@@ -25,13 +25,13 @@ module Russian
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 8
+    TINY  = 9
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
   
   # Russian locale
-  LOCALE = :'ru-RU'
+  LOCALE = :'ru'
 
   # Russian locale
   def locale

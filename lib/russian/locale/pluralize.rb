@@ -1,5 +1,5 @@
 {
-  :'ru-RU' => {
+  :'ru' => {
     :pluralize => lambda { |n| 
       # Правило плюрализации для русского языка, взято из CLDR, http://unicode.org/cldr/
       #

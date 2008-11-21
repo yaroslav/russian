@@ -83,7 +83,7 @@ module I18n
         # 
         # Пример задания правила в таблице переводов:
         #
-        #   store_translations :'en-US', {
+        #   store_translations :'en', {
         #     :pluralize => lambda { |n| n == 1 ? :one : :other }
         #   }
         # 
@@ -97,7 +97,7 @@ module I18n
         # This is how pluralization rules are defined in translation tables, English
         # language for example:
         #
-        #   store_translations :'en-US', {
+        #   store_translations :'en', {
         #     :pluralize => lambda { |n| n == 1 ? :one : :other }
         #   }
         #

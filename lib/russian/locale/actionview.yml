@@ -1,4 +1,4 @@
-ru-RU:
+ru:
   number:
     # Используется в number_with_delimiter()
     # Также является установками по умолчанию для 'currency', 'percentage', 'precision', 'human'

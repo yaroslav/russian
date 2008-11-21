@@ -1,4 +1,4 @@
-ru-RU:
+ru:
   activerecord:
     # Сообщения об ошибке (валидации) ActiveRecord
     errors:

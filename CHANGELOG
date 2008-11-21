@@ -1,3 +1,7 @@
+=== 0.1.0 - 22.11.2008
+
+No changes, Rails 2.2 released
+
 === 0.0.9 - 21.11.2008
 
 * Updated I18n gem due to locale changes (0.1.1)

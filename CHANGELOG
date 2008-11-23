@@ -1,3 +1,9 @@
+=== 0.1.1 - 24.11.2008
+
+Added number.human.storage_units translation key (Rails Edge).
+
+Добавлен ключ number.human.storage_units (появился в Rails Edge).
+
 === 0.1.0 - 22.11.2008
 
 No changes, Rails 2.2 released

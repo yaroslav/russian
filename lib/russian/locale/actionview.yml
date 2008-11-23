@@ -49,6 +49,7 @@ ru:
         # separator: 
         delimiter: ""
         precision: 1
+      storage_units: [байт, КБ, МБ, ГБ, ТБ]
 
   # Используется в хелперах distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   #

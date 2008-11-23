@@ -47,6 +47,7 @@ describe Russian, "loading locales" do
     number.precision.format.delimiter
     number.human.format.delimiter
     number.human.format.precision
+    number.human.storage_units
     
     datetime.distance_in_words.half_a_minute
     datetime.distance_in_words.less_than_x_seconds

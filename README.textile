@@ -273,7 +273,7 @@ end
 @person = Person.find(1)
 # => #<Person id: 1, name: "Дональд Кнут">
 
-<%= link_to(@person.name, person_path %>
+<%= link_to(@person.name, person_path) %>
 # => <a href="/person/1-donald-knut">Дональд Кнут</a>
 </code></pre>
 

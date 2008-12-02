@@ -9,7 +9,4 @@ TODO
 
 Questionable
 ============
-* integration spec coverage for actionview locale
-* integration spec coverage for activerecord locale
-* integration spec coverage for activesupport locale
 * integration specs for rails hacks

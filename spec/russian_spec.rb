@@ -37,6 +37,12 @@ describe Russian do
       I18n.t(:foo, :locale => :'en').should == "bar"
     end
     
+    it "should keep existing :ru translations while switching backends" do
+      I18n.load_path << File.join(File.dirname(__FILE__), 'fixtures', 'ru.yml')
+      Russian.init_i18n
+      I18n.t(:'date.formats.default', :locale => :'ru').should == "override"
+    end
+    
     it "should set default locale to Russian locale" do
       Russian.init_i18n
       I18n.default_locale.should == Russian.locale

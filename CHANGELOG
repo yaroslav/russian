@@ -1,3 +1,9 @@
+=== 0.1.2 - 4.11.2008
+
+Fixed I18n.load_path ordering, translations shipped with russian gem will no longer overwrite your own translations (thanks Dmitrij Smalko for bugreport).
+
+Поправлено добавление переводов russian в I18n.load_path, теперь переводы из russian не будут замещать ваши собственные переводы (спасибо Dmitrij Smalko за обнаружение ошибки).
+
 === 0.1.1 - 24.11.2008
 
 Added number.human.storage_units translation key (Rails Edge).

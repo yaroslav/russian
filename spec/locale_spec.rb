@@ -61,6 +61,13 @@ describe Russian, "loading locales" do
     datetime.distance_in_words.about_x_years
     datetime.distance_in_words.over_x_years
     
+    datetime.prompts.year
+    datetime.prompts.month
+    datetime.prompts.day
+    datetime.prompts.hour
+    datetime.prompts.minute
+    datetime.prompts.second
+    
     activerecord.errors.template.header
     activerecord.errors.template.body
   ).each do |key| 

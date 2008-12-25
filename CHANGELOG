@@ -1,3 +1,9 @@
+=== master
+
+Add datetime.prompts translations (Rails Edge)
+
+Добавлены переводы для datetime.prompts (Rails Edge)
+
 === 0.1.2 - 4.11.2008
 
 Fixed I18n.load_path ordering, translations shipped with russian gem will no longer overwrite your own translations (thanks Dmitrij Smalko for bugreport).

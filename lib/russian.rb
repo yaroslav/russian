@@ -48,10 +48,9 @@ module Russian
   # Init Russian i18n: set custom backend, set default locale to Russian locale, load all translations
   # shipped with library.
   def init_i18n
-    old_load_path = I18n.load_path
     I18n.backend = Russian.i18n_backend_class.new
     I18n.default_locale = LOCALE
-    I18n.load_path = locale_files + old_load_path
+    I18n.load_path.unshift(*locale_files)
   end
 
   # See I18n::translate

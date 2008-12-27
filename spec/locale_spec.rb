@@ -105,6 +105,10 @@ describe Russian, "loading locales" do
   %w(
     support.array.sentence_connector
     support.array.skip_last_comma
+    
+    support.array.words_connector
+    support.array.two_words_connector
+    support.array.last_word_connector
   ).each do |key| 
     it "should define '#{key}' in activesupport translations" do
       lookup(key).should_not be_nil

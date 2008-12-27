@@ -1,8 +1,10 @@
-=== master
+=== 0.1.3 - 27.12.2008
 
-Add datetime.prompts translations (Rails Edge)
+* Add support.array.words_connector/two_words_connector/last_word_connector (Array#to_sentence) (Rails Edge)
+* Add datetime.prompts translations (Rails Edge)
 
-Добавлены переводы для datetime.prompts (Rails Edge)
+* Добавлены переводы для Array#to_sentence (Rails Edge)
+* Добавлены переводы для datetime.prompts (Rails Edge)
 
 === 0.1.2 - 4.11.2008
 

@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*- 
+
 # Заменяет хелпер Rails <tt>select_month</tt> и метод <tt>translated_month_names</tt> 
 # для поддержки функционала "отдельностоящих имен месяцев".
 #

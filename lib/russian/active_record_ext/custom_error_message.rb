@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*- 
+
 # The following is taken from custom_error_message plugin by David Easley
 # (http://rubyforge.org/projects/custom-err-msg/)
 module ActiveRecord

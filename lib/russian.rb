@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*- 
+
 $KCODE='u'
 
 $:.push File.join(File.dirname(__FILE__), 'russian')

@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*- 
+
 module I18n
   module Backend
     # "Продвинутый" бекэнд для I18n.

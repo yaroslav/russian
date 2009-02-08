@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*- 
+
 module ActiveSupport
   module Inflector
     # Replaces special characters in a string so that it may be used as part of a 'pretty' URL.

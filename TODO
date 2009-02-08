@@ -1,5 +1,6 @@
 TODO
 ====
+* 1.9.1 compat
 * RDoc
 * check Unicode CLDR to ensure all datetime formats are correct
 * refactor Advanced backend localize method (looks ugly)

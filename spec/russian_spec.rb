@@ -28,6 +28,11 @@ describe Russian do
   end
   
   describe "during i18n initialization" do
+    after(:each) do
+      I18n.load_path = []
+      Russian.init_i18n
+    end
+
     it "should set I18n backend to an instance of a custom backend" do
       Russian.init_i18n
       I18n.backend.class.should == Russian.i18n_backend_class

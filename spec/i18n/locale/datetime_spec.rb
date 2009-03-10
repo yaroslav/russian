@@ -3,7 +3,7 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe I18n, "Russian Date/Time localization" do
-  before(:each) do
+  before(:all) do
     @date = Date.parse("1985-12-01")
     @time = Time.local(1985, 12, 01, 16, 05)
   end

@@ -1,3 +1,9 @@
+=== master
+
+* transliteration: Ы now transforms to Y [Alex Fortuna]
+
+* транслитерация: Ы теперь превращается в Y [Alex Fortuna]
+
 === 0.2.0 - 16.03.2009
 
 * number_to_human_size() translations: using edge format (Rails 2.3)

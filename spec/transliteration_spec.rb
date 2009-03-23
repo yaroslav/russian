@@ -21,7 +21,7 @@ describe Russian do
     it "should transliterate properly" do
       t("Это просто некий текст").should == "Eto prosto nekiy tekst"
       t("щ").should == "sch"
-      t("стансы").should == "stansyi"
+      t("стансы").should == "stansy"
       t("упущение").should == "upuschenie"
       t("ш").should == "sh"
       t("Ш").should == "SH"
@@ -38,7 +38,7 @@ describe Russian do
       t("Невероятное Упущение").should == "Neveroyatnoe Upuschenie"
       t("Шерстяной Заяц").should == "Sherstyanoy Zayats"
       t("Н.П. Шерстяков").should == "N.P. Sherstyakov"
-      t("ШАРОВАРЫ").should == "SHAROVARYI"
+      t("ШАРОВАРЫ").should == "SHAROVARY"
     end
   end
 end

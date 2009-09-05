@@ -151,3 +151,7 @@ ru:
         # The variable :count is also available
         body: "Проблемы возникли со следующими полями:"
 
+  support:
+    select:
+      # default value for :prompt => true in FormOptionsHelper
+      prompt: "Выберите: "

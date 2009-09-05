@@ -72,6 +72,8 @@ describe Russian, "loading locales" do
     
     activerecord.errors.template.header
     activerecord.errors.template.body
+    
+    support.select.prompt
   ).each do |key| 
     it "should define '#{key}' in actionview translations" do
       lookup(key).should_not be_nil
@@ -98,6 +100,9 @@ describe Russian, "loading locales" do
     activerecord.errors.messages.less_than_or_equal_to
     activerecord.errors.messages.odd
     activerecord.errors.messages.even
+    activerecord.errors.messages.record_invalid
+
+    activerecord.errors.full_messages.format
   ).each do |key| 
     it "should define '#{key}' in activerecord translations" do
       lookup(key).should_not be_nil

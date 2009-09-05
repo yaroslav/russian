@@ -279,12 +279,21 @@ end
 # => <a href="/person/1-donald-knut">Дональд Кнут</a>
 </code></pre>
 
-h1. Автор
+h1. Авторы
 
 Для сообщений об ошибках, обнаруженных неточностях и предложений:
 
-Ярослав Маркин ("yaroslav@markin.net":mailto:yaroslav@markin.net)
+* "Ярослав Маркин":http://yaroslav.markin.net ("yaroslav@markin.net":mailto:yaroslav@markin.net)
+
+При участии:
+
+* "Юлика Тарханова":http://julik.nl
+* "Евгения Пименова":http://libc.st/
+* "Дмитрия Смалько":http://github.com/dsmalko
+* Alex Fortuna ("alex@askit.org":mailto:alex@askit.org)
+* "Антона Агеева":http://blog.antage.name/
+* "Александра Семенова":http://rotuka.com/
 
 Огромное спасибо:
 
-Юлику Тарханову (me@julik.nl) за "rutils":http://rutils.rubyforge.org/
+"Юлику Тарханову":http://julik.nl за "rutils":http://rutils.rubyforge.org/

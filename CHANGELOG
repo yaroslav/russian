@@ -1,9 +1,11 @@
 === master
 
 * Rails 2.3.4 compat (ActiveRecord::Error) and deprecation warning (use errors.full_messages.format from now on) [Alexander Semyonov/Yaroslav Markin]
+* Added a couple of missing translations from Rails 2.3.4
 * transliteration: Ы now transforms to Y [Alex Fortuna]
 
 * Совместимость с Rails 2.3.4 (ActiveRecord::Error) и устаревшее форматирование через "^" (теперь надо использовать errors.full_messages.format) [Alexander Semyonov/Yaroslav Markin]
+* Добавлена пара недостающих переводов из Rails 2.3.4
 * транслитерация: Ы теперь превращается в Y [Alex Fortuna]
 
 === 0.2.0 - 16.03.2009

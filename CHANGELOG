@@ -1,4 +1,4 @@
-=== master
+=== 0.2.1 - 5.09.2009
 
 * Rails 2.3.4 compat (ActiveRecord::Error) and deprecation warning (use errors.full_messages.format from now on) [Alexander Semyonov/Yaroslav Markin]
 * Added a couple of missing translations from Rails 2.3.4

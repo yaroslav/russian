@@ -39,16 +39,15 @@ if (ma >= 2 && mi >= 3 && ti >= 4)
                                  :value => value
           
           key = :"full_messages.#{@message}"
+          defaults = [:'full_messages.format', '{{attribute}} {{message}}']
           
           if options[:message].is_a?(String) && options[:message] =~ /^\^/
             ActiveSupport::Deprecation.warn("Using '^' hack for ActiveRecord error messages has been deprecated. Please use errors.full_messages.format I18n key for formatting")
 
             options[:full_message] = options[:message][1..-1]
-            defaults = [:'full_messages.format', '{{full_message}}']
-          else
-            defaults = [:'full_messages.format', '{{attribute}} {{message}}']
+            defaults = [:"full_messages.#{@message}.format", '{{full_message}}']
           end
-          
+            
           I18n.t(key, options.merge(:default => defaults, :scope => [:activerecord, :errors]))
         end
     end

@@ -1,3 +1,9 @@
+=== master
+
+* Improve ActiveRecord translations [Dmitri Koulikoff]
+
+* Улучшен перевод ActiveRecord [Dmitri Koulikoff]
+
 === 0.2.2 - 17.09.2008
 
 * Fix ^-prefixed error messages handling on Rails 2.3.4

@@ -36,20 +36,11 @@ h1. Установка
 
 Страница Russian на github -- "http://github.com/yaroslav/russian/":http://github.com/yaroslav/russian/
 
-Russian можно установить как gem с github. Для этого:
+Gem можно устанавливать с "Gemcutter":http://gemcutter.org (предпочтительно) и с RubyForge.
 
-1. Нужно добавить репозиторий gem'ов github в качестве источника
+Для установки:
 
-@gem sources -a http://gems.github.com@
-
-2. Установить gem
-
-@gem install yaroslav-russian@
-
-
-_NB:_ Gem @russian@ также зеркалируется на RubyForge, поэтому его можно установить командой 
-
-@gem install russian@.
+@gem install russian@
 
 h2. Ruby on Rails
 
@@ -57,11 +48,13 @@ h2. Ruby on Rails
 
 1. Установка gem
 
-В файле @config/environment.rb@ сделайте ссылку на gem @yaroslav-russian@ с github:
+"Релизные" версии библиотеки для стабильных версий Rails.
+
+В файле @config/environment.rb@ сделайте ссылку на gem @russian@ с Gemcutter:
 
 <pre><code>
 Rails::Initializer.run do |config|
-  config.gem 'yaroslav-russian', :lib => 'russian', :source => 'http://gems.github.com'
+  config.gem 'russian', :source => 'http://gemcutter.org'
 end
 </code></pre>
 
@@ -70,6 +63,8 @@ end
 @rake gems:install@.
 
 2. Установка плагина
+
+Последняя версия из master-ветки, чаще всего для использования с последней (пререлизной) версией Rails.
 
 Для того, чтобы установить Russian как плагин к Rails, используйте команду
 

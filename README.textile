@@ -288,6 +288,7 @@ h1. Авторы
 * Alex Fortuna ("alex@askit.org":mailto:alex@askit.org)
 * "Антона Агеева":http://blog.antage.name/
 * "Александра Семенова":http://rotuka.com/
+* "valodzka":http://github.com/valodzka
 
 Огромное спасибо:
 

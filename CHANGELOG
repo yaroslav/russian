@@ -1,8 +1,10 @@
 === master
 
 * Improve ActiveRecord translations [Dmitri Koulikoff]
+* Fix nested validation errors with custom error message hack for Rails < 2.3.4 [valodzka]
 
 * Улучшен перевод ActiveRecord [Dmitri Koulikoff]
+* Исправлена ошибка, возникающая при вложенных сообщениях валидации при использовании хака для Rails < 2.3.4 [valodzka]
 
 === 0.2.2 - 17.09.2008
 

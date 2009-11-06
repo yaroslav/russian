@@ -285,7 +285,7 @@ h1. Авторы
 * "Юлика Тарханова":http://julik.nl
 * "Евгения Пименова":http://libc.st/
 * "Дмитрия Смалько":http://github.com/dsmalko
-* Alex Fortuna ("alex@askit.org":mailto:alex@askit.org)
+* "Алексея Фортуны":http://github.com/dadooda
 * "Антона Агеева":http://blog.antage.name/
 * "Александра Семенова":http://rotuka.com/
 * "valodzka":http://github.com/valodzka

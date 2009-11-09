@@ -1,4 +1,4 @@
-=== master
+=== 0.2.3 - 9.11.2009
 
 * Improve ActiveRecord translations [Dmitri Koulikoff]
 * Fix nested validation errors with custom error message hack for Rails < 2.3.4 [valodzka]
@@ -8,7 +8,7 @@
 * Исправлена ошибка, возникающая при вложенных сообщениях валидации при использовании хака для Rails < 2.3.4 [valodzka]
 * Добавлен перевод для ключа даты/времени almost_x_years
 
-=== 0.2.2 - 17.09.2008
+=== 0.2.2 - 17.09.2009
 
 * Fix ^-prefixed error messages handling on Rails 2.3.4
 

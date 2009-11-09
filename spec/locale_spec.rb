@@ -62,6 +62,7 @@ describe Russian, "loading locales" do
     datetime.distance_in_words.x_months
     datetime.distance_in_words.about_x_years
     datetime.distance_in_words.over_x_years
+    datetime.distance_in_words.almost_x_years
     
     datetime.prompts.year
     datetime.prompts.month

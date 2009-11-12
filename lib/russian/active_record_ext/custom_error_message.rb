@@ -97,8 +97,6 @@ else
               full_messages << msg
             elsif msg =~ /^\^/
               full_messages << msg[1..-1]
-            elsif msg.kind_of? ActiveRecord::Error
-              full_messages << msg.full_message
             else
               full_messages << @base.class.human_attribute_name(attr) + " " + msg
             end

@@ -1,9 +1,6 @@
 # -*- encoding: utf-8 -*- 
 
-require 'active_record/version'
-ma, mi, ti = ActiveRecord::VERSION::MAJOR, ActiveRecord::VERSION::MINOR, ActiveRecord::VERSION::TINY 
-
-if (ma >= 2 && mi >= 3 && ti >= 4)
+if defined?(ActiveRecord::Error)
   module ActiveRecord
     class Error
       protected

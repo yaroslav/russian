@@ -1,3 +1,9 @@
+=== 0.2.4 - 12.11.2009
+
+* Revert nested validation errors patch
+
+* Убран патч для вложенных сообщений валидации (не работал с Rails 2.3.3 и ниже)
+
 === 0.2.3 - 9.11.2009
 
 * Improve ActiveRecord translations [Dmitri Koulikoff]

@@ -17,7 +17,7 @@ describe Russian do
     end
 
     # These tests are from rutils, <http://rutils.rubyforge.org>.
-    
+
     it "should transliterate properly" do
       t("Это просто некий текст").should == "Eto prosto nekiy tekst"
       t("щ").should == "sch"
@@ -39,6 +39,13 @@ describe Russian do
       t("Шерстяной Заяц").should == "Sherstyanoy Zayats"
       t("Н.П. Шерстяков").should == "N.P. Sherstyakov"
       t("ШАРОВАРЫ").should == "SHAROVARY"
+    end
+
+    it "should work for multi-char substrings" do
+      t("38 воробьёв").should == "38 vorobiev"
+      t("Вася Воробьёв").should == "Vasya Vorobiev"
+      t("Алябьев").should == "Alyabiev"
+      t("АЛЯБЬЕВ").should == "ALYABIEV"
     end
   end
 end

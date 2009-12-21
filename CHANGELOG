@@ -1,3 +1,9 @@
+=== master
+
+* Added support for multi-char substrings in Russian.transliterate [Alex Fortuna]
+
+* Russian.transliterate: Теперь можно добавлять правила матчинга подстрок из нескольких символов ("Воробьёв", "Алябьев"). [Alex Fortuna]
+
 === 0.2.4 - 12.11.2009
 
 * Revert nested validation errors patch

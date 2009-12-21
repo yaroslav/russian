@@ -11,7 +11,6 @@ module Russian
     # <http://rutils.rubyforge.org/>
     # Cleaned up and optimized.
 
-    # NOTE: Don't replace this with Hash[%w{}] -- some chars should map to "". Better keep this format.
     LOWER_SINGLE = {
       "і"=>"i","ґ"=>"g","ё"=>"yo","№"=>"#","є"=>"e",
       "ї"=>"yi","а"=>"a","б"=>"b",
@@ -22,7 +21,6 @@ module Russian
       "ц"=>"ts","ч"=>"ch","ш"=>"sh","щ"=>"sch","ъ"=>"'",
       "ы"=>"y","ь"=>"","э"=>"e","ю"=>"yu","я"=>"ya",
     }
-
     LOWER_MULTI = {
       "ье"=>"ie",
       "ьё"=>"ie",
@@ -38,7 +36,6 @@ module Russian
       "Ш"=>"SH","Щ"=>"SCH","Ъ"=>"'","Ы"=>"Y","Ь"=>"",
       "Э"=>"E","Ю"=>"YU","Я"=>"YA",
     }
-
     UPPER_MULTI = {
       "ЬЕ"=>"IE",
       "ЬЁ"=>"IE",
@@ -46,19 +43,13 @@ module Russian
 
     LOWER = (LOWER_SINGLE.merge(LOWER_MULTI)).freeze
     UPPER = (UPPER_SINGLE.merge(UPPER_MULTI)).freeze
+    MULTI_KEYS = (LOWER_MULTI.merge(UPPER_MULTI)).keys.sort_by {|s| s.length}.reverse.freeze
 
     # Transliterate a string with russian characters
     #
     # Возвращает строку, в которой все буквы русского алфавита заменены на похожую по звучанию латиницу
     def transliterate(str)
-      # Prepare to build a Regexp. Longer substrings go first.
-      pcs = []
-      pcs += (LOWER_MULTI.merge(UPPER_MULTI)).keys.sort_by {|s| s.length}.reverse
-      pcs << '\w'
-      pcs << "."
-      re = Regexp.compile(pcs.join("|"))
-
-      chars = str.scan(re)
+      chars = str.scan(%r{#{MULTI_KEYS.join '|'}|\w|.})
 
       result = ""
 
@@ -75,7 +66,7 @@ module Russian
         end
       end
 
-      return result
+      result
     end
   end
 end

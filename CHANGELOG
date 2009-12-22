@@ -1,8 +1,10 @@
 === master
 
 * Added support for multi-char substrings in Russian.transliterate [Alex Fortuna]
+* Rails 2.3.5 error messages overloading compatibility (error messages overloading) (thanks Alex Eagle for bugreport)
 
 * Russian.transliterate: Теперь можно добавлять правила матчинга подстрок из нескольких символов ("Воробьёв", "Алябьев"). [Alex Fortuna]
+* Rails 2.3.5: совместимость для перегрузки сообщений об ошибках (багрепорт -- Александр Орел)
 
 === 0.2.4 - 12.11.2009
 

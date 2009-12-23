@@ -1,4 +1,4 @@
-=== master
+=== 0.2.5 - 23.12.2009
 
 * Added support for multi-char substrings in Russian.transliterate [Alex Fortuna]
 * Rails 2.3.5 error messages overloading compatibility (error messages overloading) (thanks Alex Eagle for bugreport)

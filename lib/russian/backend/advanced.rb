@@ -32,7 +32,9 @@ module I18n
       #
       # Note that it differs from <tt>localize</tt> in Simple< backend by checking for 
       # "standalone" month name/day name keys in translation and using them if available.
-      def localize(locale, object, format = :default)
+      #
+      # <tt>options</tt> parameter added for i18n-0.3 compliance.
+      def localize(locale, object, format = :default, options = nil)
         raise ArgumentError, "Object must be a Date, DateTime or Time object. #{object.inspect} given." unless object.respond_to?(:strftime)
         
         type = object.respond_to?(:sec) ? 'time' : 'date'

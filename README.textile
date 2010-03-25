@@ -291,6 +291,7 @@ h1. Авторы
 * "Антона Агеева":http://blog.antage.name/
 * "Александра Семенова":http://rotuka.com/
 * "valodzka":http://github.com/valodzka
+* "Николая Немшилова":http://github.com/MadRabbit
 
 Огромное спасибо:
 

@@ -1,3 +1,8 @@
+=== master
+
+* Added fourth parameter (options) defaulting to nil to Advanced backend localize method for compliance with i18n-0.3 [Nikolay V. Nemshilov]
+* В метод localize бекенда Advanced добавлен четвертый параметр, для совместимости с i18n-0.3. По умолчанию равен nil. [Николай Немшилов]
+
 === 0.2.5 - 23.12.2009
 
 * Added support for multi-char substrings in Russian.transliterate [Alex Fortuna]

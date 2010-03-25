@@ -28,15 +28,13 @@ h2. Что такое I18n
 
 h1. Требования
 
-* Ruby 1.8 (тестировалось на 1.8.6);
-* Для использования с Rails нужна версия не ниже 2.2;
+* Ruby 1.8 (тестировалось на 1.8.7);
+* Для использования с Rails нужна версия не ниже 2.2, желательно -- 2.3.5;
 * Для тестирования библиотеки вам понадобится RSpec.
 
 h1. Установка
 
 Страница Russian на github -- "http://github.com/yaroslav/russian/":http://github.com/yaroslav/russian/
-
-Gem можно устанавливать с "Gemcutter":http://gemcutter.org (предпочтительно) и с RubyForge.
 
 Для установки:
 
@@ -50,11 +48,11 @@ h2. Ruby on Rails
 
 "Релизные" версии библиотеки для стабильных версий Rails.
 
-В файле @config/environment.rb@ сделайте ссылку на gem @russian@ с Gemcutter:
+В файле @config/environment.rb@ сделайте ссылку на gem @russian@:
 
 <pre><code>
 Rails::Initializer.run do |config|
-  config.gem 'russian', :source => 'http://gemcutter.org'
+  config.gem 'russian'
 end
 </code></pre>
 
@@ -71,6 +69,8 @@ end
 @script/plugin install git://github.com/yaroslav/russian.git@
 
 Для Windows можно использовать версию git, расположенную по адресу: "http://code.google.com/p/msysgit/":http://code.google.com/p/msysgit/
+
+Также проверьте наличие других веток на странице russian на GutHub -- возможно, уже есть версия, уже поддерживающая последнюю нерелизную версию Rails или i18n.
 
 h1. Использование
 

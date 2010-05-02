@@ -1,3 +1,8 @@
+=== master
+
+* Fix using of standalone/non-standalone month names with %d/%e surroundings.
+* Улучшено распознавание формы названия месяца с strftime макросами %d/%e.
+
 === 0.2.6 - 25.03.2010
 
 * Minimum Rails 3.0b support: Added fourth parameter (options) defaulting to nil to Advanced backend localize method for compliance with i18n-0.3 [Nikolay V. Nemshilov]

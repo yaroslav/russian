@@ -16,8 +16,8 @@ module I18n
     # for DateTime localization and usage of user-defined Proc (lambda) pluralization
     # methods in translation tables.
     class Advanced < Simple
-      LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%d|%e)?(\s*)(%b)/
-      LOCALIZE_MONTH_NAMES_MATCH = /(%d|%e)?(\s*)(%B)/
+      LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%d|%e)(.*)(%b)/
+      LOCALIZE_MONTH_NAMES_MATCH = /(%d|%e)(.*)(%B)/
       LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
       LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
       
@@ -61,18 +61,18 @@ module I18n
 
         if lookup(locale, :"date.standalone_abbr_month_names")
           format.gsub!(LOCALIZE_ABBR_MONTH_NAMES_MATCH) do
-            $1 ? $1 + $2 + translate(locale, :"date.abbr_month_names")[object.mon] : 
-              $2 + translate(locale, :"date.standalone_abbr_month_names")[object.mon]
+            $1 + $2 + translate(locale, :"date.abbr_month_names")[object.mon]
           end
+          format.gsub!(/%b/, translate(locale, :"date.standalone_abbr_month_names")[object.mon])
         else
           format.gsub!(/%b/, translate(locale, :"date.abbr_month_names")[object.mon])
         end
 
         if lookup(locale, :"date.standalone_month_names")
           format.gsub!(LOCALIZE_MONTH_NAMES_MATCH) do
-            $1 ? $1 + $2 + translate(locale, :"date.month_names")[object.mon] : 
-              $2 + translate(locale, :"date.standalone_month_names")[object.mon]
+            $1 + $2 + translate(locale, :"date.month_names")[object.mon]
           end
+          format.gsub!(/%B/, translate(locale, :"date.standalone_month_names")[object.mon])
         else
           format.gsub!(/%B/, translate(locale, :"date.month_names")[object.mon])
         end

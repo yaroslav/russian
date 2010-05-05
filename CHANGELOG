@@ -1,4 +1,4 @@
-=== master
+=== 0.2.7 - 5.05.2010
 
 * Fix using of standalone/non-standalone month names with %d/%e surroundings.
 * Улучшено распознавание формы названия месяца с strftime макросами %d/%e.

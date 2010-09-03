@@ -17,7 +17,7 @@
 # All date helpers support <tt>:use_standalone_month_names</tt> key now, <tt>select_month</tt> helper sets 
 # it to true by default.
 # Standalone month names are also used when <tt>:discard_day</tt> key is provided.
-if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateTimeSelector.private_instance_methods.include?("translated_month_names")
+if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateTimeSelector.private_instance_methods.map(&:to_sym).include?(:translated_month_names)
   module ActionView
     module Helpers
       module DateHelper

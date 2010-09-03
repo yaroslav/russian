@@ -4,7 +4,7 @@ if defined?(ActiveRecord::Error) # Rails 2.3.4+
   module ActiveRecord
     class Error
       protected
-        if instance_methods.include?('default_options') # Rails 2.3.5+
+        if instance_methods.(&:to_sym).include?(:default_options) # Rails 2.3.5+
           # Redefine the ActiveRecord::Error::generate_full_message method:
           #  Returns all the full error messages in an array. 'Base' messages are handled as usual.
           #  Non-base messages are prefixed with the attribute name as usual UNLESS they begin with '^'

@@ -1,3 +1,8 @@
+=== master
+
+* Remove i18n_label plugin (labels i18n is supported in latest Rails releases)
+* Удален плагин i18n_label (перевод label уже поддерживается в последних версиях Rails)
+
 === 0.2.7 - 5.05.2010
 
 * Fix using of standalone/non-standalone month names with %d/%e surroundings.

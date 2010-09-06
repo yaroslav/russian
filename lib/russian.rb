@@ -19,7 +19,6 @@ require 'backend/advanced'
 require 'active_record_ext/custom_error_message' if defined?(ActiveRecord)
 if defined?(ActionView::Helpers)
   require 'action_view_ext/helpers/date_helper' 
-  require 'vendor/i18n_label/init'
 end
 require 'active_support_ext/parameterize' if defined?(ActiveSupport::Inflector)
 

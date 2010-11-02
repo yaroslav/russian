@@ -50,7 +50,7 @@ ru:
         record_invalid: "Возникли ошибки: %{errors}"
 
       full_messages:
-        format: "%{attribute} {{message}}"
+        format: "%{attribute} %{message}"
 
         # Можно добавить собственные сообщения об ошибке тут или задавать их в контексте атрибута.
         #

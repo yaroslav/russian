@@ -5,7 +5,7 @@ require 'rubygems/specification'
 require 'date'
 
 GEM = "russian"
-GEM_VERSION = "0.2.7"
+GEM_VERSION = "0.2.8.pre"
 AUTHOR = "Yaroslav Markin"
 EMAIL = "yaroslav@markin.net"
 HOMEPAGE = "http://github.com/yaroslav/russian/"
@@ -28,7 +28,7 @@ spec = Gem::Specification.new do |s|
   
   s.require_path = 'lib'
   s.autorequire = GEM
-  s.files = %w(LICENSE README.textile Rakefile CHANGELOG TODO init.rb) + Dir.glob("{lib,spec}/**/*")
+  s.files = %w(LICENSE README.textile Rakefile CHANGELOG TODO init.rb) + Dir.glob("{lib,spec}/**/*") - Dir.glob("{lib,spec}/**/*~")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|

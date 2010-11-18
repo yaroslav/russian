@@ -75,6 +75,12 @@ describe Russian, "loading locales" do
     activerecord.errors.template.body
     
     support.select.prompt
+
+    helpers.submit.create
+    helpers.submit.update
+    helpers.submit.submit
+
+    helpers.select.prompt
   ).each do |key| 
     it "should define '#{key}' in actionview translations" do
       lookup(key).should_not be_nil

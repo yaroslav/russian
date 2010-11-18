@@ -160,3 +160,11 @@ ru:
     select:
       # default value for :prompt => true in FormOptionsHelper
       prompt: "Выберите: "
+
+  helpers:
+    select:
+      prompt: "Выберите: "
+    submit:
+      create: 'Сохранить %{model}'
+      update: 'Обновить %{model}'
+      submit: 'Сохранить %{model}'

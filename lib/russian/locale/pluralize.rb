@@ -19,7 +19,20 @@
       #   :few  = 2-4, 22-24, 32-34...
       #   :many = 0, 5-20, 25-30, 35-40...
       #   :other = 1.31, 2.31, 5.31...
-      n % 10 == 1 && n % 100 != 11 ? :one : [2, 3, 4].include?(n % 10) && ![12, 13, 14].include?(n % 100) ? :few : n % 10 == 0 || [5, 6, 7, 8, 9].include?(n % 10) || [11, 12, 13, 14].include?(n % 100) ? :many : :other 
+      if n != n.to_i
+        :other
+      elsif (5..20).include?(n % 100)
+        :many
+      else
+        case n % 10
+        when 1
+          :one
+        when 2..4
+          :few
+        when 0, 5..9
+          :many
+        end
+      end
     }
   }
 }

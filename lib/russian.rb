@@ -97,10 +97,16 @@ module Russian
   end
   alias :translit :transliterate
 
+  # Parse string to Date object
+  #
+  # Usage:
+  #  Russian::strptime "01 апреля 2011", "%d %B %Y"
   def strptime(*args)
     native_constants = {}
+    # override constants in Date class
     %w(MONTHS ABBR_MONTHS DAYS ABBR_DAYS).each do |const_name|
       local_name = const_name.downcase.gsub(/s$/,"_names")
+      local_name = "standalone_" + local_name unless args[1] =~ /(%d|%e)/ if const_name != "ABBR_DAYS"
       native_constants[const_name] = Date::Format.instance_eval{ remove_const(const_name) }
       new_const = Hash[I18n.t("date.#{local_name}").compact.map.with_index(1){ |name,i| [name,i] }]
       Date::Format.const_set const_name, new_const

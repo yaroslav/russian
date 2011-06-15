@@ -32,7 +32,10 @@ ru:
     #
     #
     # Used in date_select and datime_select.
-    order: [ :day, :month, :year ]
+    order:
+      - :day
+      - :month
+      - :year
 
   time:
     # Форматы времени

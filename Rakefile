@@ -5,7 +5,7 @@ require 'rubygems/specification'
 require 'date'
 
 GEM = "russian"
-GEM_VERSION = "0.2.8.pre"
+GEM_VERSION = "0.2.8.pre2"
 AUTHOR = "Yaroslav Markin"
 EMAIL = "yaroslav@markin.net"
 HOMEPAGE = "http://github.com/yaroslav/russian/"

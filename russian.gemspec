@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{russian}
-  s.version = "0.2.8.pre"
+  s.version = "0.2.8.pre2"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Yaroslav Markin"]
   s.autorequire = %q{russian}
-  s.date = %q{2010-10-22}
+  s.date = %q{2011-06-15}
   s.description = %q{Russian language support for Ruby and Rails}
   s.email = %q{yaroslav@markin.net}
   s.extra_rdoc_files = ["README.textile", "LICENSE", "CHANGELOG", "TODO"]

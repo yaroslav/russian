@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 if RUBY_VERSION < "1.9"
   $KCODE = 'u'
@@ -18,13 +18,13 @@ require 'backend/advanced'
 # Rails hacks
 require 'active_record_ext/custom_error_message' if defined?(ActiveRecord)
 if defined?(ActionView::Helpers)
-  require 'action_view_ext/helpers/date_helper' 
+  require 'action_view_ext/helpers/date_helper'
 end
 require 'active_support_ext/parameterize' if defined?(ActiveSupport::Inflector)
 
 module Russian
   extend self
-  
+
   module VERSION
     MAJOR = 0
     MINOR = 2
@@ -32,7 +32,7 @@ module Russian
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
-  
+
   # Russian locale
   LOCALE = :'ru'
 
@@ -40,14 +40,14 @@ module Russian
   def locale
     LOCALE
   end
-  
+
   # Returns custom backend class for usage with Russian library
-  # 
+  #
   # See I18n::Backend
   def i18n_backend_class
     I18n::Backend::Advanced
   end
-  
+
   # Init Russian i18n: set custom backend, set default locale to Russian locale, load all translations
   # shipped with library.
   def init_i18n
@@ -59,23 +59,23 @@ module Russian
   # See I18n::translate
   def translate(key, options = {})
     I18n.translate(key, options.merge({ :locale => LOCALE }))
-  end        
+  end
   alias :t :translate
-  
+
   # See I18n::localize
   def localize(object, options = {})
     I18n.localize(object, options.merge({ :locale => LOCALE }))
   end
   alias :l :localize
-  
+
   # strftime() proxy with Russian localization
   def strftime(object, format = :default)
     localize(object, { :format => format })
   end
-  
+
   # Simple pluralization proxy
   #
-  # Usage: 
+  # Usage:
   #   Russian.pluralize(1, "вещь", "вещи", "вещей")
   #   Russian.pluralize(3.14, "вещь", "вещи", "вещей", "вещи")
   def pluralize(n, *variants)
@@ -96,13 +96,38 @@ module Russian
     Russian::Transliteration.transliterate(str)
   end
   alias :translit :transliterate
-  
+
+  # Parse string to Date object
+  #
+  # Usage:
+  #  Russian::strptime "01 апреля 2011", "%d %B %Y"
+  def strptime(*args)
+    native_constants = {}
+    # override constants in Date class
+    %w(MONTHS ABBR_MONTHS DAYS ABBR_DAYS).each do |const_name|
+      local_name = const_name.downcase.gsub(/s$/,"_names")
+      local_name = "standalone_" + local_name unless args[1] =~ /(%d|%e)/ if const_name != "ABBR_DAYS"
+      native_constants[const_name] = Date::Format.instance_eval{ remove_const(const_name) }
+      new_const = Hash[I18n.t("date.#{local_name}").compact.map.with_index(1){ |name,i| [name,i] }]
+      Date::Format.const_set const_name, new_const
+    end
+
+    date = Date.strptime(*args)
+
+    native_constants.each do |const_name,const|
+      Date::Format.instance_eval{ remove_const(const_name) }
+      Date::Format.const_set const_name, const
+    end
+
+    return date
+  end
+
   protected
     # Returns all locale files shipped with library
     def locale_files
       Dir[File.join(File.dirname(__FILE__), "russian", "locale", "**/*")]
     end
-    
+
     # Converts an array of pluralization variants to a Hash that can be used
     # with I18n pluralization.
     def pluralization_variants_to_hash(*variants)

@@ -1,4 +1,6 @@
 h1. Russian
+"!https://secure.travis-ci.org/yaroslav/russian.png!":http://travis-ci.org/yaroslav/russian
+
 
 Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n.
 

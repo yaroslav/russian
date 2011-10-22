@@ -1,6 +1,25 @@
-=== master
+=== 0.6.0 "Haters Gonna Hate" - 22.10.2011
 
+* i18n gem is now a dependency (not using vendored gem anymore)
+* I18n::Backend::Advanced custom backend is no longer used. Russian Ruby i18n files are portable for the first time; using Russian language with i18n does not require a custom backend with language-specific hacks anymore. It became possible thanks to lambda translations support in i18n gem (http://svenfuchs.com/2009/7/12/ruby-i18n-gem-hits-0-2-0) and inclusion of Pluralization backend. Notice: ff you are using a custom backend, don't forget to include I18n::Backend::Pluralization and I18n::Backend::Transliterator modules
+* Pluralization is now delegated to I18n backend
+* Transliteration is now delegated to I18n backend (using Russian::Transliteration, of course)
+* Minor gem russian version is now bumped to be in sync with minor version of required i18n gem
+* UPGRADING: Rails 2 is no longer supported, use older versions of the gem
+* UPGRADING: gem russian does not force Russian locale anymore, use I18n::locale/default_locale methods or config.i18n.default_locale = :ru in your Rails environment. Methods with forced encoding still can be used as Russian::translate, Russian::localize
+* Locale files and hacks (date helper, custom ActiveModel error message) updated to support Rails 3.0 and 3.1
+* README updated
 * Remove i18n_label plugin (labels i18n is supported in latest Rails releases)
+
+* gem i18n теперь является зависимостью для gem russian, а не включается в vendor, как раньше
+* Собственный бекенд I18n::Backend::Advanced больше не используется. Русские файлы локали i18n для Ruby наконец-то стали переносимыми и не требуют собственного бекенда и хаков для поддержки языка. Это стало возможным благодаря поддержке lambda-переводов в i18n (http://svenfuchs.com/2009/7/12/ruby-i18n-gem-hits-0-2-0) и включению Pluralization бекенда в gem i18n. Обратите внимание: если вы используете собственный бекенд (отличный от стандартного), не забудьте включить модули I18n::Backend::Pluralization и I18n::Backend::Transliterator
+* Механизм плюрализации теперь обеспечивает стандартный бекенд I18n
+* Механизм транслитерации теперь обеспечивает стандартный бекенд I18n (с помощью Russian::Transliteration, конечно)
+* Минорная версия gem russian повышена до текущей минорной версии i18n
+* UPGRADING: Rails 2 больше не поддерживается, используйте старые версии gem'а
+* UPGRADING: gem russian больше не форсирует использование русской локали, используйте методы I18n::locale/default_locale или config.i18n.default_locale = :ru в настройках окружения Rails. Если нужно форсировать русскую локаль, можно по-прежнему пользоваться методами Russian::translate, Russian::localize
+* Обновлены файлы переводов и хаки (выбор месяца в date helper, кастомные сообщения об ошибках ActiveModel) для поддержки Rails 3.0 и 3.1
+* Обновлен и переписан README
 * Удален плагин i18n_label (перевод label уже поддерживается в последних версиях Rails)
 
 === 0.2.7 - 5.05.2010

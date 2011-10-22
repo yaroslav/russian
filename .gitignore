@@ -1,2 +1,5 @@
-pkg/*
-
+.DS_Store
+*.swp
+pkg
+.bundle
+.rvmrc

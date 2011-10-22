@@ -2,14 +2,6 @@
 
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Russian, "VERSION" do
-  it "should be defined" do
-    %w(MAJOR MINOR TINY STRING).each do |v|
-      Russian::VERSION.const_defined?(v).should == true
-    end
-  end
-end
-
 describe Russian do
   describe "with locale" do
     it "should define :'ru' LOCALE" do
@@ -21,21 +13,10 @@ describe Russian do
     end
   end
   
-  describe "with custom backend class" do
-    it "should define i18n_backend_class" do
-      Russian.i18n_backend_class.should == I18n::Backend::Advanced
-    end
-  end
-  
   describe "during i18n initialization" do
     after(:each) do
       I18n.load_path = []
       Russian.init_i18n
-    end
-
-    it "should set I18n backend to an instance of a custom backend" do
-      Russian.init_i18n
-      I18n.backend.class.should == Russian.i18n_backend_class
     end
     
     it "should keep existing translations while switching backends" do
@@ -50,14 +31,15 @@ describe Russian do
       I18n.t(:'date.formats.default', :locale => :'ru').should == "override"
     end
     
-    it "should set default locale to Russian locale" do
+    it "should NOT set default locale to Russian locale" do
+      locale = I18n.default_locale
       Russian.init_i18n
-      I18n.default_locale.should == Russian.locale
+      I18n.default_locale.should == locale
     end
   end
   
   describe "with localize proxy" do
-    before(:all) do
+    before(:each) do
       @time = mock(:time)
       @options = { :format => "%d %B %Y" }
     end
@@ -85,7 +67,7 @@ describe Russian do
   end
   
   describe "strftime" do
-    before(:all) do
+    before(:each) do
       @time = mock(:time)
     end
 

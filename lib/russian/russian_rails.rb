@@ -4,5 +4,5 @@ if defined?(ActiveModel)
 end
 
 if defined?(ActionView::Helpers)
-  require 'action_view_ext/helpers/date_helper' 
+  require 'action_view_ext/helpers/date_helper'
 end

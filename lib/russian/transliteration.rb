@@ -24,6 +24,7 @@ module Russian
     LOWER_MULTI = {
       "ье"=>"ie",
       "ьё"=>"ie",
+      "сх"=>"skh",
     }
 
     UPPER_SINGLE = {
@@ -39,6 +40,7 @@ module Russian
     UPPER_MULTI = {
       "ЬЕ"=>"IE",
       "ЬЁ"=>"IE",
+      "СХ"=>"SKH",
     }
 
     LOWER = (LOWER_SINGLE.merge(LOWER_MULTI)).freeze

@@ -26,6 +26,7 @@ describe Russian do
       t("ш").should == "sh"
       t("Ш").should == "SH"
       t("ц").should == "ts"
+      t("схема").should == "skhema"
     end
     
     it "should properly transliterate mixed russian-english strings" do

@@ -76,7 +76,17 @@ module Russian
     Russian::Transliteration.transliterate(str)
   end
   alias :translit :transliterate
-  
+
+  # De-transliteration for russian language
+  #
+  # Usage:
+  #  Russian.detranslit("rubin")
+  #  Russian.detransliterate("rubin")
+  def detransliterate(str)
+    Russian::Transliteration.detransliterate(str)
+  end
+  alias :detranslit :detransliterate
+
   protected
     # Returns all locale files shipped with library
     def locale_files

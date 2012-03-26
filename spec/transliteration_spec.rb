@@ -8,10 +8,22 @@ describe Russian do
       Russian::transliterate(str)
     end
 
+    def dt(str)
+      Russian::Transliteration::detransliterate(str)
+    end
+
     %w(transliterate translit).each do |method|
       it "'#{method}' method should perform transliteration" do
         str = mock(:str)
         Russian::Transliteration.should_receive(:transliterate).with(str)
+        Russian.send(method, str)
+      end
+    end
+
+    %w(detransliterate detranslit).each do |method|
+      it "'#{method}' method should perform de-transliteration" do
+        str = mock(:str)
+        Russian::Transliteration.should_receive(:detransliterate).with(str)
         Russian.send(method, str)
       end
     end
@@ -28,7 +40,19 @@ describe Russian do
       t("ц").should == "ts"
       t("схема").should == "skhema"
     end
-    
+
+    it "should de-transliterate properly" do
+      dt("Eto prosto nekiy tekst").should == "Ето просто некий текст"
+      dt("sch").should == "щ"
+      dt("Zveryo moyo").should == "Зверё моё"
+      dt("mayskiy izmenyaya moey pamyatyu tvoeyu pohodkoyu vyshla iz maya ob'ektoy matyoy").should == "майский изменяя моей памятю твоею походкою вышла из мая обЪектой матёй"
+      dt("IE explorer").should == "ИЕ експлорер"
+      dt("upuscheniy").should == "упущений"
+      dt("sh").should == "ш"
+      dt("TS").should == "Ц"
+      dt("skhema").should == "схема"
+    end
+
     it "should properly transliterate mixed russian-english strings" do
       t("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should == 
         "Eto kusok stroki russkih bukv v peremeshku s latinizey i ampersandom (pozor!) & something"      

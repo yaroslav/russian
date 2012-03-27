@@ -11,6 +11,7 @@ module Russian
   extend self
 
   autoload :Transliteration, 'transliteration'
+  autoload :Metaphone, 'metaphone'
 
   # Russian locale
   LOCALE = :'ru'
@@ -86,6 +87,14 @@ module Russian
     Russian::Transliteration.detransliterate(str)
   end
   alias :detranslit :detransliterate
+
+  # Metaphone code for russian language
+  #
+  # Usage:
+  #  Russian.metaphone("рубин")
+  def metaphone(str)
+    Russian::Metaphone.generate(str)
+  end
 
   protected
     # Returns all locale files shipped with library

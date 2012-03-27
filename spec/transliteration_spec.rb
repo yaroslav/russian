@@ -39,6 +39,7 @@ describe Russian do
       t("Ш").should == "SH"
       t("ц").should == "ts"
       t("схема").should == "skhema"
+      t("“”«»").should == '""""'
     end
 
     it "should de-transliterate properly" do

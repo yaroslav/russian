@@ -52,7 +52,7 @@ module Russian
     end
 
     TRANSFORMATIONS_RU = [
-      [ /[дт]с/,'ц' ],        # seems this improves matching
+      [ /[дт]ь?с/,'ц' ],      # seems this improves matching
       [ /[аяоёуюыиэе]/, '' ], # remove vowels
       [ /[йъь]/, '' ],        # these also ; this also removes all adjactive endings (-ый, -ая, -ое, ...)
 #      [ /[лмн]/, 'л' ],       # seems this improves matching

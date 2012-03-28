@@ -18,6 +18,8 @@ describe Russian do
       m("").should == ""
       m("Это просто некий текст").should == "Т ПРСТ НК ТКСТ"
       m("сочный").should == "ШН"
+      m(" 2эта, \"3В21'").should == "Т Ф"
+      m("иван-и-марья").should == "ФН МР"
       m("много букв").should == m("мнока букафф")
       m("небольшие опечатки и албанский").should == m("нипалшые опчатги олпансгие")
       m("ранний рассвет").should == m("раненное росифатой")
@@ -27,7 +29,6 @@ describe Russian do
       m("напиться").should == m("напицца")
       m("сейчас").should == m("щаз")
       m("эта").should == m("этот")
-      m(" 2эта, \"3В21'").should == "Т Ф"
     end
 
     it "should generate proper metaphone for mixed russian-english strings" do

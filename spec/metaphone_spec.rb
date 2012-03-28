@@ -27,11 +27,12 @@ describe Russian do
       m("напиться").should == m("напицца")
       m("сейчас").should == m("щаз")
       m("эта").should == m("этот")
+      m(" 2эта, \"3В21'").should == "Т Ф"
     end
 
     it "should generate proper metaphone for mixed russian-english strings" do
       m("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should ==
-        "Т КСК СТРК РСКХ ПКФ F PRMXHK S LTNS I МПРСНТМ (PSR!) & SM0NG"
+        "Т КСК СТРК РСКХ ПКФ F PRMXHK S LTNS I МПРСНТМ PSR SMZNG"
     end
   end
 end

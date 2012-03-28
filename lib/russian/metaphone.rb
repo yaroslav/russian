@@ -34,11 +34,12 @@ module Russian
       [/q/              ,  'k'],
       [/s(h|(ia)|(io))/ ,  'x\1'],
       [/t((ia)|(io))/   ,  'x\1'],
-      [/th/             ,  '0'],
       [/v/              ,  'f'],
       [/w(?![aeiou])/   ,  ''],
       [/y(?![aeiou])/   ,  ''],
-      [/z/              ,  's']
+      [/z/              ,  's'],
+#      [/th/             ,  '0'], # <-- zero ?!?
+      [/th/             ,  'z'],  # need only latin letters, no digits or smth else
     ]
 
     # english metaphone code was inspired by
@@ -79,7 +80,7 @@ module Russian
     def generate(str)
       str.split(/\s+/).map do |s|
         s =~ /[A-Za-z]/ ? generate_en(s =~ /[^A-Za-z]/ ? Russian.translit(s) : s) : generate_ru(s)
-      end .join(' ').gsub(/\s+/,' ').mb_chars.upcase
+      end .join(' ').mb_chars.upcase.gsub(/[^A-ZА-Я]+/, ' ').gsub(/\s+/, ' ').strip
     end
 
   end

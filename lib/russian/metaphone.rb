@@ -30,7 +30,7 @@ module Russian
       [/gn((?![aeiou])|(\z))/ ,  'n'],
       [/g[eiy]/         ,  'j'],
       [/ph/             ,  'f'],
-      [/[aeiou]h(?![aeoiu])/ ,  '\1'], # 'h' is silent after a vowel unless it's between vowels
+      [/[aeiou]h(?!(?:[aeoiu]|$))/ ,  '\1'], # 'h' is silent after a vowel unless it's between vowels
       [/q/              ,  'k'],
       [/s(h|(ia)|(io))/ ,  'x\1'],
       [/t((ia)|(io))/   ,  'x\1'],
@@ -49,7 +49,7 @@ module Russian
       word = aWord.downcase
       TRANSFORMATIONS_EN.each { |transform| word.gsub!(transform[0], transform[1]) }
       word.squeeze
-      return (word[0].chr + word[1..word.length-1].gsub(/[aeiou]/, '')).upcase
+      return word.present? ? (word[0] + word[1..-1].gsub(/[aeiou]/, '')).upcase : ""
     end
 
     TRANSFORMATIONS_RU = [

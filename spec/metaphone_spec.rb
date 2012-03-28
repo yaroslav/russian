@@ -16,6 +16,7 @@ describe Russian do
 
     it "should generate proper metaphone" do
       m("").should == ""
+      m("ih").should == "IH"
       m("Это просто некий текст").should == "Т ПРСТ НК ТКСТ"
       m("сочный").should == "ШН"
       m(" 2эта, \"3В21'").should == "Т Ф"

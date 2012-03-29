@@ -135,5 +135,22 @@ module Russian
 
       result
     end
+
+    LAYOUT_RUS_UPPER = 'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ№"'
+    LAYOUT_ENG_UPPER = 'QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>~#@'
+
+    LAYOUT_RUS_LOWER = 'йцукенгшщзхъфывапролджэячсмитьбюё'
+    LAYOUT_ENG_LOWER = "qwertyuiop[]asdfghjkl;'zxcvbnm,.`"
+
+    LAYOUT_RUS = (LAYOUT_RUS_LOWER + LAYOUT_RUS_UPPER).freeze
+    LAYOUT_ENG = (LAYOUT_ENG_LOWER + LAYOUT_ENG_UPPER).freeze
+
+    def layout_rus(str)
+      str.to_s.tr(LAYOUT_ENG, LAYOUT_RUS)
+    end
+
+    def layout_eng(str)
+      str.to_s.tr(LAYOUT_RUS, LAYOUT_ENG)
+    end
   end
 end

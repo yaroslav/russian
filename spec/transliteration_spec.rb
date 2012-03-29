@@ -73,5 +73,34 @@ describe Russian do
       t("Алябьев").should == "Alyabiev"
       t("АЛЯБЬЕВ").should == "ALYABIEV"
     end
+
+    %w(rus eng).each do |lang|
+      it "'layout_#{lang}' method should change string as it would be typed in '#{lang}' keyboard layout" do
+        str = mock(:str)
+        Russian.send("layout_"+lang, str)
+      end
+    end
+
+    def lr(str)
+      Russian.layout_rus(str)
+    end
+
+    def le(str)
+      Russian.layout_eng(str)
+    end
+
+    it "should change input layout to standard russian" do
+      lr('ntcn').should == "тест"
+      lr('gJKBNBYAJHVFWBz').should == "пОЛИТИНФОРМАЦИя"
+      lr('~@#:"M<>').should == 'Ё"№ЖЭЬБЮ'
+      lr("`;',.").should == 'ёжэбю'
+    end
+
+    it "should change input layout to standard english" do
+      le('еуые').should == "test"
+      le('сщТЕФьШтфешЩт').should == "coNTAmInatiOn"
+      le('Ё"№ЖЭЬБЮ').should == '~@#:"M<>'
+      le('ёжэбю').should == "`;',."
+    end
   end
 end

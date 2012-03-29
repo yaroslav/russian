@@ -96,6 +96,22 @@ module Russian
     Russian::Metaphone.generate(str)
   end
 
+  # Change the input string as it would be typed in the standard russian keyboard layout
+  #
+  # Usage:
+  #  Russian.layout_rus("hemby") # рубин
+  def layout_rus(str)
+    Russian::Transliteration.layout_rus(str)
+  end
+
+  # Change the input string as it would be typed in the standard english keyboard layout
+  #
+  # Usage:
+  #  Russian.layout_eng("дум") # lev
+  def layout_eng(str)
+    Russian::Transliteration.layout_eng(str)
+  end
+
   protected
     # Returns all locale files shipped with library
     def locale_files

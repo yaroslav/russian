@@ -17,7 +17,7 @@ describe Russian do
     it "should generate proper metaphone" do
       m("").should == ""
       m("ih").should == "IH"
-      m("Это просто некий текст").should == "Т ПРСТ НК ТКСТ"
+      m("Это просто некий текст").should == "Т ПРСТ НХ ТХСТ"
       m("сочный").should == "ШН"
       m(" 2эта, \"3В21'").should == "Т Ф"
       m("иван-и-марья").should == "ФН МР"
@@ -25,6 +25,7 @@ describe Russian do
       m("небольшие опечатки и албанский").should == m("нипалшые опчатги олпансгие")
       m("ранний рассвет").should == m("раненное росифатой")
       m("китайский ресторан").should == m("кытаски ристаран")
+      m("парикмахерская").should == m("порехмакерская")
       m("макдональдс").should == m("магдоналтс")
       m("поцанчик").should == m("патсанчег")
       m("напиться").should == m("напицца")
@@ -34,7 +35,7 @@ describe Russian do
 
     it "should generate proper metaphone for mixed russian-english strings" do
       m("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should ==
-        "Т КСК СТРК РСКХ ПКФ F PRMXHK S LTNS I МПРСНТМ PSR SMZNG"
+        "Т ХСХ СТРХ РСХ ПХФ F PRMXHK S LTNS I МПРСНТМ PSR SMZNG"
     end
   end
 end

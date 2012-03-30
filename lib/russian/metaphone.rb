@@ -54,18 +54,16 @@ module Russian
 
     TRANSFORMATIONS_RU = [
       [ /[дт]ь?с/,'ц' ],      # seems this improves matching
-      [ /[аяоёуюыиэе]/, '' ], # remove vowels
+      [ /[аяоёуюыиэеї]/, '' ],# remove vowels
       [ /[йъь]/, '' ],        # these also ; this also removes all adjactive endings (-ый, -ая, -ое, ...)
-#      [ /[лмн]/, 'л' ],       # seems this improves matching
-#      [ /ч/, 'ц' ],           # this also
-      [ /сч/,'ш' ],           # this also
+      [ /сч/,'ш' ],           # seems this improves matching
+#      [ /ч/, 'ц' ],
+      [ /[ґгк]/, 'х' ],
       [ /б/, 'п' ],           # map pair letters
       [ /в/, 'ф' ],
-      [ /г/, 'к' ],
       [ /д/, 'т' ],
-      [ /ж/, 'ш' ],
+      [ /[жщ]/, 'ш' ],
       [ /з/, 'с' ],
-      [ /щ/, 'ш' ],
     ]
 
     def generate_ru(aWord)

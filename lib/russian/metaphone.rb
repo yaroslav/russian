@@ -54,6 +54,7 @@ module Russian
 
     TRANSFORMATIONS_RU = [
       [ /[дт]ь?с/,'ц' ],      # seems this improves matching
+      [ /зз/, 'цц' ],         # for metaphone(detranslit(pizza)) == metaphone(пицца)
       [ /[аяоёуюыиэеї]/, '' ],# remove vowels
       [ /[йъь]/, '' ],        # these also ; this also removes all adjactive endings (-ый, -ая, -ое, ...)
       [ /сч/,'ш' ],           # seems this improves matching
@@ -67,7 +68,7 @@ module Russian
     ]
 
     def generate_ru(aWord)
-      word = aWord.mb_chars.downcase.squeeze
+      word = aWord.mb_chars.downcase
       TRANSFORMATIONS_RU.each { |transform| word.gsub!(transform[0], transform[1]) }
       word.squeeze
     end

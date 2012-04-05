@@ -52,6 +52,7 @@ describe Russian do
       dt("sh").should == "ш"
       dt("TS").should == "Ц"
       dt("skhema").should == "схема"
+      dt("philosophy").should == "философы"
     end
 
     it "should properly transliterate mixed russian-english strings" do

@@ -43,6 +43,7 @@ describe I18n, "Russian Date/Time localization" do
   describe "with month names" do
     it "should use month names" do
       l(@date, :format => "%d %B").should == "01 декабря"
+      l(@date, :format => "%-d %B").should == "1 декабря"
       l(@date, :format => "%e %B %Y").should == " 1 декабря 1985"
       l(@date, :format => "<b>%d</b> %B").should == "<b>01</b> декабря"
       l(@date, :format => "<strong>%e</strong> %B %Y").should == "<strong> 1</strong> декабря 1985"

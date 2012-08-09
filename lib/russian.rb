@@ -37,9 +37,9 @@ module Russian
   LOCALE = :ru
 
   # @private
-  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%b)/
+  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-_0^#:]*(\d+)*[EO]?d|%[-_0^#:]*(\d+)*[EO]?e)(.*)(%b)/
   # @private
-  LOCALIZE_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%B)/
+  LOCALIZE_MONTH_NAMES_MATCH = /(%[-_0^#:]*(\d+)*[EO]?d|%[-_0^#:]*(\d+)*[EO]?e)(.*)(%B)/
   # @private
   LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
   # @private

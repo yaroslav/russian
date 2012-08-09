@@ -103,6 +103,17 @@ RSpec.describe I18n, "Russian Date/Time localization" do
         expect(l(march_date, format: format)).to eq(expected)
       end
     end
+
+    it "takes width and flag modifiers into account" do
+      {
+        "%-e %B %Y" => "1 марта 1985",
+        "%3d %B %Y" => "001 марта 1985",
+        "%_3d %B %Y" => "  1 марта 1985",
+        "%3_d %B %Y" => "%3_d Март 1985"
+      }.each do |format, expected|
+        expect(l(march_date, format: format)).to eq(expected)
+      end
+    end
   end
 
   it "defines the default date components order as day, month, year" do

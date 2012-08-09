@@ -21,8 +21,8 @@ module Russian
   end
 
   # Regexp machers for context-based russian month names and day names translation
-  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%d|%e)(.*)(%b)/
-  LOCALIZE_MONTH_NAMES_MATCH = /(%d|%e)(.*)(%B)/
+  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-_0^#:]*(\d+)*[EO]?d|%[-_0^#:]*(\d+)*[EO]?e)(.*)(%b)/
+  LOCALIZE_MONTH_NAMES_MATCH = /(%[-_0^#:]*(\d+)*[EO]?d|%[-_0^#:]*(\d+)*[EO]?e)(.*)(%B)/
   LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
   LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
     

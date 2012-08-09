@@ -67,6 +67,14 @@ describe I18n, "Russian Date/Time localization" do
       l(@date, :format => "%b").should == "март"
       l(@date, :format => "%b %Y").should == "март 1985"
     end
+
+    it "should take flags and width into account" do
+      @date = Date.parse("1985-03-01")
+      l(@date, :format => "%-e %B %Y").should == "1 марта 1985"
+      l(@date, :format => "%3d %B %Y").should == "001 марта 1985"
+      l(@date, :format => "%_3d %B %Y").should == "  1 марта 1985"
+      l(@date, :format => "%3_d %B %Y").should == "%3_d Март 1985"
+    end
   end
 
   it "should define default date components order: day, month, year" do

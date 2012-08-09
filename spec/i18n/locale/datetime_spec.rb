@@ -48,6 +48,10 @@ describe I18n, "Russian Date/Time localization" do
       if RUBY_VERSION > "1.9.2"
         l(@date, :format => "%1d %B").should == "1 декабря"
         l(@date, :format => "%2d %B").should == "01 декабря"
+        l(@date, :format => "%10d %B").should == "0000000001 декабря"
+        l(@date, :format => "%-e %B %Y").should == "1 декабря 1985"
+        l(@date, :format => "%_3d %B %Y").should == "  1 декабря 1985"
+        l(@date, :format => "%3_d %B %Y").should == "%3_d Декабрь 1985"
       end
 
       l(@date, :format => "%e %B %Y").should == " 1 декабря 1985"
@@ -73,14 +77,6 @@ describe I18n, "Russian Date/Time localization" do
       @date = Date.parse("1985-03-01")
       l(@date, :format => "%b").should == "март"
       l(@date, :format => "%b %Y").should == "март 1985"
-    end
-
-    it "should take flags and width into account" do
-      @date = Date.parse("1985-03-01")
-      l(@date, :format => "%-e %B %Y").should == "1 марта 1985"
-      l(@date, :format => "%3d %B %Y").should == "001 марта 1985"
-      l(@date, :format => "%_3d %B %Y").should == "  1 марта 1985"
-      l(@date, :format => "%3_d %B %Y").should == "%3_d Март 1985"
     end
   end
 

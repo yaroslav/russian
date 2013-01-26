@@ -115,7 +115,15 @@ module Russian
       convert(str, REVERSE_UPPER, REVERSE_LOWER, REVERSE_MULTI_KEYS_PATTERN)
     end
 
-    def convert(str, upper, lower, multi_pattern)
+    def convert(src, *params)
+      send( 'convert_' + src.class.name.downcase, src, *params)
+    end
+
+    def convert_array(arr, *params)
+      arr.map { |a| convert(a, *params) }
+    end
+
+    def convert_string(str, upper, lower, multi_pattern)
       chars = str.scan(%r{#{multi_pattern}|\w|.})
 
       result = ""

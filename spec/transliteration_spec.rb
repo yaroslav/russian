@@ -75,6 +75,11 @@ describe Russian do
       t("АЛЯБЬЕВ").should == "ALYABIEV"
     end
 
+    it "should process arrays of strings" do
+      arr = %w(раз два три)
+      t(arr).should == arr.map { |a| t(a) }
+    end
+
     %w(rus eng).each do |lang|
       it "'layout_#{lang}' method should change string as it would be typed in '#{lang}' keyboard layout" do
         str = mock(:str)

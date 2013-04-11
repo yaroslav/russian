@@ -14,7 +14,7 @@ ru:
       precision: 3
       significant: false
       strip_insignificant_zeros: false
-      
+
     # Used in number_to_currency()
     currency:
       format:
@@ -30,14 +30,14 @@ ru:
         precision: 2
         significant: false
         strip_insignificant_zeros: false
-        
+
     # Used in number_to_percentage()
     percentage:
       format:
         # These three are to override number.format and are optional
-        # separator: 
+        # separator:
         delimiter: ""
-        
+
     # Used in number_to_precision()
     precision:
       format:
@@ -45,20 +45,20 @@ ru:
         # separator:
         delimiter: ""
         # precision:
-        
+
     # Used in number_to_human_size()
     human:
       format:
         # These three are to override number.format and are optional
-        # separator: 
+        # separator:
         delimiter: ""
         precision: 1
         significant: false
         strip_insignificant_zeros: false
-      
+
       # Rails 2.2
       # storage_units: [байт, КБ, МБ, ГБ, ТБ]
-      
+
       # Rails 2.3+
       storage_units:
         # Storage units output formatting.

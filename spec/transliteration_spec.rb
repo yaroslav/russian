@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/spec_helper'
 
@@ -27,12 +27,12 @@ describe Russian do
       t("Ш").should == "SH"
       t("ц").should == "ts"
     end
-    
+
     it "should properly transliterate mixed russian-english strings" do
-      t("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should == 
-        "Eto kusok stroki russkih bukv v peremeshku s latinizey i ampersandom (pozor!) & something"      
+      t("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should ==
+        "Eto kusok stroki russkih bukv v peremeshku s latinizey i ampersandom (pozor!) & something"
     end
-    
+
     it "should properly transliterate mixed case chars in a string" do
       t("НЕВЕРОЯТНОЕ УПУЩЕНИЕ").should == "NEVEROYATNOE UPUSCHENIE"
       t("Невероятное Упущение").should == "Neveroyatnoe Upuschenie"

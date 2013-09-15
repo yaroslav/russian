@@ -38,6 +38,11 @@ describe I18n, "Russian Date/Time localization" do
       l(@date, :format => "%a").should == "Вс"
       l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек. 1985"
     end
+
+    it "should use uppercased day names" do
+      Russian::strftime(@date, "%^a").should == "ВС"
+      Russian::strftime(@date, "%^A").should == "ВОСКРЕСЕНЬЕ"
+    end
   end
 
   describe "with month names" do
@@ -67,6 +72,11 @@ describe I18n, "Russian Date/Time localization" do
       l(@date, :format => "%e %b %Y").should == " 1 марта 1985"
       l(@date, :format => "<b>%d</b> %b").should == "<b>01</b> марта"
       l(@date, :format => "<strong>%e</strong> %b %Y").should == "<strong> 1</strong> марта 1985"
+    end
+
+    it "should use uppercased month names" do
+      Russian::strftime(@date, "%^b").should == "ДЕК."
+      Russian::strftime(@date, "%^B").should == "ДЕКАБРЬ"
     end
 
     it "should use standalone abbreviated month names" do

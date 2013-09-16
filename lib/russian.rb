@@ -82,7 +82,7 @@ module Russian
     def check_strftime_format(object, format)
       %w(A a B b).each do |key|
         if format =~ /%\^#{key}/ 
-          format = format.gsub("%^#{key}", Unicode::upcase(localize(object, { format: "%#{key}" } )))
+          format = format.gsub("%^#{key}", Unicode::upcase(localize(object, { :format => "%#{key}" } )))
         end
       end
 

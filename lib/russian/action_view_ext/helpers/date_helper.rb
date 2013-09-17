@@ -108,8 +108,10 @@ if defined?(ActionView::Helpers::DateTimeSelector)
                 key = :'date.month_names'
               end
             end
+            
+            I18n.translate(key, :locale => @options[:locale])
           end
-          I18n.translate(key, :locale => @options[:locale])
+          
       end
     end
   end

@@ -20,7 +20,13 @@ Gem::Specification.new do |s|
   s.summary = %q{Russian language support for Ruby and Rails}
 
   s.add_dependency('i18n', '>= 0.5.0')
-  s.add_dependency('unicode', '0.4.4')
+
+  # JRuby
+  if RUBY_ENGINE == "jruby"
+    s.add_dependency('unicode_utils', '1.4.0')
+  else
+    s.add_dependency('unicode', '0.4.4')
+  end
 
   s.add_development_dependency 'activesupport', '>= 3.0.0'
   s.add_development_dependency 'rspec', '~> 2.7.0'

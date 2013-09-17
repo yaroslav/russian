@@ -21,8 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('i18n', '>= 0.5.0')
 
-  # JRuby
-  if RUBY_ENGINE == "jruby"
+  if RUBY_PLATFORM == 'java'
     s.add_dependency('unicode_utils', '1.4.0')
   else
     s.add_dependency('unicode', '0.4.4')

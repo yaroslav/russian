@@ -21,6 +21,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency('i18n', '>= 0.5.0')
 
+  if RUBY_PLATFORM == 'java'
+    s.add_dependency('unicode_utils', '1.4.0')
+  else
+    s.add_dependency('unicode', '0.4.4')
+  end
+
   s.add_development_dependency 'activesupport', '>= 3.0.0'
   s.add_development_dependency 'rspec', '~> 2.7.0'
 end

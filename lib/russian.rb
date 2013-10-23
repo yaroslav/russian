@@ -1,4 +1,4 @@
-# coding: utf-8 
+# coding: utf-8
 
 $KCODE = 'u' if RUBY_VERSION < "1.9"
 
@@ -85,10 +85,10 @@ module Russian
   alias :translit :transliterate
 
   protected
-    
+
     def check_strftime_format(object, format)
       %w(A a B b).each do |key|
-        if format =~ /%\^#{key}/ 
+        if format =~ /%\^#{key}/
           if RUBY_ENGINE == "jruby"
             format = format.gsub("%^#{key}", UnicodeUtils.upcase(localize(object, { :format => "%#{key}" } )))
           else

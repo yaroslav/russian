@@ -1,11 +1,9 @@
-h1. Russian
+h1. rs_russian
 "!https://secure.travis-ci.org/rs-pro/russian.png!":http://travis-ci.org/rs-pro/russian
 
-h1. Это форк с вытянутыми pull-реквестами, которые мы хотели использовать.
+h3. Это форк с вытянутыми pull-реквестами, которые мы хотели использовать.
 
 Нравится -- пользуйтесь, не нравится -- идите на страницу оригинала: "http://github.com/yaroslav/russian/":http://github.com/yaroslav/russian/
-
-
 
 Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n.
 
@@ -41,9 +39,7 @@ h1. Установка
 
 В вашем @Gemfile@ сделайте ссылку на gem @russian@:
 
-<pre><code>
-gem 'rs_russian', '~> 0.6.0'
-</code></pre>
+<pre><code>gem 'rs_russian', '~> 0.6.0'</code></pre>
 
 И установите gem в проект с помощью bundler:
 
@@ -51,9 +47,7 @@ gem 'rs_russian', '~> 0.6.0'
 
 Далее, укажите
 
-<pre><code>
-config.i18n.default_locale = :ru
-</code></pre>
+<pre><code>config.i18n.default_locale = :ru</code></pre>
 
 в @config/application.rb@. Если по умолчанию нужна другая локаль, или же нужно переключать локали "на ходу", используйте методы модуля I18n (см. выше). Также ознакомьтесь с "документацией к I18n":http://rdoc.info/github/svenfuchs/i18n/master и "гидом по интернационализации Ruby on Rails":http://guides.rubyonrails.org/i18n.html.
 

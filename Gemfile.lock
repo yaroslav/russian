@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rs_russian (0.6.0)
+    rs_russian (0.7.0)
       i18n (~> 0.6.0)
       unicode (~> 0.4.4)
 

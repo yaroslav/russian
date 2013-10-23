@@ -39,7 +39,7 @@ h1. Установка
 
 В вашем @Gemfile@ сделайте ссылку на gem @russian@:
 
-<pre><code>gem 'rs_russian', '~> 0.6.0'</code></pre>
+<pre><code>gem 'rs_russian', '~> 0.7.0'</code></pre>
 
 И установите gem в проект с помощью bundler:
 

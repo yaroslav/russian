@@ -5,7 +5,7 @@ require 'russian/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rs_russian"
-  spec.version       = Russian::VERSION::STRING
+  spec.version       = Russian::VERSION
   spec.authors       = ["glebtv", "Yaroslav Markin"]
   spec.email         = ["glebtv@gmail.com", "yaroslav@markin.net"]
   spec.description   = %q{Russian language support for Ruby and Rails}

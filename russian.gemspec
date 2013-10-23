@@ -3,30 +3,35 @@
 $: << File.expand_path('../lib', __FILE__)
 require 'russian/version'
 
-Gem::Specification.new do |s|
-  s.name = %q{russian}
-  s.version = Russian::VERSION::STRING
+Gem::Specification.new do |spec|
+  spec.name          = "rs_russian"
+  spec.version       = Russian::VERSION::STRING
+  spec.authors       = ["glebtv", "Yaroslav Markin"]
+  spec.email         = ["glebtv@gmail.com", "yaroslav@markin.net"]
+  spec.description   = %q{Russian language support for Ruby and Rails}
+  spec.summary       = %q{Russian language support for Ruby and Rails}
+  spec.homepage      = "https://github.com/rs-pro/russian"
+  spec.license       = "MIT"
 
-  s.required_rubygems_version = '>= 1.3.5'
-  s.authors = ["Yaroslav Markin"]
-  s.autorequire = %q{russian}
-  s.description = %q{Russian language support for Ruby and Rails}
-  s.email = %q{yaroslav@markin.net}
-  s.extra_rdoc_files = ["README.textile", "LICENSE", "CHANGELOG", "TODO"]
-  s.files = Dir.glob("{lib,spec}/**/**") + %w(CHANGELOG Gemfile LICENSE Rakefile README.textile russian.gemspec TODO)
-  s.platform = Gem::Platform::RUBY
-  s.homepage = %q{http://github.com/yaroslav/russian/}
-  s.require_paths = ["lib"]
-  s.summary = %q{Russian language support for Ruby and Rails}
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
 
-  s.add_dependency('i18n', '>= 0.5.0')
+  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  
+  spec.add_dependency('i18n', '>= 0.5.0')
 
   if RUBY_PLATFORM == 'java'
-    s.add_dependency('unicode_utils', '1.4.0')
+    spec.add_dependency('unicode_utils', '1.4.0')
   else
-    s.add_dependency('unicode', '0.4.4')
+    spec.add_dependency('unicode', '0.4.4')
   end
-
-  s.add_development_dependency 'activesupport', '>= 3.0.0'
-  s.add_development_dependency 'rspec', '~> 2.7.0'
+  
+  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency 'activesupport', '>= 3.0.0'
 end

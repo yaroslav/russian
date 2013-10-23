@@ -1,5 +1,4 @@
-# -*- encoding: utf-8 -*- 
-# -*- encoding: utf-8 -*-
+# coding: utf-8 
 
 $KCODE = 'u' if RUBY_VERSION < "1.9"
 

@@ -1,5 +1,10 @@
 h1. Russian
-"!https://secure.travis-ci.org/yaroslav/russian.png!":http://travis-ci.org/yaroslav/russian
+"!https://secure.travis-ci.org/rs-pro/russian.png!":http://travis-ci.org/rs-pro/russian
+
+h1. Это форк с вытянутыми pull-реквестами, которые мы хотели использовать.
+
+Нравится -- пользуйтесь, не нравится -- идите на страницу оригинала: "http://github.com/yaroslav/russian/":http://github.com/yaroslav/russian/
+
 
 
 Поддержка русского языка для Ruby и Rails при помощи библиотеки I18n.
@@ -32,40 +37,12 @@ h2. Что такое I18n. История
 
 Однако, документация по плюрализации и транслитерации в I18n была неочевидной, а поддержка lambda-переводов для локализации даты-времени была практически "спрятана" в исходном коде, поэтому большинство разработчиков в основном использовали самые базовые таблицы переводов: локализацию Rails и, иногда, — плюрализацию. Возникла мысль выпустить @gem russian@ для последней версии @gem i18n@ и Ruby on Rails с поддержкой всех необходимых функций, но, на этот раз, грамотно сделанных через интерфейсы I18n. К сожалению, "хаки" для Ruby on Rails (хелперы даты-времени) вряд ли когда-либо будут включены в дистрибутив Rails, поэтому использовать их придется отдельно.
 
-h1. Требования
-
-* Ruby 1.8.7 или 1.9.2 (поддерживается совместимость с JRuby и Rubinius);
-"!https://secure.travis-ci.org/yaroslav/russian.png!":http://travis-ci.org/yaroslav/russian
-
-* Для использования с Rails нужна версия не ниже 3.0 (для более старых версий Rails используйте версии gem russian ветки 0.2);
-* Для разработки и тестирования библиотеки вам понадобятся Bundler и RSpec.
-
 h1. Установка
-
-Страница Russian на GitHub -- "http://github.com/yaroslav/russian/":http://github.com/yaroslav/russian/
-
-Для установки:
-
-@gem install russian@
-
-Чтобы задать локаль по умолчанию в вашем приложении, используйте
-
-<pre><code>
-I18n.default_locale = :ru
-</code></pre>
-
-Чтобы установить локаль для текущего треда, используйте
-
-<pre><code>
-I18n.locale = :ru
-</code></pre>
-
-h2. Ruby on Rails 3.0 и выше
 
 В вашем @Gemfile@ сделайте ссылку на gem @russian@:
 
 <pre><code>
-gem 'russian', '~> 0.6.0'
+gem 'rs_russian', '~> 0.6.0'
 </code></pre>
 
 И установите gem в проект с помощью bundler:

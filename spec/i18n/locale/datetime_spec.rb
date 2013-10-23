@@ -15,7 +15,7 @@ describe I18n, "Russian Date/Time localization" do
     end
 
     it "should use short format" do
-      l(@date, :format => :short).should == "01 дек."
+      l(@date, :format => :short).should == "01 дек"
     end
 
     it "should use long format" do
@@ -36,7 +36,7 @@ describe I18n, "Russian Date/Time localization" do
 
     it "should use abbreviated day names" do
       l(@date, :format => "%a").should == "Вс"
-      l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек. 1985"
+      l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек 1985"
     end
 
     it "should use uppercased day names" do
@@ -72,21 +72,21 @@ describe I18n, "Russian Date/Time localization" do
 
     it "should use abbreviated month names" do
       @date = Date.parse("1985-03-01")
-      l(@date, :format => "%d %b").should == "01 марта"
-      l(@date, :format => "%e %b %Y").should == " 1 марта 1985"
-      l(@date, :format => "<b>%d</b> %b").should == "<b>01</b> марта"
-      l(@date, :format => "<strong>%e</strong> %b %Y").should == "<strong> 1</strong> марта 1985"
+      l(@date, :format => "%d %b").should == "01 мар"
+      l(@date, :format => "%e %B %Y").should == " 1 марта 1985"
+      l(@date, :format => "<b>%d</b> %B").should == "<b>01</b> марта"
+      l(@date, :format => "<strong>%e</strong> %B %Y").should == "<strong> 1</strong> марта 1985"
     end
 
     it "should use uppercased month names" do
-      Russian::strftime(@date, "%^b").should == "ДЕК."
+      Russian::strftime(@date, "%^b").should == "ДЕК"
       Russian::strftime(@date, "%^B").should == "ДЕКАБРЬ"
     end
 
     it "should use standalone abbreviated month names" do
       @date = Date.parse("1985-03-01")
-      l(@date, :format => "%b").should == "март"
-      l(@date, :format => "%b %Y").should == "март 1985"
+      l(@date, :format => "%b").should == "мар"
+      l(@date, :format => "%b %Y").should == "мар 1985"
     end
   end
 
@@ -96,11 +96,11 @@ describe I18n, "Russian Date/Time localization" do
 
   describe "with time formats" do
     it "should use default format" do
-      l(@time).should =~ /^Вс, 01 дек. 1985, 16:05:00/
+      l(@time).should match(/^Вс, 01 дек 1985, 16:05:00/)
     end
 
     it "should use short format" do
-      l(@time, :format => :short).should == "01 дек., 16:05"
+      l(@time, :format => :short).should == "01 дек, 16:05"
     end
 
     it "should use long format" do

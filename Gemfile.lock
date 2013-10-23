@@ -14,6 +14,7 @@ GEM
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.7.0)
     unicode (0.4.4)
+    unicode_utils (1.4.0)
 
 PLATFORMS
   java
@@ -25,3 +26,4 @@ DEPENDENCIES
   rake
   rspec (~> 2.7.0)
   unicode (= 0.4.4)
+  unicode_utils (= 1.4.0)

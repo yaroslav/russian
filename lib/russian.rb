@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*- 
-
 $KCODE = 'u' if RUBY_VERSION < "1.9"
 
 require 'i18n'
@@ -7,11 +6,17 @@ require 'i18n'
 $:.push File.join(File.dirname(__FILE__), 'russian')
 require 'russian_rails'
 
+if RUBY_ENGINE == "jruby"
+  require 'unicode_utils/upcase'
+else
+  require 'unicode'
+end
+
 module Russian
   extend self
   
   autoload :Transliteration, 'transliteration'
-  
+
   # Russian locale
   LOCALE = :'ru'
 
@@ -50,7 +55,7 @@ module Russian
   
   # strftime() proxy with Russian localization
   def strftime(object, format = :default)
-    localize(object, { :format => format })
+    localize(object, { :format => check_strftime_format(object, format) })
   end
   
   # Simple pluralization proxy
@@ -78,6 +83,21 @@ module Russian
   alias :translit :transliterate
   
   protected
+    
+    def check_strftime_format(object, format)
+      %w(A a B b).each do |key|
+        if format =~ /%\^#{key}/ 
+          if RUBY_ENGINE == "jruby"
+            format = format.gsub("%^#{key}", UnicodeUtils.upcase(localize(object, { :format => "%#{key}" } )))
+          else
+            format = format.gsub("%^#{key}", Unicode::upcase(localize(object, { :format => "%#{key}" } )))
+          end
+        end
+      end
+
+      format
+    end
+
     # Returns all locale files shipped with library
     def locale_files
       Dir[File.join(File.dirname(__FILE__), "russian", "locale", "**/*")]

@@ -119,3 +119,7 @@ module Russian
 end
 
 Russian.init_i18n
+
+if Object.const_defined?('RailsAdmin')
+  require 'rails_admin_datetime'
+end

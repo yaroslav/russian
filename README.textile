@@ -8,7 +8,7 @@ Russian language support for Ruby and Rails, using I18n library.
 
 h3. If you don't speak Russian
 
-This code may still be useful for you and Ruby I18n community. You can learn how how to provide support of "standalone" (as defined in "Unicode CLDR":http://unicode.org/cldr/) month names with I18n and Rails without any custom backends or hacks, and how to use custom pluralization and transliteration locale settings. This library also includes a module (@Russian@) with a set of helpers to provide simplistic pluralization and @strftime@ for Russian language -- in a way that is easier than using I18n methods.
+This code may still be useful for you and Ruby I18n community. You can learn how to provide support of "standalone" (as defined in "Unicode CLDR":http://unicode.org/cldr/) month names with I18n and Rails without any custom backends or hacks, and how to use custom pluralization and transliteration locale settings. This library also includes a module (@Russian@) with a set of helpers to provide simplistic pluralization and @strftime@ for Russian language -- in a way that is easier than using I18n methods.
 
 Feel free to shoot an email to Yaroslav Markin ("yaroslav@markin.net":mailto:yaroslav@markin.net)
 

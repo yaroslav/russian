@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../spec_helper'
 
@@ -10,7 +10,7 @@ describe I18n, "Russian pluralization" do
     end
     @backend = I18n.backend
   end
-  
+
   it "should pluralize correctly" do
     @backend.send(:pluralize, :'ru', @hash, 1).should == 'one'
     @backend.send(:pluralize, :'ru', @hash, 2).should == 'few'

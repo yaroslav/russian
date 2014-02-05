@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 if defined?(ActiveModel::Errors)
   module ActiveModel
@@ -13,19 +13,19 @@ if defined?(ActiveModel::Errors)
       # теперь не имеют префикса с названием атрибута если в сообщении об ошибке первым символом указан "^".
       #
       # Так, например,
-      # 
+      #
       #   validates_acceptance_of :accepted_terms, :message => 'нужно принять соглашение'
-      # 
+      #
       # даст сообщение
-      # 
+      #
       #   Accepted terms нужно принять соглашение
-      # 
+      #
       # однако,
-      # 
+      #
       #   validates_acceptance_of :accepted_terms, :message => '^Нужно принять соглашение'
-      # 
+      #
       # даст сообщение
-      # 
+      #
       #   Нужно принять соглашение
       #
       #

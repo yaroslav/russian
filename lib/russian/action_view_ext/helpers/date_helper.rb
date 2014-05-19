@@ -88,7 +88,7 @@ if defined?(ActionView::Helpers::DateTimeSelector)
           # месяцев по необходимости
           def translated_month_names
             if @options[:use_short_month]
-              if I18n.backend.send(:lookup, I18n.locale, :'date.common_abbr_month_names')
+              if I18n.backend.translate(I18n.locale, :'date.common_abbr_month_names')
                 if (@options[:discard_day] || @options[:use_standalone_month_names])
                   key = :'date.standalone_abbr_month_names'
                 else
@@ -98,7 +98,7 @@ if defined?(ActionView::Helpers::DateTimeSelector)
                 key = :'date.abbr_month_names'
               end
             else
-              if I18n.backend.send(:lookup, I18n.locale, :'date.common_month_names')
+              if I18n.backend.translate(I18n.locale, :'date.common_month_names')
                 if (@options[:discard_day] || @options[:use_standalone_month_names])
                   key = :'date.standalone_month_names'
                 else

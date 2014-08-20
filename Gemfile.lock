@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rs_russian (0.7.2)
+    rs_russian (0.8.0)
       i18n (>= 0.6.0, < 0.8.0)
       unicode (~> 0.4.4)
 
@@ -38,7 +38,6 @@ PLATFORMS
 DEPENDENCIES
   activesupport (>= 3.0.0, < 5.0.0)
   bundler (~> 1.7)
-  i18n (~> 0.7.0.beta1)
   rake
   rs_russian!
   rspec (~> 2.14)

@@ -80,7 +80,7 @@ module Russian
   protected
     # Returns all locale files shipped with library
     def locale_files
-      Dir[File.join(File.dirname(__FILE__), "russian", "locale", "**/*")]
+      Dir[File.join(File.dirname(__FILE__), "russian", "locale", "**/*")].sort
     end
     
     # Converts an array of pluralization variants to a Hash that can be used

@@ -283,7 +283,7 @@ module Russian
 
     # @private
     def locale_files
-      Dir[File.join(__dir__, "russian", "locale", "**", "*")].select { |path| File.file?(path) }
+      Dir[File.join(__dir__, "russian", "locale", "**", "*")].select { |path| File.file?(path) }.sort
     end
 
     # @private

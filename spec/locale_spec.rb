@@ -33,12 +33,12 @@ describe Russian, "loading locales" do
 
   it "should load pluralization rules" do
     lookup(:'i18n.plural.rule').should_not be_nil
-    lookup(:'i18n.plural.rule').is_a?(Proc).should be_true
+    lookup(:'i18n.plural.rule').is_a?(Proc).should be true
   end
 
   it "should load transliteration rule" do
     lookup(:'i18n.transliterate.rule').should_not be_nil
-    lookup(:'i18n.transliterate.rule').is_a?(Proc).should be_true
+    lookup(:'i18n.transliterate.rule').is_a?(Proc).should be true
   end
 
   def lookup(*args)

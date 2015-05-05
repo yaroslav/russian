@@ -9,7 +9,7 @@ module RailsAdmin
           class << self
             alias_method :normalize_without_russian, :normalize
             def normalize(date_string, format)
-              unless I18n.locale == "en"
+              unless I18n.locale == :en
                 format.to_s.scan(/%[AaBbp]/) do |match|
                   case match
                   when '%B'

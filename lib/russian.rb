@@ -18,6 +18,8 @@ module Russian
 
   autoload :Transliteration, 'transliteration'
 
+  cattr_accessor :force_standalone
+
   # Russian locale
   LOCALE = :'ru'
 
@@ -119,4 +121,8 @@ module Russian
 end
 
 Russian.init_i18n
+
+if Object.const_defined?('RailsAdmin')
+  require 'rails_admin_datetime'
+end
 

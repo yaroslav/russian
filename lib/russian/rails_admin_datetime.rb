@@ -13,11 +13,11 @@ module RailsAdmin
                 when '%B'
                   english = I18n.t('date.month_names', :locale => :en)[1..-1]
                   common_month_names = I18n.t('date.common_month_names')[1..-1]
-                  common_month_names.each_with_index {|m, i| str = str.gsub(/#{m}/i, english[i]) }
+                  common_month_names.each_with_index {|m, i| str = str.gsub(/#{m}/i, english[i]) } unless str.blank?
                 when '%b'
                   english = I18n.t('date.abbr_month_names', :locale => :en)[1..-1]
                   common_abbr_month_names = I18n.t('date.common_abbr_month_names')[1..-1]
-                  common_abbr_month_names.each_with_index {|m, i| str = str.gsub(/#{m}/i, english[i]) }
+                  common_abbr_month_names.each_with_index {|m, i| str = str.gsub(/#{m}/i, english[i]) } unless str.blank?
                 end
               end
             end

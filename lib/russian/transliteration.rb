@@ -1,7 +1,7 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 module Russian
-  # Russian transliteration 
+  # Russian transliteration
   #
   # Транслитерация для букв русского алфавита
   module Transliteration

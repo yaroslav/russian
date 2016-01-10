@@ -12,17 +12,17 @@ describe I18n, "Russian pluralization" do
   end
   
   it "should pluralize correctly" do
-    @backend.send(:pluralize, :'ru', @hash, 1).should == 'one'
-    @backend.send(:pluralize, :'ru', @hash, 2).should == 'few'
-    @backend.send(:pluralize, :'ru', @hash, 3).should == 'few'
-    @backend.send(:pluralize, :'ru', @hash, 5).should == 'many'
-    @backend.send(:pluralize, :'ru', @hash, 10).should == 'many'
-    @backend.send(:pluralize, :'ru', @hash, 11).should == 'many'
-    @backend.send(:pluralize, :'ru', @hash, 21).should == 'one'
-    @backend.send(:pluralize, :'ru', @hash, 29).should == 'many'
-    @backend.send(:pluralize, :'ru', @hash, 131).should == 'one'
-    @backend.send(:pluralize, :'ru', @hash, 1.31).should == 'other'
-    @backend.send(:pluralize, :'ru', @hash, 2.31).should == 'other'
-    @backend.send(:pluralize, :'ru', @hash, 3.31).should == 'other'
+    expect(@backend.send(:pluralize, :'ru', @hash, 1)).to eq('one')
+    expect(@backend.send(:pluralize, :'ru', @hash, 2)).to eq('few')
+    expect(@backend.send(:pluralize, :'ru', @hash, 3)).to eq('few')
+    expect(@backend.send(:pluralize, :'ru', @hash, 5)).to eq('many')
+    expect(@backend.send(:pluralize, :'ru', @hash, 10)).to eq('many')
+    expect(@backend.send(:pluralize, :'ru', @hash, 11)).to eq('many')
+    expect(@backend.send(:pluralize, :'ru', @hash, 21)).to eq('one')
+    expect(@backend.send(:pluralize, :'ru', @hash, 29)).to eq('many')
+    expect(@backend.send(:pluralize, :'ru', @hash, 131)).to eq('one')
+    expect(@backend.send(:pluralize, :'ru', @hash, 1.31)).to eq('other')
+    expect(@backend.send(:pluralize, :'ru', @hash, 2.31)).to eq('other')
+    expect(@backend.send(:pluralize, :'ru', @hash, 3.31)).to eq('other')
   end
 end

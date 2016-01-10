@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 # Context-based month name and day name switching for Russian
 #

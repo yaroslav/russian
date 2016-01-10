@@ -1,20 +1,20 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
-# Заменяет хелпер Rails <tt>select_month</tt> и метод <tt>translated_month_names</tt> 
+# Заменяет хелпер Rails <tt>select_month</tt> и метод <tt>translated_month_names</tt>
 # для поддержки функционала "отдельностоящих имен месяцев".
 #
 # Теперь можно использовать и полные, и сокращенные название месяцев в двух вариантах -- контекстном
 # (по умолчанию) и отдельностоящем (если в текущем языке есть соответствующие переводы).
-# Теперь хелперы поддерживают ключ <tt>:use_standalone_month_names</tt>, хелпер <tt>select_month</tt> 
+# Теперь хелперы поддерживают ключ <tt>:use_standalone_month_names</tt>, хелпер <tt>select_month</tt>
 # устанавливает его по умолчанию.
 # Отдельностоящие имена месяцев также используютс когда указан ключ <tt>:discard_day</tt>.
 #
 #
 # Replaces Rails <tt>select_month</tt> helper and <tt>translated_month_names</tt> private method to provide
-# "standalone month names" feature. 
+# "standalone month names" feature.
 #
 # It is now possible to use both abbreviated and full month names in two variants (if current locale provides them).
-# All date helpers support <tt>:use_standalone_month_names</tt> key now, <tt>select_month</tt> helper sets 
+# All date helpers support <tt>:use_standalone_month_names</tt> key now, <tt>select_month</tt> helper sets
 # it to true by default.
 # Standalone month names are also used when <tt>:discard_day</tt> key is provided.
 if defined?(ActionView::Helpers::DateTimeSelector)
@@ -27,7 +27,7 @@ if defined?(ActionView::Helpers::DateTimeSelector)
         # instead of names -- set the <tt>:use_month_numbers</tt> key in +options+ to true for this to happen. If you
         # want both numbers and names, set the <tt>:add_month_numbers</tt> key in +options+ to true. If you would prefer
         # to show month names as abbreviations, set the <tt>:use_short_month</tt> key in +options+ to true. If you want
-        # to use your own month names, set the <tt>:use_month_names</tt> key in +options+ to an array of 12 month names. 
+        # to use your own month names, set the <tt>:use_month_names</tt> key in +options+ to an array of 12 month names.
         # You can also choose if you want to use i18n standalone month names or default month names -- you can
         # force standalone month names usage by using <tt>:use_standalone_month_names</tt> key.
         # Override the field name using the <tt>:field_name</tt> option, 'month' by default.
@@ -66,7 +66,7 @@ if defined?(ActionView::Helpers::DateTimeSelector)
           DateTimeSelector.new(date, options.merge(:use_standalone_month_names => true), html_options).select_month
         end
       end
-      
+
       class DateTimeSelector #:nodoc:
         private
           # Returns translated month names
@@ -108,10 +108,10 @@ if defined?(ActionView::Helpers::DateTimeSelector)
                 key = :'date.month_names'
               end
             end
-            
+
             I18n.translate(key, :locale => @options[:locale])
           end
-          
+
       end
     end
   end

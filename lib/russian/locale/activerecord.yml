@@ -13,7 +13,7 @@ ru:
       # The values :model, :attribute and :value are always available for interpolation
       # The value :count is available when applicable. Can be used for pluralization.
       #
-      # You can use ^-prefixed messages as well to get rid of human attribute name appearing 
+      # You can use ^-prefixed messages as well to get rid of human attribute name appearing
       # before your message in validation messages.
       messages:
         inclusion: "имеет непредусмотренное значение"
@@ -48,6 +48,7 @@ ru:
         odd: "может иметь лишь четное значение"
         even: "может иметь лишь нечетное значение"
         record_invalid: "Возникли ошибки: %{errors}"
+        present: "должно быть пустым"
 
       full_messages:
         format: "%{attribute} %{message}"
@@ -82,7 +83,7 @@ ru:
       #
       #
       # Overrides default messages
-      
+
     # Перевод названий атрибутов моделей. Используется в Model.human_attribute_name(attribute).
     #attributes:
       # Например,
@@ -92,4 +93,3 @@ ru:
       #
       #
       # Overrides model and default messages.
-        

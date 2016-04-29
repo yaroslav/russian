@@ -7,7 +7,7 @@ module RailsAdmin
         class Datetime < RailsAdmin::Config::Fields::Base
           def parse_input(params)
             str = params[name]
-            unless I18n.locale == :en
+            if I18n.locale == :ru
               strftime_format.to_s.scan(/%[AaBbp]/) do |match|
                 case match
                 when '%B'

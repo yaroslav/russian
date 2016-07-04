@@ -13,6 +13,8 @@ else
   require 'unicode'
 end
 
+require 'active_support/core_ext/module/attribute_accessors'
+
 module Russian
   extend self
 

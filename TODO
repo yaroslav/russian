@@ -1,10 +1,4 @@
 TODO
 ====
 * RDoc
-* check Unicode CLDR to ensure all datetime formats are correct
-* refactor Advanced backend localize method (looks ugly)
-* refactor DateTimeSelector#translated_month_names
 
-Questionable
-============
-* integration specs for rails hacks

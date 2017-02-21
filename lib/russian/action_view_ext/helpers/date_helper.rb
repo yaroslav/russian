@@ -17,7 +17,7 @@
 # All date helpers support <tt>:use_standalone_month_names</tt> key now, <tt>select_month</tt> helper sets 
 # it to true by default.
 # Standalone month names are also used when <tt>:discard_day</tt> key is provided.
-if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateTimeSelector.private_instance_methods.map(&:to_sym).include?(:translated_month_names)
+if defined?(ActionView::Helpers::DateTimeSelector)
   module ActionView
     module Helpers
       module DateHelper
@@ -87,23 +87,29 @@ if defined?(ActionView::Helpers::DateTimeSelector) && ActionView::Helpers::DateT
           # убеждается, есть ли соотвествующие переводы в текущем языке и использует "отдельностоящие" названия
           # месяцев по необходимости
           def translated_month_names
-            begin
-              if @options[:use_short_month]
-                if (@options[:discard_day] || @options[:use_standalone_month_names]) && I18n.translate(:'date.standalone_abbr_month_names')
+            if @options[:use_short_month]
+              if I18n.backend.send(:lookup, I18n.locale, :'date.common_abbr_month_names')
+                if (@options[:discard_day] || @options[:use_standalone_month_names])
                   key = :'date.standalone_abbr_month_names'
                 else
-                  key = :'date.abbr_month_names'
+                  key = :'date.common_abbr_month_names'
                 end
               else
-                if (@options[:discard_day] || @options[:use_standalone_month_names]) && I18n.translate(:'date.standalone_month_names')
+                key = :'date.abbr_month_names'
+              end
+            else
+              if I18n.backend.send(:lookup, I18n.locale, :'date.common_month_names')
+                if (@options[:discard_day] || @options[:use_standalone_month_names])
                   key = :'date.standalone_month_names'
                 else
-                  key = :'date.month_names'
+                  key = :'date.common_month_names'
                 end
+              else
+                key = :'date.month_names'
               end
-              
-              I18n.translate(key, :locale => @options[:locale])
             end
+            
+            I18n.translate(key, :locale => @options[:locale])
           end
           
       end

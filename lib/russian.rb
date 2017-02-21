@@ -1,37 +1,16 @@
 # -*- encoding: utf-8 -*- 
 
-if RUBY_VERSION < "1.9"
-  $KCODE = 'u'
-end
+$KCODE = 'u' if RUBY_VERSION < "1.9"
+
+require 'i18n'
 
 $:.push File.join(File.dirname(__FILE__), 'russian')
-require 'transliteration'
-
-# I18n require
-unless defined?(I18n)
-  $:.push File.join(File.dirname(__FILE__), 'vendor', 'i18n', 'lib')
-  require 'i18n'
-end
-# Advanced backend
-require 'backend/advanced'
-
-# Rails hacks
-require 'active_record_ext/custom_error_message' if defined?(ActiveRecord)
-if defined?(ActionView::Helpers)
-  require 'action_view_ext/helpers/date_helper' 
-end
-require 'active_support_ext/parameterize' if defined?(ActiveSupport::Inflector)
+require 'russian_rails'
 
 module Russian
   extend self
   
-  module VERSION
-    MAJOR = 0
-    MINOR = 2
-    TINY  = 7
-
-    STRING = [MAJOR, MINOR, TINY].join('.')
-  end
+  autoload :Transliteration, 'transliteration'
   
   # Russian locale
   LOCALE = :'ru'
@@ -40,20 +19,21 @@ module Russian
   def locale
     LOCALE
   end
-  
-  # Returns custom backend class for usage with Russian library
-  # 
-  # See I18n::Backend
-  def i18n_backend_class
-    I18n::Backend::Advanced
-  end
-  
-  # Init Russian i18n: set custom backend, set default locale to Russian locale, load all translations
-  # shipped with library.
+
+  # Regexp machers for context-based russian month names and day names translation
+  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%b)/
+  LOCALIZE_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%B)/
+  LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
+  LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
+    
+  # Init Russian i18n: load all translations shipped with library.
   def init_i18n
-    I18n.backend = Russian.i18n_backend_class.new
-    I18n.default_locale = LOCALE
+    I18n::Backend::Simple.send(:include, I18n::Backend::Pluralization)
+    I18n::Backend::Simple.send(:include, I18n::Backend::Transliterator)
+
     I18n.load_path.unshift(*locale_files)
+
+    I18n.reload!
   end
 
   # See I18n::translate

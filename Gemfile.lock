@@ -2,23 +2,23 @@ PATH
   remote: .
   specs:
     rs_russian (0.9.5)
-      activesupport (>= 3.0.0, < 5.1.0)
-      i18n (>= 0.6.0, < 0.8.0)
+      activesupport (>= 3.0.0, < 6.0.0)
+      i18n (~> 0.8.0)
       unicode (~> 0.4.4)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.0.0)
+    activesupport (5.0.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    concurrent-ruby (1.0.2)
-    diff-lcs (1.2.5)
-    i18n (0.7.0)
-    minitest (5.9.0)
-    rake (11.2.2)
+    concurrent-ruby (1.0.5)
+    diff-lcs (1.3)
+    i18n (0.8.1)
+    minitest (5.10.1)
+    rake (12.0.0)
     rspec (2.99.0)
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
@@ -27,7 +27,7 @@ GEM
     rspec-expectations (2.99.2)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.99.4)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unicode (0.4.4.2)
@@ -36,10 +36,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.12)
+  bundler (~> 1.14)
   rake
   rs_russian!
   rspec (~> 2.14)
 
 BUNDLED WITH
-   1.12.5
+   1.14.6

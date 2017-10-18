@@ -20,7 +20,11 @@ module Russian
 
   autoload :Transliteration, 'transliteration'
 
-  cattr_accessor :force_standalone
+  if respond_to?(:cattr_accessor)
+    cattr_accessor :force_standalone
+  else
+    mattr_accessor :force_standalone
+  end
 
   # Russian locale
   LOCALE = :'ru'

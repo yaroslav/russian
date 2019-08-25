@@ -20,7 +20,7 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
-    rake (12.3.3)
+    rake (10.5.0)
     rspec (2.99.0)
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
@@ -39,8 +39,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
-  rake
+  bundler (~> 1.14)
+  rake (< 11.0)
   rs_russian!
   rspec (~> 2.14)
 

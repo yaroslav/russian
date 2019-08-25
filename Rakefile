@@ -1,12 +1,10 @@
 require 'bundler/setup'
 Bundler::GemHelper.install_tasks
 
-require 'rspec/core/rake_task'
-
-desc "Run all examples"
-RSpec::Core::RakeTask.new(:spec) do |t|
-  #t.rspec_path = 'bin/rspec'
-  t.rspec_opts = %w[--color]
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
 end
 
 task :default => :spec

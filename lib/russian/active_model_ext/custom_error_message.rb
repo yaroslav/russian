@@ -42,7 +42,10 @@ if defined?(ActiveModel::Errors)
       def full_messages
         full_messages = []
 
-        each do |attribute, messages|
+        each do |error|
+          attribute = error.respond_to?(:attribute) ? error.attribute : error[0]
+          messages = error.respond_to?(:message) ? error.message : error[1]
+
           messages = Array.wrap(messages)
           next if messages.empty?
 

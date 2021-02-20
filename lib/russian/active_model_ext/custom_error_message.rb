@@ -25,13 +25,14 @@ if defined?(ActiveModel::Errors)
         end
       end
       
+      alias_method :to_hash_old, :to_hash
       def to_hash(full_messages = false)
         if full_messages
-          self.messages.each_with_object({}) do |(attribute, array), messages|
+          self.to_hash_old.each_with_object({}) do |(attribute, array), messages|
             messages[attribute] = array.map { |message| full_message(attribute, message) }
           end
         else
-          self.messages.dup.map do |k, vs|
+          self.to_hash_old.map do |k, vs|
             m = vs.map do |v|
               if v =~ /^\^/
                 v[1..-1]

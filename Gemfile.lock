@@ -1,24 +1,47 @@
-GEM
-  remote: http://rubygems.org/
+PATH
+  remote: .
   specs:
-    activesupport (3.0.10)
-    diff-lcs (1.1.3)
-    i18n (0.6.0)
-    rake (0.9.2.2)
-    rspec (2.7.0)
-      rspec-core (~> 2.7.0)
-      rspec-expectations (~> 2.7.0)
-      rspec-mocks (~> 2.7.0)
-    rspec-core (2.7.1)
-    rspec-expectations (2.7.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.7.0)
+    rs_russian (0.16.0)
+      activesupport (>= 3.0.0, < 6.2.0)
+      i18n (~> 1.8.0)
+      unicode (~> 0.4.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (6.1.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
+    concurrent-ruby (1.1.7)
+    diff-lcs (1.4.4)
+    i18n (1.8.5)
+      concurrent-ruby (~> 1.0)
+    minitest (5.14.2)
+    rake (10.5.0)
+    rspec (2.99.0)
+      rspec-core (~> 2.99.0)
+      rspec-expectations (~> 2.99.0)
+      rspec-mocks (~> 2.99.0)
+    rspec-core (2.99.2)
+    rspec-expectations (2.99.2)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.99.4)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
+    unicode (0.4.4.4)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 3.0.0)
-  i18n (>= 0.5.0)
-  rake
-  rspec (~> 2.7.0)
+  bundler (~> 1.14)
+  rake (< 11.0)
+  rs_russian!
+  rspec (~> 2.14)
+
+BUNDLED WITH
+   1.17.3

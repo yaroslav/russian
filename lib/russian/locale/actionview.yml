@@ -7,14 +7,14 @@ ru:
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
     format:
       # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
-      separator: "."
+      separator: ","
       # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
       delimiter: " "
       # Number of decimals, behind the separator (the number 1 with a precision of 2 gives: 1.00)
       precision: 3
       significant: false
       strip_insignificant_zeros: false
-      
+
     # Used in number_to_currency()
     currency:
       format:
@@ -30,14 +30,14 @@ ru:
         precision: 2
         significant: false
         strip_insignificant_zeros: false
-        
+
     # Used in number_to_percentage()
     percentage:
       format:
         # These three are to override number.format and are optional
-        # separator: 
+        # separator:
         delimiter: ""
-        
+
     # Used in number_to_precision()
     precision:
       format:
@@ -45,20 +45,20 @@ ru:
         # separator:
         delimiter: ""
         # precision:
-        
+
     # Used in number_to_human_size()
     human:
       format:
         # These three are to override number.format and are optional
-        # separator: 
+        # separator:
         delimiter: ""
         precision: 1
         significant: false
         strip_insignificant_zeros: false
-      
+
       # Rails 2.2
       # storage_units: [байт, КБ, МБ, ГБ, ТБ]
-      
+
       # Rails 2.3+
       storage_units:
         # Storage units output formatting.

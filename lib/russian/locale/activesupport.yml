@@ -1,16 +1,16 @@
 ru:
 # Используется в array.to_sentence
-#  
-#  
+#
+#
 # Used in array.to_sentence.
   support:
     array:
       # Rails 2.2
       sentence_connector: "и"
       skip_last_comma: true
-      
+
       # Rails 2.3
       words_connector: ", "
       two_words_connector: " и "
       last_word_connector: " и "
-      
+

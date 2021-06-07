@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 # I18n transliteration delegates to Russian::Transliteration (we're unable
 # to use common I18n transliteration tables with Russian)

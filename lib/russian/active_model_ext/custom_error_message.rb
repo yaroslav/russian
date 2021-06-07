@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 if defined?(ActiveModel::Errors)
   module ActiveModel
@@ -8,63 +8,42 @@ if defined?(ActiveModel::Errors)
       #  Non-base messages are prefixed with the attribute name as usual UNLESS they begin with '^'
       #  in which case the attribute name is omitted.
       #  E.g. validates_acceptance_of :accepted_terms, :message => '^Please accept the terms of service'
-      #
-      # Переопределяет метод ActiveModel::Errors.full_messages. Сообщения об ошибках для атрибутов
-      # теперь не имеют префикса с названием атрибута если в сообщении об ошибке первым символом указан "^".
-      #
-      # Так, например,
-      # 
-      #   validates_acceptance_of :accepted_terms, :message => 'нужно принять соглашение'
-      # 
-      # даст сообщение
-      # 
-      #   Accepted terms нужно принять соглашение
-      # 
-      # однако,
-      # 
-      #   validates_acceptance_of :accepted_terms, :message => '^Нужно принять соглашение'
-      # 
-      # даст сообщение
-      # 
-      #   Нужно принять соглашение
-      #
-      #
-      # Returns all the full error messages in an array.
-      #
-      #   class Company
-      #     validates_presence_of :name, :address, :email
-      #     validates_length_of :name, :in => 5..30
-      #   end
-      #
-      #   company = Company.create(:address => '123 First St.')
-      #   company.errors.full_messages # =>
-      #     ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Address can't be blank"]
-      def full_messages
-        full_messages = []
-
-        each do |attribute, messages|
-          messages = Array.wrap(messages)
-          next if messages.empty?
-
-          if attribute == :base
-            messages.each {|m| full_messages << m }
-          else
-            attr_name = attribute.to_s.gsub('.', '_').humanize
-            attr_name = @base.class.human_attribute_name(attribute, :default => attr_name)
-            options = { :attribute => attr_name, :default => "%{attribute} %{message}" }
-
-            messages.each do |m|
-              if m =~ /^\^/
-                full_messages << m[1..-1]
+      
+      def full_message(attribute, message)
+        return message if attribute == :base
+        attr_name = attribute.to_s.tr('.', '_').humanize
+        attr_name = @base.class.human_attribute_name(attribute, default: attr_name)
+        
+        if message =~ /^\^/
+          message[1..-1]
+        else
+          I18n.t(:"errors.format", {
+            default:  "%{attribute} %{message}",
+            attribute: attr_name,
+            message:   message
+          })
+        end
+      end
+      
+      alias_method :to_hash_old, :to_hash
+      def to_hash(full_messages = false)
+        if full_messages
+          self.to_hash_old.each_with_object({}) do |(attribute, array), messages|
+            messages[attribute] = array.map { |message| full_message(attribute, message) }
+          end
+        else
+          self.to_hash_old.map do |k, vs|
+            m = vs.map do |v|
+              if v =~ /^\^/
+                v[1..-1]
               else
-                full_messages << I18n.t(:"errors.format", options.merge(:message => m))
+                v
               end
             end
-          end
+            {k => m}
+          end.reduce(:merge)
         end
-
-        full_messages
       end
     end
   end
-end # if defined?
+end

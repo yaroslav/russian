@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../spec_helper'
 
@@ -15,7 +15,7 @@ describe I18n, "Russian Date/Time localization" do
     end
 
     it "should use short format" do
-      l(@date, :format => :short).should == "01 дек."
+      l(@date, :format => :short).should == "01 дек"
     end
 
     it "should use long format" do
@@ -36,7 +36,12 @@ describe I18n, "Russian Date/Time localization" do
 
     it "should use abbreviated day names" do
       l(@date, :format => "%a").should == "Вс"
-      l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек. 1985"
+      l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек 1985"
+    end
+
+    it "should use uppercased day names" do
+      Russian::strftime(@date, "%^a").should == "ВС"
+      Russian::strftime(@date, "%^A").should == "ВОСКРЕСЕНЬЕ"
     end
   end
 
@@ -48,6 +53,10 @@ describe I18n, "Russian Date/Time localization" do
       if RUBY_VERSION > "1.9.2"
         l(@date, :format => "%1d %B").should == "1 декабря"
         l(@date, :format => "%2d %B").should == "01 декабря"
+        l(@date, :format => "%10d %B").should == "0000000001 декабря"
+        l(@date, :format => "%-e %B %Y").should == "1 декабря 1985"
+        l(@date, :format => "%_3d %B %Y").should == "  1 декабря 1985"
+        l(@date, :format => "%3_d %B %Y").should == "%3_d Декабрь 1985"
       end
 
       l(@date, :format => "%e %B %Y").should == " 1 декабря 1985"
@@ -63,16 +72,21 @@ describe I18n, "Russian Date/Time localization" do
 
     it "should use abbreviated month names" do
       @date = Date.parse("1985-03-01")
-      l(@date, :format => "%d %b").should == "01 марта"
-      l(@date, :format => "%e %b %Y").should == " 1 марта 1985"
-      l(@date, :format => "<b>%d</b> %b").should == "<b>01</b> марта"
-      l(@date, :format => "<strong>%e</strong> %b %Y").should == "<strong> 1</strong> марта 1985"
+      l(@date, :format => "%d %b").should == "01 мар"
+      l(@date, :format => "%e %B %Y").should == " 1 марта 1985"
+      l(@date, :format => "<b>%d</b> %B").should == "<b>01</b> марта"
+      l(@date, :format => "<strong>%e</strong> %B %Y").should == "<strong> 1</strong> марта 1985"
+    end
+
+    it "should use uppercased month names" do
+      Russian::strftime(@date, "%^b").should == "ДЕК"
+      Russian::strftime(@date, "%^B").should == "ДЕКАБРЬ"
     end
 
     it "should use standalone abbreviated month names" do
       @date = Date.parse("1985-03-01")
-      l(@date, :format => "%b").should == "март"
-      l(@date, :format => "%b %Y").should == "март 1985"
+      l(@date, :format => "%b").should == "мар"
+      l(@date, :format => "%b %Y").should == "мар 1985"
     end
   end
 
@@ -82,11 +96,11 @@ describe I18n, "Russian Date/Time localization" do
 
   describe "with time formats" do
     it "should use default format" do
-      l(@time).should =~ /^Вс, 01 дек. 1985, 16:05:00/
+      l(@time).should match(/^Вс, 01 дек 1985, 16:05:00/)
     end
 
     it "should use short format" do
-      l(@time, :format => :short).should == "01 дек., 16:05"
+      l(@time, :format => :short).should == "01 дек, 16:05"
     end
 
     it "should use long format" do

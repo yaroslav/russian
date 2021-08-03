@@ -38,13 +38,13 @@ module Russian
 
   # See I18n::translate
   def translate(key, options = {})
-    I18n.translate(key, options.merge({ :locale => LOCALE }))
+    I18n.translate(key, **options.merge({ :locale => LOCALE }))
   end        
   alias :t :translate
   
   # See I18n::localize
   def localize(object, options = {})
-    I18n.localize(object, options.merge({ :locale => LOCALE }))
+    I18n.localize(object, **options.merge({ :locale => LOCALE }))
   end
   alias :l :localize
   

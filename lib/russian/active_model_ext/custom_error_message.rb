@@ -57,7 +57,7 @@ if defined?(ActiveModel::Errors)
               if m =~ /^\^/
                 full_messages << m[1..-1]
               else
-                full_messages << I18n.t(:"errors.format", options.merge(:message => m))
+                full_messages << I18n.t(:"errors.format", **options.merge(:message => m))
               end
             end
           end

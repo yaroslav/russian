@@ -44,7 +44,7 @@ module Russian
   
   # See I18n::localize
   def localize(object, options = {})
-    I18n.localize(object, options.merge({ :locale => LOCALE }))
+    I18n.localize(object, **options.merge({ :locale => LOCALE }))
   end
   alias :l :localize
   

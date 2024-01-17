@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*- 
 
+require "active_support/core_ext/date"
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe I18n, "Russian Date/Time localization" do

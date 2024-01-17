@@ -10,7 +10,7 @@ describe Russian do
 
     %w(transliterate translit).each do |method|
       it "'#{method}' method should perform transliteration" do
-        str = mock(:str)
+        str = double(:str)
         Russian::Transliteration.should_receive(:transliterate).with(str)
         Russian.send(method, str)
       end

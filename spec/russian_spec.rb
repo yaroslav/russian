@@ -40,7 +40,7 @@ describe Russian do
   
   describe "with localize proxy" do
     before(:each) do
-      @time = mock(:time)
+      @time = double(:time)
       @options = { :format => "%d %B %Y" }
     end
     
@@ -68,7 +68,7 @@ describe Russian do
   
   describe "strftime" do
     before(:each) do
-      @time = mock(:time)
+      @time = double(:time)
     end
 
     it "should call localize with object and format" do

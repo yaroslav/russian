@@ -1,10 +1,17 @@
-require 'rubygems'
-require 'rspec/core/rake_task'
-require 'rubygems/specification'
+# frozen_string_literal: true
 
-task :default => :spec
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
+require "standard/rake"
+require "yard"
+
 desc "Run specs"
-RSpec::Core::RakeTask.new do |t|
-  t.pattern = FileList['spec/**/*_spec.rb']
-  t.rspec_opts = %w(-fs --color)
-end
+RSpec::Core::RakeTask.new(:spec)
+
+desc "Build YARD documentation"
+YARD::Rake::YardocTask.new(:yard)
+
+desc "Run lint and specs"
+task ci: %i[standard spec]
+
+task default: %i[standard spec]

@@ -1,70 +1,51 @@
-# -*- encoding: utf-8 -*- 
+# frozen_string_literal: true
 
-if defined?(ActiveModel::Errors)
-  module ActiveModel
-    class Errors
-      # Redefine the ActiveModel::Errors.full_messages method:
-      #  Returns all the full error messages in an array. 'Base' messages are handled as usual.
-      #  Non-base messages are prefixed with the attribute name as usual UNLESS they begin with '^'
-      #  in which case the attribute name is omitted.
-      #  E.g. validates_acceptance_of :accepted_terms, :message => '^Please accept the terms of service'
-      #
-      # Переопределяет метод ActiveModel::Errors.full_messages. Сообщения об ошибках для атрибутов
-      # теперь не имеют префикса с названием атрибута если в сообщении об ошибке первым символом указан "^".
-      #
-      # Так, например,
-      # 
-      #   validates_acceptance_of :accepted_terms, :message => 'нужно принять соглашение'
-      # 
-      # даст сообщение
-      # 
-      #   Accepted terms нужно принять соглашение
-      # 
-      # однако,
-      # 
-      #   validates_acceptance_of :accepted_terms, :message => '^Нужно принять соглашение'
-      # 
-      # даст сообщение
-      # 
-      #   Нужно принять соглашение
+module Russian
+  # Extensions for ActiveModel integration.
+  #
+  #
+  # Расширения для интеграции с ActiveModel.
+  module ActiveModelExt
+    # Patch for `ActiveModel::Error.full_message`.
+    # Validation messages prefixed with `^` suppress the humanized
+    # attribute name in the resulting full message.
+    #
+    #
+    # Патч для `ActiveModel::Error.full_message`.
+    # Сообщения валидации с префиксом `^` подавляют humanized-имя
+    # атрибута в итоговом полном сообщении.
+    module ErrorPatch
+      # Builds a full validation message and optionally suppresses the
+      # attribute name when the message starts with `^`.
       #
       #
-      # Returns all the full error messages in an array.
+      # Строит полное сообщение валидации и при необходимости подавляет имя
+      # атрибута, если сообщение начинается с `^`.
       #
-      #   class Company
-      #     validates_presence_of :name, :address, :email
-      #     validates_length_of :name, :in => 5..30
-      #   end
+      # @param attribute [String, Symbol] Attribute name.
+      #   Имя атрибута.
+      # @param message [#to_s] Validation message.
+      #   Сообщение валидации.
+      # @param base [Object] Model instance.
+      #   Экземпляр модели.
+      # @return [String] Full validation message.
+      #   Полное сообщение валидации.
       #
-      #   company = Company.create(:address => '123 First St.')
-      #   company.errors.full_messages # =>
-      #     ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Address can't be blank"]
-      def full_messages
-        full_messages = []
+      # @example
+      #   ActiveModel::Error.full_message(:agreement, "^Нужно согласиться с соглашением", record)
+      #   # => "Нужно согласиться с соглашением"
+      def full_message(attribute, message, base)
+        return super unless suppress_attribute_name?(attribute, message)
 
-        each do |attribute, messages|
-          messages = Array.wrap(messages)
-          next if messages.empty?
+        message.to_s.delete_prefix("^")
+      end
 
-          if attribute == :base
-            messages.each {|m| full_messages << m }
-          else
-            attr_name = attribute.to_s.gsub('.', '_').humanize
-            attr_name = @base.class.human_attribute_name(attribute, :default => attr_name)
-            options = { :attribute => attr_name, :default => "%{attribute} %{message}" }
+      private
 
-            messages.each do |m|
-              if m =~ /^\^/
-                full_messages << m[1..-1]
-              else
-                full_messages << I18n.t(:"errors.format", options.merge(:message => m))
-              end
-            end
-          end
-        end
-
-        full_messages
+      # @private
+      def suppress_attribute_name?(attribute, message)
+        attribute.to_s != "base" && message.to_s.start_with?("^")
       end
     end
   end
-end # if defined?
+end

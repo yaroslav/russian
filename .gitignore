@@ -1,5 +1,11 @@
 .DS_Store
 *.swp
-pkg
-.bundle
-.rvmrc
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+gemfiles/*.lock

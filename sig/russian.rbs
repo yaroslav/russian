@@ -13,6 +13,10 @@ module Russian
   def self.strftime: (untyped object, ?Symbol format, **untyped) -> String
                    | (untyped object, Hash[untyped, untyped] format, **untyped) -> String
 
+  def self.date_strptime: (String string, ?String format) -> Date
+  def self.time_strptime: (String string, String format, ?Time now) -> Time
+  def self.datetime_strptime: (String string, ?String format) -> DateTime
+
   def self.pluralize: (Numeric n, *untyped variants) -> untyped
   def self.p: (Numeric n, *untyped variants) -> untyped
 
@@ -25,6 +29,12 @@ module Russian
 
   module Transliteration
     def self.transliterate: (String str) -> String
+  end
+
+  module Strptime
+    def self.date_strptime: (String string, ?String format) -> Date
+    def self.time_strptime: (String string, String format, ?Time now) -> Time
+    def self.datetime_strptime: (String string, ?String format) -> DateTime
   end
 
   module VERSION

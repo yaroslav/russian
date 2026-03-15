@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require "date"
 require "i18n"
+require "time"
 
 require_relative "russian/russian_rails"
+require_relative "russian/strptime"
 require_relative "russian/transliteration"
 require_relative "russian/version"
 
@@ -44,6 +47,8 @@ module Russian
   LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
   # @private
   LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
+  # @private
+  STRPTIME_DIRECTIVE_MODIFIERS = "-_0^#:"
 
   class << self
     # Returns the locale used by the gem.
@@ -201,6 +206,89 @@ module Russian
         end
 
       localize(object, **options)
+    end
+
+    # Parses a localized Russian date string with `Date.strptime`.
+    #
+    # The method understands Russian month and weekday names, normalizes them
+    # to the English names expected by Ruby's parser, and then delegates to
+    # `Date.strptime`. All non-localized directives are still handled by the
+    # native Ruby parser.
+    #
+    #
+    # Разбирает локализованную русскую строку даты через `Date.strptime`.
+    #
+    # Метод понимает русские названия месяцев и дней недели, нормализует их
+    # к английским именам, которые ожидает стандартный parser Ruby, а затем
+    # делегирует работу в `Date.strptime`. Все остальные директивы по-прежнему
+    # обрабатываются нативным parser'ом Ruby.
+    #
+    # @param string [String] Localized date string.
+    #   Локализованная строка даты.
+    # @param format [String] Optional `strptime` format string.
+    #   Строка формата `strptime`.
+    # @return [Date] Parsed date.
+    #   Разобранная дата.
+    #
+    # @example
+    #   Russian.date_strptime("01 апреля 2011", "%d %B %Y")
+    #   # => #<Date: 2011-04-01 ...>
+    def date_strptime(string, format = "%F")
+      Strptime.date_strptime(string, format)
+    end
+
+    # Parses a localized Russian date/time string with `Time.strptime`.
+    #
+    # The method uses the same Russian textual token normalization as
+    # {.date_strptime}, then delegates to `Time.strptime`.
+    #
+    #
+    # Разбирает локализованную русскую строку даты и времени через
+    # `Time.strptime`.
+    #
+    # Метод использует ту же нормализацию русских текстовых токенов, что и
+    # {.date_strptime}, а затем делегирует работу в `Time.strptime`.
+    #
+    # @param string [String] Localized date/time string.
+    #   Локализованная строка даты и времени.
+    # @param format [String] `strptime` format string.
+    #   Строка формата `strptime`.
+    # @param now [Time] Optional base time passed to `Time.strptime`.
+    #   Базовое значение времени, передаваемое в `Time.strptime`.
+    # @return [Time] Parsed time.
+    #   Разобранное время.
+    #
+    # @example
+    #   Russian.time_strptime("01 апреля 2011 23:45:05 +0300", "%d %B %Y %H:%M:%S %z")
+    #   # => 2011-04-01 23:45:05 +0300
+    def time_strptime(string, format, now = Time.now)
+      Strptime.time_strptime(string, format, now)
+    end
+
+    # Parses a localized Russian date/time string with `DateTime.strptime`.
+    #
+    # The method uses the same Russian textual token normalization as
+    # {.date_strptime}, then delegates to `DateTime.strptime`.
+    #
+    #
+    # Разбирает локализованную русскую строку даты и времени через
+    # `DateTime.strptime`.
+    #
+    # Метод использует ту же нормализацию русских текстовых токенов, что и
+    # {.date_strptime}, а затем делегирует работу в `DateTime.strptime`.
+    #
+    # @param string [String] Localized date/time string.
+    #   Локализованная строка даты и времени.
+    # @param format [String] Optional `strptime` format string.
+    #   Строка формата `strptime`.
+    # @return [DateTime] Parsed datetime.
+    #   Разобранный `DateTime`.
+    #
+    # @example
+    #   Russian.datetime_strptime("01 апреля 2011 23:45:05 +0300", "%d %B %Y %H:%M:%S %z")
+    #   # => #<DateTime: 2011-04-01T23:45:05+03:00 ...>
+    def datetime_strptime(string, format = "%FT%T%z")
+      Strptime.datetime_strptime(string, format)
     end
 
     # Returns the correct Russian plural form for a numeric value.

@@ -165,6 +165,42 @@ RSpec.describe Russian do
     end
   end
 
+  describe "localized strptime helpers" do
+    it "delegates date parsing to Russian::Strptime" do
+      expect(Russian::Strptime).to receive(:date_strptime).with("01 апреля 2011", "%d %B %Y")
+
+      described_class.date_strptime("01 апреля 2011", "%d %B %Y")
+    end
+
+    it "uses the default date format when none is provided" do
+      expect(Russian::Strptime).to receive(:date_strptime).with("2011-04-01", "%F")
+
+      described_class.date_strptime("2011-04-01")
+    end
+
+    it "delegates time parsing to Russian::Strptime" do
+      now = Time.now
+
+      expect(Russian::Strptime).to receive(:time_strptime).with("01 апреля 2011 23:45:05 +0300",
+        "%d %B %Y %H:%M:%S %z", now)
+
+      described_class.time_strptime("01 апреля 2011 23:45:05 +0300", "%d %B %Y %H:%M:%S %z", now)
+    end
+
+    it "delegates datetime parsing to Russian::Strptime" do
+      expect(Russian::Strptime).to receive(:datetime_strptime).with("01 апреля 2011 23:45:05 +0300",
+        "%d %B %Y %H:%M:%S %z")
+
+      described_class.datetime_strptime("01 апреля 2011 23:45:05 +0300", "%d %B %Y %H:%M:%S %z")
+    end
+
+    it "uses the default datetime format when none is provided" do
+      expect(Russian::Strptime).to receive(:datetime_strptime).with("2011-04-01T23:45:05+03:00", "%FT%T%z")
+
+      described_class.datetime_strptime("2011-04-01T23:45:05+03:00")
+    end
+  end
+
   describe "public pluralization helpers" do
     include_examples "a public pluralization helper", :p
     include_examples "a public pluralization helper", :pluralize

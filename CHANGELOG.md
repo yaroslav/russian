@@ -26,6 +26,7 @@ gem предназначен для современных версий Ruby (3.
 - Aligned the Russian currency decimal separator with CLDR and standard Russian numeric formatting by using a comma instead of a period.
 - Fixed `Russian.transliterate` so it preserves newlines instead of dropping them during tokenization [#57].
 - Fixed context-sensitive month-name selection in `strftime` formats with width and flag modifiers such as `%-e`, `%3d`, and `%_3d`. [#41] [#43] [Aleksei Savartsov](https://github.com/asavartsov)
+- Added localized versions of `strptime`: `date_strptime`, `time_strptime`, and `datetime_strptime` helpers, including case-insensitive parsing of Russian month and weekday names.
 - Speedup for transliteration [#42] (inspired by [Igor Bochkariov](https://github.com/ujifgc))
 - Speedup for pluralization.
 - Speedup for date format checks.
@@ -42,6 +43,7 @@ gem предназначен для современных версий Ruby (3.
 - Денежный десятичный разделитель для русской локали приведен в соответствие с CLDR и стандартным числовым форматом: теперь используется запятая вместо точки.
 - Исправлена `Russian.transliterate`: теперь при токенизации не теряются переводы строк [#57].
 - Исправление контекстного выбора формы названия месяца в `strftime`-форматах с модификаторами ширины и флагами вроде `%-e`, `%3d` и `%_3d`. [#41] [#43] [Алексей Саварцов](https://github.com/asavartsov)
+- Добавлены локализованные версии `strptime`: хелперы `date_strptime`, `time_strptime` и `datetime_strptime`, включая case-insensitive разбор русских названий месяцев и дней недели.
 - Ускорение транслитерации [#42] (основано на идее [Игоря Бочкарева](https://github.com/ujifgc))
 - Ускорение плюрализации.
 - Ускорение работы с datetime-форматами.

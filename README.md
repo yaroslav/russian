@@ -10,7 +10,7 @@ Russian language support for Ruby and Rails, using I18n library.
 
 ### If you don't speak Russian
 
-This code may still be useful for you and Ruby I18n community. You can learn how to provide support of "standalone" (as defined in [Unicode CLDR](https://unicode.org/cldr/)) month names with I18n and Rails without any custom backends or hacks, and how to use custom pluralization and transliteration locale settings. This library also includes a module (`Russian`) with a set of helpers to provide simplistic pluralization and `strftime` for Russian language, in a way that is easier than using I18n methods.
+This code may still be useful for you and Ruby I18n community. You can learn how to provide support of "standalone" (as defined in [Unicode CLDR](https://unicode.org/cldr/)) month names with I18n and Rails without any custom backends or hacks, and how to use custom pluralization and transliteration locale settings. This library also includes a module (`Russian`) with a set of helpers to provide simplistic pluralization, localized `strftime`, and localized `strptime` for Russian language, in a way that is easier than using I18n methods.
 
 # Что это
 
@@ -18,7 +18,7 @@ Russian - это библиотека для полноценной поддер
 
 Цель проекта - построить полноценную среду для русской локализации Ruby и Rails проектов, при этом используя минимально возможное количество хаков, сохраняя при этом поддержку локализации приложения на другие языки, а также форсировать включение в основную ветку I18n и Rails всех функций локализации, необходимых для работы с русским языком. Поскольку сделать в Rails поддержку довольно сложного языка для локализации (каким и является русский) сразу же было проблематично, вместе с командой gem i18n решено было обкатывать решение для русского языка на отдельном gem/плагине, и по мере возможности переносить наиболее общий функционал в "родительскую" библиотеку I18n. Таким образом, общей целью gem russian стала поддержка русского языка до тех пор, пока она не появится в самом I18n.
 
-Russian использует библиотеку I18n как зависимость gem'а, несколько хаков поверх Rails (хаки хелперов даты-времени, хак для сообщений валидации) и файлы переводов, а также набор хелперов, упрощающий работу с русским языком (простая плюрализация, простой strftime и др.).
+Russian использует библиотеку I18n как зависимость gem'а, несколько хаков поверх Rails (хаки хелперов даты-времени, хак для сообщений валидации) и файлы переводов, а также набор хелперов, упрощающий работу с русским языком (простая плюрализация, простой `strftime`, локализованный `strptime` и др.).
 
 Russian стремится быть минимально деструктивной для окружения и быть полностью совместимой с другими языками (таким образом, когда приложение использует Russian, оно остается полностью совместимым с Rails i18n).
 
@@ -258,6 +258,26 @@ Russian::strftime(Time.new(2008, 9, 1, 11, 12, 43, "+03:00"), "%B")
 Russian.strftime(Time.new(2008, 9, 1, 11, 12, 43, "+03:00"), format: :long)
 Russian.strftime(Time.new(2008, 9, 1, 11, 12, 43, "+03:00"), {format: :long})
 ```
+
+```ruby
+Russian::date_strptime
+Russian::time_strptime
+Russian::datetime_strptime
+
+Russian.date_strptime("01 апреля 2011", "%d %B %Y")
+=> #<Date: 2011-04-01 ...>
+Russian.time_strptime("пт, 01 апр. 2011 23:45:05 +0300", "%a, %d %b %Y %H:%M:%S %z")
+=> 2011-04-01 23:45:05 +0300
+Russian.datetime_strptime("Пятница, 01 апреля 2011 23:45:05 +0300", "%A, %d %B %Y %H:%M:%S %z")
+=> #<DateTime: 2011-04-01T23:45:05+03:00 ...>
+```
+
+Локализованные `strptime`-хелперы для `Date`, `Time` и `DateTime`.
+Понимают русские названия месяцев и дней недели, включая case-insensitive ввод.
+`format` у `date_strptime` и `datetime_strptime` можно опустить, а `now`
+у `time_strptime` остается опциональным, как и в `Time.strptime`.
+Все остальные `%`-директивы обрабатываются нативными parser'ами Ruby:
+`Date.strptime`, `Time.strptime` и `DateTime.strptime`.
 
 ```ruby
 Russian::pluralize

@@ -12,7 +12,7 @@ RSpec.describe "I18n-only integration", :integration do
       FileUtils.cp(fixture_path("smoke.rb"), dir)
       File.write(File.join(dir, "Gemfile"), gemfile_contents)
 
-      install_output, install_status = run_in_bundle(dir, "bundle", "install", "--local", "--quiet")
+      install_output, install_status = run_in_bundle(dir, "bundle", "install", "--quiet")
       expect(install_status.success?).to be(true), install_output
 
       smoke_output, smoke_status = run_in_bundle(dir, "bundle", "exec", RbConfig.ruby, "smoke.rb")

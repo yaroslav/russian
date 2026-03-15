@@ -29,7 +29,7 @@ gem предназначен для современных версий Ruby (3.
 - Speedup for transliteration [#42] (inspired by [Igor Bochkariov](https://github.com/ujifgc))
 - Speedup for pluralization.
 - Speedup for date format checks.
-- Bundled locale files are now added to `I18n.load_path` in a deterministic sorted order, which avoids filesystem-dependent ordering issues and helps tools such as `i18n-js`. [#56] [Andrey Novikov](https://github.com/andrey-novikov)
+- Bundled locale files are now added to `I18n.load_path` in a deterministic sorted order, which avoids filesystem-dependent ordering issues and helps tools such as `i18n-js`. [#56] [Andrey Novikov](https://github.com/Envek)
 - Migrated to GitHub Actions with Ruby and Rails matrix jobs testing.
 - Converted the main docs to Markdown and updated development tooling (modern RSpec, gemfiles for supported Rails lines).
 
@@ -45,7 +45,7 @@ gem предназначен для современных версий Ruby (3.
 - Ускорение транслитерации [#42] (основано на идее [Игоря Бочкарева](https://github.com/ujifgc))
 - Ускорение плюрализации.
 - Ускорение работы с datetime-форматами.
-- Файлы локали из поставки теперь добавляются в `I18n.load_path` в детерминированном отсортированном порядке: это убирает зависимость от порядка файловой системы и помогает инструментам вроде `i18n-js`. [#56] [Andrey Novikov](https://github.com/andrey-novikov)
+- Файлы локали из поставки теперь добавляются в `I18n.load_path` в детерминированном отсортированном порядке: это убирает зависимость от порядка файловой системы и помогает инструментам вроде `i18n-js`. [#56] [Andrey Novikov](https://github.com/Envek)
 - CI перенесен на GitHub Actions, тестируются все поддерживаемые версии Ruby и Rails.
 - Основная документация переведена в Markdown, обновлены инструменты разработки (современный RSpec, gemfiles для поддерживаемых версий Rails).
 

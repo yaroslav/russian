@@ -18,17 +18,29 @@
 #   :few  = 2-4, 22-24, 32-34...
 #   :many = 0, 5-20, 25-30, 35-40...
 #   :other = 1.31, 2.31, 5.31...
+from_2_to_4 = (2..4).to_a.freeze
+from_5_to_9 = (5..9).to_a.freeze
+from_11_to_14 = (11..14).to_a.freeze
+from_12_to_14 = (12..14).to_a.freeze
+
 {
   ru: {
     i18n: {
       plural: {
         rule: lambda do |n|
-          if n % 10 == 1 && n % 100 != 11
+          return :other unless n.is_a?(Numeric)
+
+          mod10 = n % 10
+          mod100 = n % 100
+
+          if mod10 == 1 && mod100 != 11
             :one
-          elsif [2, 3, 4].include?(n % 10) && ![12, 13, 14].include?(n % 100)
+          elsif from_2_to_4.include?(mod10) && !from_12_to_14.include?(mod100)
             :few
+          elsif mod10.zero? || from_5_to_9.include?(mod10) || from_11_to_14.include?(mod100)
+            :many
           else
-            ((n % 10).zero? || [5, 6, 7, 8, 9].include?(n % 10) || [11, 12, 13, 14].include?(n % 100)) ? :many : :other
+            :other
           end
         end
       }

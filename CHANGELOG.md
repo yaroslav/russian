@@ -24,7 +24,8 @@ gem предназначен для современных версий Ruby (3.
 - Full YARD documentation now available.
 - Refreshed Russian locale data and added missing modern keys.
 - Aligned the Russian currency decimal separator with CLDR and standard Russian numeric formatting by using a comma instead of a period.
-- Fixed `Russian.transliterate` so it preserves newlines instead of dropping them during tokenization.
+- Fixed `Russian.transliterate` so it preserves newlines instead of dropping them during tokenization [#57].
+- Fixed context-sensitive month-name selection in `strftime` formats with width and flag modifiers such as `%-e`, `%3d`, and `%_3d`. [#41] [#43] [Aleksei Savartsov](https://github.com/asavartsov)
 - Migrated to GitHub Actions with Ruby and Rails matrix jobs testing.
 - Converted the main docs to Markdown and updated development tooling (modern RSpec, gemfiles for supported Rails lines).
 
@@ -35,7 +36,8 @@ gem предназначен для современных версий Ruby (3.
 - Доступна документация к gem в формате YARD.
 - Обновлены русские locale-файлы, добавлены отсутствующие современные ключи.
 - Денежный десятичный разделитель для русской локали приведен в соответствие с CLDR и стандартным числовым форматом: теперь используется запятая вместо точки.
-- Исправлена `Russian.transliterate`: теперь при токенизации не теряются переводы строк.
+- Исправлена `Russian.transliterate`: теперь при токенизации не теряются переводы строк [#57].
+- Исправление контекстного выбора формы названия месяца в `strftime`-форматах с модификаторами ширины и флагами вроде `%-e`, `%3d` и `%_3d`. [#41] [#43] [Алексей Саварцов](https://github.com/asavartsov)
 - CI перенесен на GitHub Actions, тестируются все поддерживаемые версии Ruby и Rails.
 - Основная документация переведена в Markdown, обновлены инструменты разработки (современный RSpec, gemfiles для поддерживаемых версий Rails).
 

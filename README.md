@@ -306,7 +306,7 @@ BUNDLE_GEMFILE=gemfiles/rails_8_1.gemfile bundle exec rspec
 
 # Авторы и благодарности
 
-[Ярослав Маркин](http://yaroslav.io) при участии: [Юлика Тарханова](https://blog.julik.nl), Евгения Пименова, [Дмитрия Смалько](https://github.com/dsmalko), [Алексея Фортуны](https://github.com/dadooda), Антона Агеева, [Александра Семенова](https://github.com/alsemyonov), [valodzka](https://github.com/valodzka), [Николая Немшилова](https://github.com/MadRabbit), [Дмитрия Куликова](https://github.com/dima4p), [Алексея Саварцова](https://github.com/asavartsov), [Андрея Новикова](https://github.com/Envek).
+[Ярослав Маркин](http://yaroslav.io) при участии: [Юлика Тарханова](https://blog.julik.nl), Евгения Пименова, [Дмитрия Смалько](https://github.com/dsmalko), [Алексея Фортуны](https://github.com/dadooda), Антона Агеева, [Александра Семенова](https://github.com/alsemyonov), [valodzka](https://github.com/valodzka), [Николая Немшилова](https://github.com/MadRabbit), [Дмитрия Куликова](https://github.com/dima4p), [Алексея Саварцова](https://github.com/asavartsov), [Андрея Новикова](https://github.com/Envek), [Игорь Бочкарев](https://github.com/ujifgc).
 
 Огромное спасибо:
 

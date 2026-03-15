@@ -63,6 +63,8 @@ module Russian
     # @private
     UPPER = UPPER_SINGLE.merge(UPPER_MULTI).freeze
     # @private
+    TITLE = UPPER.transform_values(&:capitalize).freeze
+    # @private
     MULTI_KEYS = LOWER_MULTI.merge(UPPER_MULTI).keys.sort_by(&:length).reverse.freeze
     # @private
     TOKEN_RE = /#{Regexp.union(MULTI_KEYS).source}|./m
@@ -90,14 +92,14 @@ module Russian
       tokens = str.scan(TOKEN_RE)
 
       tokens.each_with_index.map do |token, index|
-        next_token = tokens[index + 1]
+        lower = LOWER[token]
+        next lower if lower
 
-        if UPPER.key?(token) && LOWER.key?(next_token)
-          # combined case
-          UPPER.fetch(token).downcase.capitalize
-        else
-          UPPER[token] || LOWER[token] || token
-        end
+        upper = UPPER[token]
+        next TITLE[token] if upper && LOWER[tokens[index + 1]]
+        next upper if upper
+
+        token
       end.join
     end
   end

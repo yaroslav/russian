@@ -26,6 +26,7 @@ gem предназначен для современных версий Ruby (3.
 - Aligned the Russian currency decimal separator with CLDR and standard Russian numeric formatting by using a comma instead of a period.
 - Fixed `Russian.transliterate` so it preserves newlines instead of dropping them during tokenization [#57].
 - Fixed context-sensitive month-name selection in `strftime` formats with width and flag modifiers such as `%-e`, `%3d`, and `%_3d`. [#41] [#43] [Aleksei Savartsov](https://github.com/asavartsov)
+- Speedup for transliteration [#42] (inspired by [Igor Bochkariov](https://github.com/ujifgc))
 - Bundled locale files are now added to `I18n.load_path` in a deterministic sorted order, which avoids filesystem-dependent ordering issues and helps tools such as `i18n-js`. [#56] [Andrey Novikov](https://github.com/andrey-novikov)
 - Migrated to GitHub Actions with Ruby and Rails matrix jobs testing.
 - Converted the main docs to Markdown and updated development tooling (modern RSpec, gemfiles for supported Rails lines).
@@ -39,6 +40,7 @@ gem предназначен для современных версий Ruby (3.
 - Денежный десятичный разделитель для русской локали приведен в соответствие с CLDR и стандартным числовым форматом: теперь используется запятая вместо точки.
 - Исправлена `Russian.transliterate`: теперь при токенизации не теряются переводы строк [#57].
 - Исправление контекстного выбора формы названия месяца в `strftime`-форматах с модификаторами ширины и флагами вроде `%-e`, `%3d` и `%_3d`. [#41] [#43] [Алексей Саварцов](https://github.com/asavartsov)
+- Ускорение транслитерации [#42] (основано на идее [Игоря Бочкарева](https://github.com/ujifgc))
 - Файлы локали из поставки теперь добавляются в `I18n.load_path` в детерминированном отсортированном порядке: это убирает зависимость от порядка файловой системы и помогает инструментам вроде `i18n-js`. [#56] [Andrey Novikov](https://github.com/andrey-novikov)
 - CI перенесен на GitHub Actions, тестируются все поддерживаемые версии Ruby и Rails.
 - Основная документация переведена в Markdown, обновлены инструменты разработки (современный RSpec, gemfiles для поддерживаемых версий Rails).

@@ -115,6 +115,10 @@ RSpec.describe Russian do
       expect(I18n.load_path & locale_files).to match_array(locale_files)
       expect(I18n.load_path.count { |path| locale_files.include?(path) }).to eq(locale_files.size)
     end
+
+    it "loads bundled locale files in a deterministic order" do
+      expect(described_class.send(:locale_files)).to eq(described_class.send(:locale_files).sort)
+    end
   end
 
   describe "translation helpers" do

@@ -1,7 +1,14 @@
-# -*- encoding: utf-8 -*- 
+# frozen_string_literal: true
 
-$TESTING=true
-$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require "date"
+require_relative "../lib/russian"
 
-require 'russian'
-
+RSpec.configure do |config|
+  config.disable_monkey_patching!
+  config.expect_with(:rspec) do |expectations|
+    expectations.syntax = :expect
+  end
+  config.mock_with(:rspec) do |mocks|
+    mocks.syntax = :expect
+  end
+end

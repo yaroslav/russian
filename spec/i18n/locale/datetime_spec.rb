@@ -1,106 +1,145 @@
-# -*- encoding: utf-8 -*- 
+# frozen_string_literal: true
 
-require File.dirname(__FILE__) + '/../../spec_helper'
+require_relative "../../spec_helper"
 
-describe I18n, "Russian Date/Time localization" do
-  before(:all) do
+RSpec.describe I18n, "Russian Date/Time localization" do
+  before do
     Russian.init_i18n
-    @date = Date.parse("1985-12-01")
-    @time = Time.local(1985, 12, 01, 16, 05)
   end
 
+  let(:date) { Date.parse("1985-12-01") }
+  let(:march_date) { Date.parse("1985-03-01") }
+  let(:time) { Time.local(1985, 12, 1, 16, 5) }
+
   describe "with date formats" do
-    it "should use default format" do
-      l(@date).should == "01.12.1985"
-    end
+    it "uses named date formats" do
+      [
+        [nil, "01.12.1985"],
+        [:short, "01 дек."],
+        [:long, "01 декабря 1985"]
+      ].each do |format, expected|
+        localized = format ? l(date, format: format) : l(date)
 
-    it "should use short format" do
-      l(@date, :format => :short).should == "01 дек."
-    end
-
-    it "should use long format" do
-      l(@date, :format => :long).should == "01 декабря 1985"
+        expect(localized).to eq(expected)
+      end
     end
   end
 
   describe "with date day names" do
-    it "should use day names" do
-      l(@date, :format => "%d %B (%A)").should == "01 декабря (воскресенье)"
-      l(@date, :format => "%d %B %Y года было %A").should == "01 декабря 1985 года было воскресенье"
+    it "uses day names" do
+      {
+        "%d %B (%A)" => "01 декабря (воскресенье)",
+        "%d %B %Y года было %A" => "01 декабря 1985 года было воскресенье"
+      }.each do |format, expected|
+        expect(l(date, format: format)).to eq(expected)
+      end
     end
 
-    it "should use standalone day names" do
-      l(@date, :format => "%A").should == "Воскресенье"
-      l(@date, :format => "%A, %d %B").should == "Воскресенье, 01 декабря"
+    it "uses standalone day names" do
+      {
+        "%A" => "Воскресенье",
+        "%A, %d %B" => "Воскресенье, 01 декабря"
+      }.each do |format, expected|
+        expect(l(date, format: format)).to eq(expected)
+      end
     end
 
-    it "should use abbreviated day names" do
-      l(@date, :format => "%a").should == "Вс"
-      l(@date, :format => "%a, %d %b %Y").should == "Вс, 01 дек. 1985"
+    it "uses abbreviated day names" do
+      {
+        "%a" => "Вс",
+        "%a, %d %b %Y" => "Вс, 01 дек. 1985"
+      }.each do |format, expected|
+        expect(l(date, format: format)).to eq(expected)
+      end
     end
   end
 
   describe "with month names" do
-    it "should use month names" do
-      l(@date, :format => "%d %B").should == "01 декабря"
-      l(@date, :format => "%-d %B").should == "1 декабря"
+    it "resolves standalone month name arrays without format context" do
+      expect(I18n.t(:"date.month_names", locale: Russian.locale)[12]).to eq("Декабрь")
+      expect(I18n.t(:"date.abbr_month_names", locale: Russian.locale)[3]).to eq("март")
+    end
 
-      if RUBY_VERSION > "1.9.2"
-        l(@date, :format => "%1d %B").should == "1 декабря"
-        l(@date, :format => "%2d %B").should == "01 декабря"
+    it "uses month names" do
+      {
+        "%d %B" => "01 декабря",
+        "%-d %B" => "1 декабря",
+        "%1d %B" => "1 декабря",
+        "%2d %B" => "01 декабря",
+        "%e %B %Y" => " 1 декабря 1985",
+        "<b>%d</b> %B" => "<b>01</b> декабря",
+        "<strong>%e</strong> %B %Y" => "<strong> 1</strong> декабря 1985",
+        "А было тогда %eе число %B %Y" => "А было тогда  1е число декабря 1985"
+      }.each do |format, expected|
+        expect(l(date, format: format)).to eq(expected)
       end
-
-      l(@date, :format => "%e %B %Y").should == " 1 декабря 1985"
-      l(@date, :format => "<b>%d</b> %B").should == "<b>01</b> декабря"
-      l(@date, :format => "<strong>%e</strong> %B %Y").should == "<strong> 1</strong> декабря 1985"
-      l(@date, :format => "А было тогда %eе число %B %Y").should == "А было тогда  1е число декабря 1985"
     end
 
-    it "should use standalone month names" do
-      l(@date, :format => "%B").should == "Декабрь"
-      l(@date, :format => "%B %Y").should == "Декабрь 1985"
+    it "uses standalone month names" do
+      {
+        "%B" => "Декабрь",
+        "%B %Y" => "Декабрь 1985"
+      }.each do |format, expected|
+        expect(l(date, format: format)).to eq(expected)
+      end
     end
 
-    it "should use abbreviated month names" do
-      @date = Date.parse("1985-03-01")
-      l(@date, :format => "%d %b").should == "01 марта"
-      l(@date, :format => "%e %b %Y").should == " 1 марта 1985"
-      l(@date, :format => "<b>%d</b> %b").should == "<b>01</b> марта"
-      l(@date, :format => "<strong>%e</strong> %b %Y").should == "<strong> 1</strong> марта 1985"
+    it "uses abbreviated month names" do
+      {
+        "%d %b" => "01 марта",
+        "%e %b %Y" => " 1 марта 1985",
+        "<b>%d</b> %b" => "<b>01</b> марта",
+        "<strong>%e</strong> %b %Y" => "<strong> 1</strong> марта 1985"
+      }.each do |format, expected|
+        expect(l(march_date, format: format)).to eq(expected)
+      end
     end
 
-    it "should use standalone abbreviated month names" do
-      @date = Date.parse("1985-03-01")
-      l(@date, :format => "%b").should == "март"
-      l(@date, :format => "%b %Y").should == "март 1985"
+    it "uses standalone abbreviated month names" do
+      {
+        "%b" => "март",
+        "%b %Y" => "март 1985"
+      }.each do |format, expected|
+        expect(l(march_date, format: format)).to eq(expected)
+      end
+    end
+
+    it "takes width and flag modifiers into account" do
+      {
+        "%-e %B %Y" => "1 марта 1985",
+        "%3d %B %Y" => "001 марта 1985",
+        "%_3d %B %Y" => "  1 марта 1985",
+        "%3_d %B %Y" => "%3_d Март 1985"
+      }.each do |format, expected|
+        expect(l(march_date, format: format)).to eq(expected)
+      end
     end
   end
 
-  it "should define default date components order: day, month, year" do
-    I18n.backend.translate(Russian.locale, :"date.order").should == [:day, :month, :year]
+  it "defines the default date components order as day, month, year" do
+    expect(I18n.backend.translate(Russian.locale, :"date.order")).to eq(%i[day month year])
   end
 
   describe "with time formats" do
-    it "should use default format" do
-      l(@time).should =~ /^Вс, 01 дек. 1985, 16:05:00/
+    it "uses named time formats" do
+      expect(l(time)).to match(/^Вс, 01 дек. 1985, 16:05:00/)
+
+      {
+        short: "01 дек., 16:05",
+        long: "01 декабря 1985, 16:05"
+      }.each do |format, expected|
+        expect(l(time, format: format)).to eq(expected)
+      end
     end
 
-    it "should use short format" do
-      l(@time, :format => :short).should == "01 дек., 16:05"
-    end
-
-    it "should use long format" do
-      l(@time, :format => :long).should == "01 декабря 1985, 16:05"
-    end
-
-    it "should define am and pm" do
-      I18n.backend.translate(Russian.locale, :"time.am").should_not be_nil
-      I18n.backend.translate(Russian.locale, :"time.pm").should_not be_nil
+    it "defines am and pm" do
+      %i[am pm].each do |period|
+        expect(I18n.backend.translate(Russian.locale, :"time.#{period}")).to be_a(String)
+      end
     end
   end
 
-  protected
-    def l(object, options = {})
-      I18n.l(object, options.merge( { :locale => Russian.locale }))
-    end
+  def l(object, **options)
+    I18n.l(object, **options.merge(locale: Russian.locale))
+  end
 end

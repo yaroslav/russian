@@ -1,51 +1,67 @@
-# -*- encoding: utf-8 -*- 
+# frozen_string_literal: true
 
-require File.dirname(__FILE__) + '/spec_helper'
+require_relative "spec_helper"
 
-describe Russian do
+RSpec.describe Russian do
   describe "transliteration" do
-    def t(str)
-      Russian::transliterate(str)
+    def transliterate(str)
+      described_class.transliterate(str)
     end
 
-    %w(transliterate translit).each do |method|
-      it "'#{method}' method should perform transliteration" do
-        str = mock(:str)
-        Russian::Transliteration.should_receive(:transliterate).with(str)
-        Russian.send(method, str)
+    %i[transliterate translit].each do |method|
+      it "#{method} delegates to Russian::Transliteration" do
+        str = double("string")
+
+        expect(Russian::Transliteration).to receive(:transliterate).with(str)
+
+        described_class.public_send(method, str)
       end
     end
 
-    # These tests are from rutils, <http://rutils.rubyforge.org>.
-
-    it "should transliterate properly" do
-      t("Это просто некий текст").should == "Eto prosto nekiy tekst"
-      t("щ").should == "sch"
-      t("стансы").should == "stansy"
-      t("упущение").should == "upuschenie"
-      t("ш").should == "sh"
-      t("Ш").should == "SH"
-      t("ц").should == "ts"
-    end
-    
-    it "should properly transliterate mixed russian-english strings" do
-      t("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something").should == 
-        "Eto kusok stroki russkih bukv v peremeshku s latinizey i ampersandom (pozor!) & something"      
-    end
-    
-    it "should properly transliterate mixed case chars in a string" do
-      t("НЕВЕРОЯТНОЕ УПУЩЕНИЕ").should == "NEVEROYATNOE UPUSCHENIE"
-      t("Невероятное Упущение").should == "Neveroyatnoe Upuschenie"
-      t("Шерстяной Заяц").should == "Sherstyanoy Zayats"
-      t("Н.П. Шерстяков").should == "N.P. Sherstyakov"
-      t("ШАРОВАРЫ").should == "SHAROVARY"
+    it "transliterates basic Cyrillic strings" do
+      {
+        "Это просто некий текст" => "Eto prosto nekiy tekst",
+        "щ" => "sch",
+        "стансы" => "stansy",
+        "упущение" => "upuschenie",
+        "ш" => "sh",
+        "Ш" => "SH",
+        "ц" => "ts"
+      }.each do |source, expected|
+        expect(transliterate(source)).to eq(expected)
+      end
     end
 
-    it "should work for multi-char substrings" do
-      t("38 воробьёв").should == "38 vorobiev"
-      t("Вася Воробьёв").should == "Vasya Vorobiev"
-      t("Алябьев").should == "Alyabiev"
-      t("АЛЯБЬЕВ").should == "ALYABIEV"
+    it "transliterates mixed russian-english strings" do
+      expect(transliterate("Это кусок строки русских букв v peremeshku s latinizey i амперсандом (pozor!) & something"))
+        .to eq("Eto kusok stroki russkih bukv v peremeshku s latinizey i ampersandom (pozor!) & something")
+    end
+
+    it "transliterates mixed-case strings" do
+      {
+        "НЕВЕРОЯТНОЕ УПУЩЕНИЕ" => "NEVEROYATNOE UPUSCHENIE",
+        "Невероятное Упущение" => "Neveroyatnoe Upuschenie",
+        "Шерстяной Заяц" => "Sherstyanoy Zayats",
+        "Н.П. Шерстяков" => "N.P. Sherstyakov",
+        "ШАРОВАРЫ" => "SHAROVARY"
+      }.each do |source, expected|
+        expect(transliterate(source)).to eq(expected)
+      end
+    end
+
+    it "works for multi-character substrings" do
+      {
+        "38 воробьёв" => "38 vorobiev",
+        "Вася Воробьёв" => "Vasya Vorobiev",
+        "Алябьев" => "Alyabiev",
+        "АЛЯБЬЕВ" => "ALYABIEV"
+      }.each do |source, expected|
+        expect(transliterate(source)).to eq(expected)
+      end
+    end
+
+    it "preserves newlines" do
+      expect(transliterate("Привет\nмир")).to eq("Privet\nmir")
     end
   end
 end

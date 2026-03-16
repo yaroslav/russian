@@ -1,9 +1,8 @@
-source :rubygems
+# frozen_string_literal: true
 
-gem 'rake'
-gem 'i18n', '>= 0.5.0'
-gem 'rspec', '~> 2.7.0'
+source "https://rubygems.org"
 
-# Rails 3+
-gem 'activesupport', '~> 3.0.0'
+gemspec
+gem "rails", "~> 8.1.0"
 
+eval_gemfile "gemfiles/standard.gemfile"

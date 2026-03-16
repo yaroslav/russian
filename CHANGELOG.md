@@ -1,0 +1,203 @@
+## [1.0.0] "Remastered" - 2026-03-16 
+
+A remaster of the library, 15 years later.
+
+It turned out that the library is still in use, even on recent Ruby versions, despite some of its helpers having been broken for a long time.
+On top of that, I wanted to finally release version 1.0 and close the loop.
+
+As a result, the `russian` gem has been largely rewritten while preserving the old API: the `Russian` module methods, and even optional support for the old `strftime` signature.
+The gem now targets modern versions of Ruby (3.2+, 4.0+) and Rails (7.2 and 8.0+).
+
+
+Ремастер библиотеки 15 лет спустя.
+
+Выяснилось, что библиотекой пользуются до сих пор, даже на свежих версиях Ruby, несмотря на то, что некоторые хелперы давно перестали работать.
+Кроме того, хотелось бы выпустить версию 1.0 для закрытия гештальта.
+
+В итоге, gem russian большей частью переписан, но с сохранением старого API: методов модуля Russian, и даже с опциональной поддержкой старой сигнатуры `strftime`.
+gem предназначен для современных версий Ruby (3.2+, 4.0+) и Rails (7.2 и 8.0+).
+
+
+- The library is now designed for Ruby 3.2, 3.3, 3.4 and 4.0.
+- Support Rails integration for Rails 7.2, 8.0 and 8.1.
+- Added RBS signatures for the public API.
+- Full YARD documentation now available.
+- Refreshed Russian locale data and added missing modern keys.
+- Aligned the Russian currency decimal separator with CLDR and standard Russian numeric formatting by using a comma instead of a period.
+- Fixed `Russian.transliterate` so it preserves newlines instead of dropping them during tokenization [#57].
+- Fixed context-sensitive month-name selection in `strftime` formats with width and flag modifiers such as `%-e`, `%3d`, and `%_3d`. [#41] [#43] [Aleksei Savartsov](https://github.com/asavartsov)
+- Added localized versions of `strptime`: `date_strptime`, `time_strptime`, and `datetime_strptime` helpers, including case-insensitive parsing of Russian month and weekday names.
+- Speedup for transliteration [#42] (inspired by [Igor Bochkariov](https://github.com/ujifgc))
+- Speedup for pluralization.
+- Speedup for date format checks.
+- Bundled locale files are now added to `I18n.load_path` in a deterministic sorted order, which avoids filesystem-dependent ordering issues and helps tools such as `i18n-js`. [#56] [Andrey Novikov](https://github.com/Envek)
+- Cleaned up Russian comparison validation messages (`greater_than`, `greater_than_or_equal_to`, `less_than`, `less_than_or_equal_to`) for more natural wording. [#47] [Valentin Vasilyev](https://github.com/Valve)
+- Migrated to GitHub Actions with Ruby and Rails matrix jobs testing.
+- Converted the main docs to Markdown and updated development tooling (modern RSpec, gemfiles for supported Rails lines).
+
+
+- Теперь библиотека предназначена для Ruby 3.2, 3.3, 3.4 и 4.0.
+- Поддержка интеграции с Rails 7.2, 8.0 и 8.1.
+- Добавлены RBS-сигнатуры для публичного API.
+- Доступна документация к gem в формате YARD.
+- Обновлены русские locale-файлы, добавлены отсутствующие современные ключи.
+- Денежный десятичный разделитель для русской локали приведен в соответствие с CLDR и стандартным числовым форматом: теперь используется запятая вместо точки.
+- Исправлена `Russian.transliterate`: теперь при токенизации не теряются переводы строк [#57].
+- Исправление контекстного выбора формы названия месяца в `strftime`-форматах с модификаторами ширины и флагами вроде `%-e`, `%3d` и `%_3d`. [#41] [#43] [Алексей Саварцов](https://github.com/asavartsov)
+- Добавлены локализованные версии `strptime`: хелперы `date_strptime`, `time_strptime` и `datetime_strptime`, включая case-insensitive разбор русских названий месяцев и дней недели.
+- Ускорение транслитерации [#42] (основано на идее [Игоря Бочкарева](https://github.com/ujifgc))
+- Ускорение плюрализации.
+- Ускорение работы с datetime-форматами.
+- Файлы локали из поставки теперь добавляются в `I18n.load_path` в детерминированном отсортированном порядке: это убирает зависимость от порядка файловой системы и помогает инструментам вроде `i18n-js`. [#56] [Andrey Novikov](https://github.com/Envek)
+- Исправлены формулировки русских сообщений валидации для сравнений (`greater_than`, `greater_than_or_equal_to`, `less_than`, `less_than_or_equal_to`) на более естественные. [#47] [Валентин Васильев](https://github.com/Valve)
+- CI перенесен на GitHub Actions, тестируются все поддерживаемые версии Ruby и Rails.
+- Основная документация переведена в Markdown, обновлены инструменты разработки (современный RSpec, gemfiles для поддерживаемых версий Rails).
+
+## [0.6.0] "Haters Gonna Hate" - 2011-10-22
+
+- i18n gem is now a dependency (not using vendored gem anymore)
+- I18n::Backend::Advanced custom backend is no longer used. Russian Ruby i18n files are portable for the first time; using Russian language with i18n does not require a custom backend with language-specific hacks anymore. It became possible thanks to lambda translations support in i18n gem (<https://svenfuchs.com/2009/7/12/ruby-i18n-gem-hits-0-2-0>) and inclusion of Pluralization backend. Notice: ff you are using a custom backend, don't forget to include I18n::Backend::Pluralization and I18n::Backend::Transliterator modules
+- Pluralization is now delegated to I18n backend
+- Transliteration is now delegated to I18n backend (using Russian::Transliteration, of course)
+- Minor gem russian version is now bumped to be in sync with minor version of required i18n gem
+- UPGRADING: Rails 2 is no longer supported, use older versions of the gem
+- UPGRADING: gem russian does not force Russian locale anymore, use I18n::locale/default_locale methods or config.i18n.default_locale = :ru in your Rails environment. Methods with forced encoding still can be used as Russian::translate, Russian::localize
+- Locale files and hacks (date helper, custom ActiveModel error message) updated to support Rails 3.0 and 3.1
+- README updated
+- Remove i18n_label plugin (labels i18n is supported in latest Rails releases)
+
+
+- gem i18n теперь является зависимостью для gem russian, а не включается в vendor, как раньше
+- Собственный бекенд I18n::Backend::Advanced больше не используется. Русские файлы локали i18n для Ruby наконец-то стали переносимыми и не требуют собственного бекенда и хаков для поддержки языка. Это стало возможным благодаря поддержке lambda-переводов в i18n (<https://svenfuchs.com/2009/7/12/ruby-i18n-gem-hits-0-2-0>) и включению Pluralization бекенда в gem i18n. Обратите внимание: если вы используете собственный бекенд (отличный от стандартного), не забудьте включить модули I18n::Backend::Pluralization и I18n::Backend::Transliterator
+- Механизм плюрализации теперь обеспечивает стандартный бекенд I18n
+- Механизм транслитерации теперь обеспечивает стандартный бекенд I18n (с помощью Russian::Transliteration, конечно)
+- Минорная версия gem russian повышена до текущей минорной версии i18n
+- UPGRADING: Rails 2 больше не поддерживается, используйте старые версии gem'а
+- UPGRADING: gem russian больше не форсирует использование русской локали, используйте методы I18n::locale/default_locale или config.i18n.default_locale = :ru в настройках окружения Rails. Если нужно форсировать русскую локаль, можно по-прежнему пользоваться методами Russian::translate, Russian::localize
+- Обновлены файлы переводов и хаки (выбор месяца в date helper, кастомные сообщения об ошибках ActiveModel) для поддержки Rails 3.0 и 3.1
+- Обновлен и переписан README
+- Удален плагин i18n_label (перевод label уже поддерживается в последних версиях Rails)
+
+## [0.2.7] - 2010-05-05
+
+- Fix using of standalone/non-standalone month names with %d/%e surroundings.
+
+
+- Улучшено распознавание формы названия месяца с strftime макросами %d/%e.
+
+## [0.2.6] - 2010.03.25
+
+- Minimum Rails 3.0b support: Added fourth parameter (options) defaulting to nil to Advanced backend localize method for compliance with i18n-0.3 [Nikolay V. Nemshilov](https://github.com/MadRabbit)
+
+
+- Минимальная поддержка Rails 3.0b: В метод localize бекенда Advanced добавлен четвертый параметр, для совместимости с i18n-0.3. По умолчанию равен nil. [Николай Немшилов](https://github.com/MadRabbit)
+
+## [0.2.5] - 2009-12-23
+
+- Added support for multi-char substrings in Russian.transliterate [Alex Fortuna](https://github.com/dadooda)
+- Rails 2.3.5 error messages overloading compatibility (error messages overloading) (thanks Alex Eagle for bugreport)
+
+
+- Russian.transliterate: Теперь можно добавлять правила матчинга подстрок из нескольких символов ("Воробьёв", "Алябьев"). [Alex Fortuna](https://github.com/dadooda)
+- Rails 2.3.5: совместимость для перегрузки сообщений об ошибках (багрепорт - Александр Орел)
+
+## [0.2.4] - 2009.11.12
+
+- Revert nested validation errors patch
+
+
+- Убран патч для вложенных сообщений валидации (не работал с Rails 2.3.3 и ниже)
+
+## [0.2.3] - 2009.11.09
+
+- Improve ActiveRecord translations [Dmitri Koulikoff](https://github.com/dima4p)
+- Fix nested validation errors with custom error message hack for Rails < 2.3.4 [valodzka](https://github.com/valodzka)
+- Added almost_x_years datetime translation
+
+
+- Улучшен перевод ActiveRecord [Dmitri Koulikoff](https://github.com/dima4p)
+- Исправлена ошибка, возникающая при вложенных сообщениях валидации при использовании хака для Rails < 2.3.4 [valodzka](https://github.com/valodzka)
+- Добавлен перевод для ключа даты/времени almost_x_years
+
+## [0.2.2 ]- 2009.09.17
+
+- Fix ^-prefixed error messages handling on Rails 2.3.4
+
+
+- Для Rails 2.3.4 исправлена работа сообщений валидаций, начинающихся с "^"
+
+## [0.2.1] - 2009.09.05
+
+- Rails 2.3.4 compat (ActiveRecord::Error) and deprecation warning (use errors.full_messages.format from now on) [Alexander Semyonov](https://github.com/alsemyonov)/Yaroslav Markin
+- Added a couple of missing translations from Rails 2.3.4
+- transliteration: Ы now transforms to Y [Alex Fortuna](https://github.com/dadooda)
+
+
+- Совместимость с Rails 2.3.4 (ActiveRecord::Error) и устаревшее форматирование через "^" (теперь надо использовать errors.full_messages.format) [Alexander Semyonov](https://github.com/alsemyonov)/Yaroslav Markin]
+- Добавлена пара недостающих переводов из Rails 2.3.4
+- транслитерация: Ы теперь превращается в Y [Alex Fortuna](https://github.com/dadooda)
+
+## [0.2.0] - 2009.03.16
+
+- number_to_human_size() translations: using edge format (Rails 2.3)
+- i18n gem updated (0.1.3)
+- Rails 2.3 compat
+
+
+- Перевод для number_to_human_size(): испольуется форматирование из edge (Rails 2.3)
+- Обновлен gem i18n до версии 0.1.3
+- Совместимость с Rails 2.3
+
+## [0.1.3] - 2008.12.27
+
+- Add support.array.words_connector/two_words_connector/last_word_connector (Array#to_sentence) (Rails Edge)
+- Add datetime.prompts translations (Rails Edge)
+
+
+- Добавлены переводы для Array#to_sentence (Rails Edge)
+- Добавлены переводы для datetime.prompts (Rails Edge)
+
+## [0.1.2] - 2008.12.04
+
+Fixed I18n.load_path ordering, translations shipped with russian gem will no longer overwrite your own translations (thanks Dmitrij Smalko for bugreport).
+
+
+Поправлено добавление переводов russian в I18n.load_path, теперь переводы из russian не будут замещать ваши собственные переводы (спасибо Dmitrij Smalko за обнаружение ошибки).
+
+## [0.1.1] - 2008.11.24
+
+Added number.human.storage_units translation key (Rails Edge).
+
+
+Добавлен ключ number.human.storage_units (появился в Rails Edge).
+
+## [0.1.0] - 2008.11.22
+
+No changes, Rails 2.2 released
+
+## [0.0.9] - 2008.11.21
+
+- Updated I18n gem due to locale changes (0.1.1)
+- NB! I18n changed default locale from :'en-US' to :'en', same recommended for other locales by default
+- NB!! Russian locale is now :'ru' NOT :'ru-RU', update your locale files.
+
+
+- I18n gem обновился до 0.1.1 в связи с изменениями в названиях локалей
+- ВНИМАНИЕ: локаль по умолчанию I18n теперь называется не :'en-US' а :'en', такой же способ именования рекомендуется и для других локалей
+- ВНИМАНИЕ! Локаль русского языка теперь называется :'ru' а не :'ru-RU'. Не забудьте обновить ваши файлы переводов.
+
+## [0.0.8] - 2008.11.20
+
+- Introduce transliteration (Russian.translit, Russian.transliterate)
+- Add an ActiveSupport hack for #parameterize
+
+
+- Добавилась поддержка транслитерации (Russian.translit, Russian.transliterate)
+- Добавился хак для #parameterize ActiveSupport (генерация "красивых" URL)
+
+## [0.0.7] - 2008.11.09
+
+- Updated I18n gem
+
+
+- Новая версия gem I18n

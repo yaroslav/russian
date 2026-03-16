@@ -1,0 +1,10 @@
+<%= select_date(@date) %>
+<%= select_datetime(@datetime, discard_day: true) %>
+<%= select_month(@march_date, use_short_month: true) %>
+<%= select_date(@march_date, use_short_month: true) %>
+
+<%= form_with model: DummyRecord.new, url: "/widget" do |f| %>
+  <%= f.date_select :published_on, default: @date %>
+<% end %>
+
+<%= @record.errors.full_messages.join(" | ") %>

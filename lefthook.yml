@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    standardrb:
+      tags: ruby style
+      glob: "*.{rb,rake}"
+      run: bundle exec standardrb {staged_files}

@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    name: Publish gem and create GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
+
+      - name: Prepare release metadata
+        id: release
+        shell: bash
+        run: |
+          VERSION="$(bundle exec ruby -e 'require_relative \"lib/russian/version\"; puts Russian::VERSION::STRING')"
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "notes_path=release_notes.md" >> "$GITHUB_OUTPUT"
+          bundle exec ruby script/release_notes > release_notes.md
+
+      - name: Publish gem to RubyGems.org
+        uses: rubygems/release-gem@v1
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_NOTES_PATH: ${{ steps.release.outputs.notes_path }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          gh release create "$RELEASE_TAG" pkg/*.gem \
+            --title "$RELEASE_TAG" \
+            --verify-tag \
+            --notes-file "$RELEASE_NOTES_PATH"

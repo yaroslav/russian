@@ -1,0 +1,46 @@
+module Russian
+  LOCALE: :ru
+
+  def self.locale: () -> :ru
+  def self.init_i18n: () -> void
+
+  def self.translate: (String | Symbol key, ?Hash[untyped, untyped] options, **untyped) -> untyped
+  def self.t: (String | Symbol key, ?Hash[untyped, untyped] options, **untyped) -> untyped
+
+  def self.localize: (untyped object, ?Hash[untyped, untyped] options, **untyped) -> String
+  def self.l: (untyped object, ?Hash[untyped, untyped] options, **untyped) -> String
+
+  def self.strftime: (untyped object, ?Symbol format, **untyped) -> String
+                   | (untyped object, Hash[untyped, untyped] format, **untyped) -> String
+
+  def self.date_strptime: (String string, ?String format) -> Date
+  def self.time_strptime: (String string, String format, ?Time now) -> Time
+  def self.datetime_strptime: (String string, ?String format) -> DateTime
+
+  def self.pluralize: (Numeric n, *untyped variants) -> untyped
+  def self.p: (Numeric n, *untyped variants) -> untyped
+
+  def self.transliterate: (String str) -> String
+  def self.translit: (String str) -> String
+
+  module RailsIntegration
+    def self.install!: () -> void
+  end
+
+  module Transliteration
+    def self.transliterate: (String str) -> String
+  end
+
+  module Strptime
+    def self.date_strptime: (String string, ?String format) -> Date
+    def self.time_strptime: (String string, String format, ?Time now) -> Time
+    def self.datetime_strptime: (String string, ?String format) -> DateTime
+  end
+
+  module VERSION
+    MAJOR: Integer
+    MINOR: Integer
+    TINY: Integer
+    STRING: String
+  end
+end

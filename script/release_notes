@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/russian/version"
+
+version = Russian::VERSION::STRING
+changelog = File.read(File.expand_path("../CHANGELOG.md", __dir__))
+
+section_name = version
+match = changelog.match(/^## \[#{Regexp.escape(version)}\].*$/)
+
+unless match
+  section_name = "Unreleased"
+  match = changelog.match(/^## \[Unreleased\].*$/)
+end
+
+abort "CHANGELOG.md does not contain a section for #{version} or Unreleased" unless match
+
+notes = changelog[match.end(0)..].to_s.sub(/\A\s+/, "")
+notes = notes.split(/^## \[/, 2).first.to_s.rstrip
+
+abort "CHANGELOG section for #{section_name} is empty" if notes.empty?
+
+puts notes

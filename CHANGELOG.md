@@ -1,4 +1,4 @@
-## [Unreleased] "Remastered"
+## [1.0.0] "Remastered" - 2026-03-16 
 
 A remaster of the library, 15 years later.
 

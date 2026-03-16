@@ -1,9 +1,8 @@
 --markup markdown
 --no-private
 --readme README.md
+--files LICENSE,CHANGELOG.md
 lib/**/*.rb
 --protected
 --embed-mixins
 --title "gem russian"
-LICENSE
-CHANGELOG.md

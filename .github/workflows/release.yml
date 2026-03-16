@@ -27,7 +27,7 @@ jobs:
         id: release
         shell: bash
         run: |
-          VERSION="$(bundle exec ruby -e 'require_relative \"lib/russian/version\"; puts Russian::VERSION::STRING')"
+          VERSION="$(bundle exec ruby -e 'require_relative "lib/russian/version"; puts Russian::VERSION::STRING')"
           echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
           echo "notes_path=release_notes.md" >> "$GITHUB_OUTPUT"
           bundle exec ruby script/release_notes > release_notes.md

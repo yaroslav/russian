@@ -1,3 +1,10 @@
+## [Unreleased]
+
+- The gem's own code is now Ractor-ready: every constant is deeply frozen and shareable. Helpers backed by I18n (`translate`, `localize`, `pluralize`, `strptime`, `*_strptime`) still have to stay on the main Ractor until the `i18n` gem itself becomes Ractor-ready. Verified with [audition](https://github.com/yaroslav/audition).
+
+
+- Собственный код gem'а теперь готов к работе в Ractor. Хелперы, работающие через I18n (`translate`, `localize`, `pluralize`, `strptime`, `*_strptime`), по-прежнему должны оставаться в main Ractor, пока сам gem `i18n` не станет Ractor-ready. Проверено с помощью [audition](https://github.com/yaroslav/audition).
+
 ## [1.0.0] "Remastered" - 2026-03-16 
 
 A remaster of the library, 15 years later.

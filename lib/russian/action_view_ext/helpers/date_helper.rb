@@ -37,12 +37,12 @@ module Russian
           common: :"date.common_abbr_month_names",
           standalone: :"date.standalone_abbr_month_names",
           fallback: :"date.abbr_month_names"
-        },
+        }.freeze,
         long: {
           common: :"date.common_month_names",
           standalone: :"date.standalone_month_names",
           fallback: :"date.month_names"
-        }
+        }.freeze
       }.freeze
 
       # Patch for `ActionView::Helpers::DateHelper`.

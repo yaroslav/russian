@@ -63,7 +63,7 @@ module Russian
     # @private
     UPPER = UPPER_SINGLE.merge(UPPER_MULTI).freeze
     # @private
-    TITLE = UPPER.transform_values(&:capitalize).freeze
+    TITLE = UPPER.transform_values { |value| value.capitalize.freeze }.freeze
     # @private
     MULTI_KEYS = LOWER_MULTI.merge(UPPER_MULTI).keys.sort_by(&:length).reverse.freeze
     # @private

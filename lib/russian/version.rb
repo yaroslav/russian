@@ -26,6 +26,6 @@ module Russian
     #
     # @return [String] Full version string.
     #   Полная строка версии.
-    STRING = [MAJOR, MINOR, TINY].join(".")
+    STRING = [MAJOR, MINOR, TINY].join(".").freeze
   end
 end

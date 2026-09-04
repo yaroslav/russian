@@ -318,6 +318,15 @@ BUNDLE_GEMFILE=gemfiles/rails_8_0.gemfile bundle exec rspec
 BUNDLE_GEMFILE=gemfiles/rails_8_1.gemfile bundle exec rspec
 ```
 
+Готовность к Ractor проверяется с помощью [audition](https://github.com/yaroslav/audition) (нужен Ruby 4.0+):
+
+```sh
+gem install audition
+audition .
+```
+
+Ожидаемый вердикт — `own code is ractor-ready; blocked by dependencies`: оставшиеся замечания относятся к gem'ам `i18n` и `psych`, а не к коду gem russian.
+
 # Авторы и благодарности
 
 [Ярослав Маркин](http://yaroslav.io) при участии: [Юлика Тарханова](https://blog.julik.nl), Евгения Пименова, [Дмитрия Смалько](https://github.com/dsmalko), [Алексея Фортуны](https://github.com/dadooda), [Антона Агеева](https://github.com/antage), [Александра Семенова](https://github.com/alsemyonov), [valodzka](https://github.com/valodzka), [Николая Немшилова](https://github.com/MadRabbit), [Дмитрия Куликова](https://github.com/dima4p), [Алексея Саварцова](https://github.com/asavartsov), [Андрея Новикова](https://github.com/Envek), [Игоря Бочкарева](https://github.com/ujifgc), [Валентина Васильева](https://github.com/Valve).
